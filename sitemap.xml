@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</loc>
+    <lastmod>2016-12-08T16:54:21.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</loc>
     <lastmod>2016-12-07T15:55:37.000Z</lastmod>
   </url>
@@ -19,11 +24,6 @@
   <url>
     <loc>http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/</loc>
     <lastmod>2016-12-07T12:04:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</loc>
-    <lastmod>2016-12-07T12:04:30.000Z</lastmod>
   </url>
   
   <url>
