@@ -61,7 +61,7 @@
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="简单说一说我是怎么搭建这个博客的吧由于hexo是基于node.js的，所以需要先安装node.js由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)
 安装node.js12345git clone git://github.com/joyent/node.gitgit checkout v0.12.7-release./configure">
-<meta property="og:updated_time" content="2016-12-07T12:31:02.000Z">
+<meta property="og:updated_time" content="2015-11-17T21:23:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭了个博客">
 <meta name="twitter:description" content="简单说一说我是怎么搭建这个博客的吧由于hexo是基于node.js的，所以需要先安装node.js由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)
@@ -215,7 +215,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2015-11-18T05:23:10+08:00" content="2015-11-18">
+            <time itemprop="dateCreated" datetime="2015-11-18T05:23:10+09:00" content="2015-11-18">
               2015-11-18
             </time>
           </span>
@@ -225,11 +225,11 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/11/18/hexo-blog/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/18/hexo-blog/" itemprop="commentsCount"></span>
-                </a>
-              </span>
+              &nbsp; | &nbsp;
+              <a href="/2015/11/18/hexo-blog/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/18/hexo-blog/" itemprop="commentsCount"></span>
+              </a>
+            </span>
             
           
 
@@ -312,8 +312,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/18/hexo-blog/"
-           data-title="搭了个博客" data-url="http://blog.qwerdf.com/2015/11/18/hexo-blog/">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </div>
     
   </div>
@@ -357,7 +357,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -371,7 +371,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -490,37 +490,32 @@ Mod by xz
 
   
     
+    
 
   
-    
-  
 
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"tencentadmin"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-    
-     
-     
-  	  <script type="text/javascript">
-  		var duoshuo_user_ID = 3718456
-      var duoshuo_admin_nickname=""
-  	  </script>
-     
-  	<script src="/js/ua-parser.min.js"></script>
-  	<script src="/js/hook-duoshuo.js"></script>
+    <script type="text/javascript">
+      var disqus_shortname = 'tencentadmin';
+      var disqus_identifier = '2015/11/18/hexo-blog/';
+      var disqus_title = '搭了个博客';
+      var disqus_url = 'http://blog.qwerdf.com/2015/11/18/hexo-blog/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
   
 
 
-    
   
 
   

@@ -2,33 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</loc>
-    <lastmod>2016-12-08T16:54:21.000Z</lastmod>
+    <loc>http://blog.qwerdf.com/2017/07/16/play-random-game/</loc>
+    <lastmod>2017-07-15T16:35:51.223Z</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</loc>
-    <lastmod>2016-12-07T15:55:37.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2015/11/18/hexo-blog/</loc>
-    <lastmod>2016-12-07T12:31:02.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2016/01/13/win10-update-tools/</loc>
-    <lastmod>2016-12-07T12:29:57.000Z</lastmod>
+    <loc>http://blog.qwerdf.com/2017/07/15/configure-msys2/</loc>
+    <lastmod>2017-07-15T16:35:26.056Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/</loc>
-    <lastmod>2016-12-07T12:04:51.000Z</lastmod>
+    <lastmod>2017-07-15T13:38:26.397Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/</loc>
+    <lastmod>2017-03-30T15:56:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</loc>
+    <lastmod>2016-12-08T16:54:21.054Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</loc>
+    <lastmod>2016-12-04T12:07:28.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2016/01/13/win10-update-tools/</loc>
+    <lastmod>2016-01-13T11:53:20.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://blog.qwerdf.com/tags/index.html</loc>
     <lastmod>2015-11-17T23:03:41.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2015/11/18/hexo-blog/</loc>
+    <lastmod>2015-11-17T21:23:10.000Z</lastmod>
   </url>
   
 </urlset>

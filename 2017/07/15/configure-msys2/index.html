@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fix," />
+  <meta name="keywords" content="blog," />
 
 
 
@@ -53,22 +53,19 @@
 
 
 
-<meta name="description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
+安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修复Airplane Mode Hid设备异常">
-<meta property="og:url" content="http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/index.html">
+<meta property="og:title" content="Windows下好用的shell--msys2">
+<meta property="og:url" content="http://blog.qwerdf.com/2017/07/15/configure-msys2/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
-<meta property="og:updated_time" content="2017-07-15T13:38:26.397Z">
+<meta property="og:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
+安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta property="og:updated_time" content="2017-07-15T16:35:26.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修复Airplane Mode Hid设备异常">
-<meta name="twitter:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="twitter:title" content="Windows下好用的shell--msys2">
+<meta name="twitter:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
+安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
 
 
 
@@ -80,7 +77,7 @@
   };
 </script>
 
-  <title> 修复Airplane Mode Hid设备异常 | zzzZZZ </title>
+  <title> Windows下好用的shell--msys2 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -209,7 +206,7 @@
             
             
               
-                修复Airplane Mode Hid设备异常
+                Windows下好用的shell--msys2
               
             
           </h1>
@@ -218,8 +215,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2015-12-05T05:23:10+09:00" content="2015-12-05">
-              2015-12-05
+            <time itemprop="dateCreated" datetime="2017-07-15T22:40:26+09:00" content="2017-07-15">
+              2017-07-15
             </time>
           </span>
 
@@ -229,8 +226,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/05/fix-insyde-airplane/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/05/fix-insyde-airplane/" itemprop="commentsCount"></span>
+              <a href="/2017/07/15/configure-msys2/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/15/configure-msys2/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -249,12 +246,20 @@
       
 
       
-        <span itemprop="articleBody"><p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
-<p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="external">这里</a>找到解决问题的方案。</p>
-<p>导入注册表<br>    <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">;fix error code 10 (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_LOCAL_MACHINE<span class="command">\SYSTEM</span><span class="command">\CurrentControlSet</span><span class="command">\Services</span><span class="command">\AirplaneModeHid</span><span class="command">\Parameters</span><span class="special">]</span></span><br><span class="line">"ECRAMBASE"=dword:ff700100</span><br></pre></td></tr></table></figure></p>
-<p>仔细看了看应该是这个驱动的安装程序的锅…</p>
-<p>此文章基于以下驱动版本完成:1.4.0.3</p>
-<p>最新更新的1.4.0.4(签名日期2017-01-19)并未解决这个bug</p>
+        <span itemprop="articleBody"><p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
+<h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
+<h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
+<p>于 /etc/pacman.d/mirrorlist.mingw64 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/x86_64</span></span><br></pre></td></tr></table></figure></p>
+<p>于/etc/pacman.d/mirrorlist.msys 文件开头添加：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="更新组件">更新组件</h2><p>msys2使用pacman来管理包,即<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Syu</span><br></pre></td></tr></table></figure></p>
+<p>第一次更新需要杀掉终端,重启后再更新一次</p>
+<p>更新完成后使用pacman -Scc清理空间</p>
+<h2 id="替换默认bash为zsh">替换默认bash为zsh</h2><p>安装zsh<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S zsh</span><br></pre></td></tr></table></figure></p>
+<p>配置<a href="http://ohmyz.sh" target="_blank" rel="external">Oh My Zsh</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">SHELL</span>=<span class="regexp">/usr/bin</span><span class="regexp">/zsh</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="其他杂项">其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
+<h2 id="参考链接">参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="external">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
 </span>
       
     </div>
@@ -263,7 +268,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/fix/" rel="tag">#fix</a>
+            <a href="/tags/blog/" rel="tag">#blog</a>
           
         </div>
       
@@ -272,16 +277,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/18/hexo-blog/" rel="next" title="搭了个博客">
-                <i class="fa fa-chevron-left"></i> 搭了个博客
+              <a href="/2017/03/30/cFosSpeed_Menu/" rel="next" title="如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整">
+                <i class="fa fa-chevron-left"></i> 如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/13/win10-update-tools/" rel="prev" title="win10更新工具">
-                win10更新工具 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/16/play-random-game/" rel="prev" title="凭本事买的游戏为什么要玩">
+                凭本事买的游戏为什么要玩 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -428,7 +433,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置镜像以加速下载安装"><span class="nav-number">2.</span> <span class="nav-text">配置镜像以加速下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新组件"><span class="nav-number">3.</span> <span class="nav-text">更新组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换默认bash为zsh"><span class="nav-number">4.</span> <span class="nav-text">替换默认bash为zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他杂项"><span class="nav-number">5.</span> <span class="nav-text">其他杂项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -493,9 +498,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2015/12/05/fix-insyde-airplane/';
-      var disqus_title = '修复Airplane Mode Hid设备异常';
-      var disqus_url = 'http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/';
+      var disqus_identifier = '2017/07/15/configure-msys2/';
+      var disqus_title = 'Windows下好用的shell--msys2';
+      var disqus_url = 'http://blog.qwerdf.com/2017/07/15/configure-msys2/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
