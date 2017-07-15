@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2016-12-07T15:55:37.000Z</updated>
+  <updated>2017-07-15T14:14:21.747Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -15,11 +15,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Windows下好用的shell--msys2]]></title>
+    <link href="http://blog.qwerdf.com/2017/07/15/configure-msys2/"/>
+    <id>http://blog.qwerdf.com/2017/07/15/configure-msys2/</id>
+    <published>2017-07-15T13:40:26.000Z</published>
+    <updated>2017-07-15T14:14:21.747Z</updated>
+    <content type="html"><![CDATA[<p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
+<h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/msys/$arch" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/msys/$arch</a><br>官方源<br><a href="http://repo.msys2.org/msys/$arch" target="_blank" rel="external">http://repo.msys2.org/msys/$arch</a></p>
+<h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
+<p>于 /etc/pacman.d/mirrorlist.mingw64 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/x86_64</span></span><br></pre></td></tr></table></figure></p>
+<p>于/etc/pacman.d/mirrorlist.msys 文件开头添加：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="更新组件">更新组件</h2><p>msys2使用pacman来管理包,即<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Syu</span><br></pre></td></tr></table></figure></p>
+<p>第一次更新需要杀掉终端,重启后再更新一次</p>
+<p>更新完成后使用pacman -Scc清理空间</p>
+<h2 id="替换默认bash为zsh">替换默认bash为zsh</h2><p>安装zsh<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S zsh</span><br></pre></td></tr></table></figure></p>
+<p>配置<a href="http://ohmyz.sh" target="_blank" rel="external">Oh My Zsh</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
+<p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">SHELL</span>=<span class="regexp">/usr/bin</span><span class="regexp">/zsh</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="其他杂项">其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
+<h2 id="参考链接">参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="external">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
+<h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.]]>
+    </summary>
+    
+      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整]]></title>
+    <link href="http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/"/>
+    <id>http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/</id>
+    <published>2017-03-30T14:56:10.000Z</published>
+    <updated>2017-03-30T15:56:10.000Z</updated>
+    <content type="html"><![CDATA[<p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[All]</span><br><span class="line">ts_advice=<span class="number">10.22</span></span><br><span class="line">autoarrange=<span class="number">3</span></span><br><span class="line">hide_on_fullscreen=<span class="number">0</span></span><br><span class="line">click_through=<span class="number">1</span>   //鼠标穿透</span><br><span class="line">trayicon=<span class="number">0</span>    //托盘图标</span><br><span class="line">...</span><br></pre></td></tr></table></figure></username></p>
+<p>或者直接带参数运行,调出菜单<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfosspeed<span class="class">.exe</span> -context_menu</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><p]]>
+    </summary>
+    
+      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[vs2017 rc 初体验]]></title>
     <link href="http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/"/>
     <id>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</id>
-    <published>2016-12-04T12:07:28.000Z</published>
-    <updated>2016-12-07T15:55:37.000Z</updated>
+    <published>2016-12-04T11:07:28.000Z</published>
+    <updated>2016-12-04T12:07:28.000Z</updated>
     <content type="html"><![CDATA[<p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/" target="_blank" rel="external">下载</a>了，今日下载了下来玩了下。</p>
 <h2 id="默认全部在线安装">默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br><a id="more"></a></p>
 <h2 id="新的安装界面和选择组件方式">新的安装界面和选择组件方式</h2><p>感觉vs2017外在改变最大的就是这个安装界面了，曾经有这么一个说法：vs是非常庞大(亦或者是臃肿?)的，不仅仅是他的功能强大，还有他强大的占用空间。有时候我们仅仅需要使用其来进行一个方向的开发，但是vs其默认安装总是安装一些我们一般并不需要的功能。这一点在2017中有了极大改善。新版安装界面比之前我用过的几个版本相比简直就是两个软件，改变了在我眼中vs一贯臃肿的看法。<br><img src="/uploads/2016-12-04_6.png" alt="默认的分组" title="默认的分组"><br><img src="/uploads/2016-12-04_4.png" alt="安装时下载的界面与速度" title="安装中..."><br>速度还是能看的，至少比android studio好多了，我安装的时候能把带宽跑满。</p>
@@ -41,8 +88,8 @@
     <title><![CDATA[修复由于WAN_Miniport导致的网络问题]]></title>
     <link href="http://blog.qwerdf.com/2016/02/04/WAN-miniport/"/>
     <id>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</id>
-    <published>2016-02-04T05:58:09.000Z</published>
-    <updated>2016-12-08T16:54:21.000Z</updated>
+    <published>2016-02-04T04:58:09.000Z</published>
+    <updated>2016-12-08T16:54:21.054Z</updated>
     <content type="html"><![CDATA[<p>在硬件管理器中出现了’WAN_Miniport（*）’，这六个理论上应该是 <del>隐藏的，</del> 没有错误的，但是有时候就会莫名其妙的出现好几个 WAN Miniport (IPv6 L2TP Network_Monitor PPPOE PPTP SSTP)，出现的原因很多，不过我见过的最多的就是xxx加速器/校园宽带客户端引起的。</p>
 <p>修复方法:<br>1.打开设备管理器，右键WAN_Miniport，选择更新驱动。<br>2.选择下面那个”浏览我的计算机xxxxxxx”<br>3.点下面那个”兼容设备”<br>4.勾掉”显示xxx”的复选框<br>5.左边选”Microsoft”，右边选”Microsoft KM-TEST Loopback Adapter“或者”Generic Mobile Broadband Adapter“<br>6.确定，完成。然后右键WAN_Miniport，卸载。<br>7.重复以上步骤，直到将所有WAN_Miniport都做一遍。<br>8.重启电脑。<br>9.打开设备管理器，扫描硬件。<br>10.完成</p>
 <p>或者</p>
@@ -60,8 +107,8 @@
     <title><![CDATA[win10更新工具]]></title>
     <link href="http://blog.qwerdf.com/2016/01/13/win10-update-tools/"/>
     <id>http://blog.qwerdf.com/2016/01/13/win10-update-tools/</id>
-    <published>2016-01-13T11:53:20.000Z</published>
-    <updated>2016-12-07T12:29:57.000Z</updated>
+    <published>2016-01-13T10:53:20.000Z</published>
+    <updated>2016-01-13T11:53:20.000Z</updated>
     <content type="html"><![CDATA[<p>一次偶然发现使得我找到了<a href="http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab" target="_blank" rel="external">wushowhide.diagcab</a>这个工具，他可以使得win10实现win7/8/8.1的wuapp.exe的隐藏更新的功能，此外也可以显示可选更新。win10那反人类的自动更新就不说什么了，更可气的是可选更新的驱动也不能自己安装更新，所以我每次都是查看可选更新后在设备管理器中找半天，然后右键更新驱动。而且有些设备更新驱动前后名字会变！这让我更菊酸乳疼了…</p>
 <p>现在我发现了”<a href="http://forum.ru-board.com/topic.cgi?forum=5&amp;topic=48142#2" target="_blank" rel="external">Windows Update MiniTool</a>”……可以方便的安装可选补丁了……还有其他一些对于更新的功能可用，比如设置自动更新方式(手动/自动/关闭等)……</p>
 ]]></content>
@@ -77,12 +124,14 @@
     <title><![CDATA[修复Airplane Mode Hid设备异常]]></title>
     <link href="http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/"/>
     <id>http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/</id>
-    <published>2015-12-04T21:23:10.000Z</published>
-    <updated>2016-12-07T12:04:51.000Z</updated>
+    <published>2015-12-04T20:23:10.000Z</published>
+    <updated>2017-07-15T13:38:26.397Z</updated>
     <content type="html"><![CDATA[<p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
 <p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="external">这里</a>找到解决问题的方案。</p>
 <p>导入注册表<br>    <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">;fix error code 10 (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_LOCAL_MACHINE<span class="command">\SYSTEM</span><span class="command">\CurrentControlSet</span><span class="command">\Services</span><span class="command">\AirplaneModeHid</span><span class="command">\Parameters</span><span class="special">]</span></span><br><span class="line">"ECRAMBASE"=dword:ff700100</span><br></pre></td></tr></table></figure></p>
 <p>仔细看了看应该是这个驱动的安装程序的锅…</p>
+<p>此文章基于以下驱动版本完成:1.4.0.3</p>
+<p>最新更新的1.4.0.4(签名日期2017-01-19)并未解决这个bug</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
@@ -97,8 +146,8 @@
     <title><![CDATA[搭了个博客]]></title>
     <link href="http://blog.qwerdf.com/2015/11/18/hexo-blog/"/>
     <id>http://blog.qwerdf.com/2015/11/18/hexo-blog/</id>
-    <published>2015-11-17T21:23:10.000Z</published>
-    <updated>2016-12-07T12:31:02.000Z</updated>
+    <published>2015-11-17T20:23:10.000Z</published>
+    <updated>2015-11-17T21:23:10.000Z</updated>
     <content type="html"><![CDATA[<p>简单说一说我是怎么搭建这个博客的吧<br>由于hexo是基于node.js的，所以需要先安装node.js<br>由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)</p>
 <h2 id="安装node-js">安装node.js</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/joyent/node.git</span><br><span class="line">git checkout v0.<span class="number">12.7</span>-release</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></span>
 </code></pre><p>若提示命令不存在，则<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">where</span> node</span><br><span class="line">ln <span class="operator">-s</span> 原位置 错误提示的位置</span><br></pre></td></tr></table></figure></p>
