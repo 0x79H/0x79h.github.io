@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2017-07-17T17:47:17.063Z</updated>
+  <updated>2017-07-17T17:55:44.498Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://blog.qwerdf.com/2017/07/17/The-Next-Door/"/>
     <id>http://blog.qwerdf.com/2017/07/17/The-Next-Door/</id>
     <published>2017-07-16T16:35:48.000Z</published>
-    <updated>2017-07-17T17:47:17.063Z</updated>
+    <updated>2017-07-17T17:55:44.498Z</updated>
     <content type="html"><![CDATA[<p>今天随机到的游戏是”The Next Door”.</p>
 <p><iframe src="https://store.steampowered.com/widget/447850/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>不不不,不是你想的那个意♂思,和”Boy♂Next♂Door”的那个一点关系都没有.此游戏是一个融合了宗教元素的正常向解密游戏,只是我第一次玩的时候直白的xx画面吓得我赶紧把游戏关掉了而已.<br><a id="more"></a></p>
 <blockquote>
@@ -85,17 +85,17 @@
     <link href="http://blog.qwerdf.com/2017/07/16/play-random-game/"/>
     <id>http://blog.qwerdf.com/2017/07/16/play-random-game/</id>
     <published>2017-07-16T00:22:07.000Z</published>
-    <updated>2017-07-15T20:31:48.166Z</updated>
+    <updated>2017-07-17T17:52:14.152Z</updated>
     <content type="html"><![CDATA[<p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
 <p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
-<p>—使用<a href="https://steamdb.info/calculator/" target="_blank" rel="external">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.—</p>
-<p>然而并不行,随机的只是在几个游戏中随机…</p>
-<p>访问(steam)[<a href="https://store.steampowered.com/dynamicstore/userdata/]获得账户游戏信息.其中rgOwnedApps即为所拥有游戏" target="_blank" rel="external">https://store.steampowered.com/dynamicstore/userdata/]获得账户游戏信息.其中rgOwnedApps即为所拥有游戏</a>.</p>
+<p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="external">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br><a id="more"></a><br>然而并不行,随机的只是在几个游戏中随机…</p>
+<p>访问<a href="https://store.steampowered.com/dynamicstore/userdata/" target="_blank" rel="external">steam</a>获得账户游戏信息.其中rgOwnedApps即为所拥有游戏.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice <span class="keyword">as</span> roll</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system <span class="keyword">as</span> shell</span><br><span class="line">rgOwnedApps = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,.....,<span class="number">635780</span>]</span><br><span class="line">shell(<span class="string">'"C:/Program Files/Internet Explorer/iexplore.exe" \"steam://run/'</span>+str(roll(rgOwnedApps))+<span class="string">'\"'</span>)</span><br></pre></td></tr></table></figure>]]></content>
     <summary type="html">
     <![CDATA[<p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
 <p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
-<p>—使用<a href="http]]>
+<p><del>使用<a href="https://steamdb.info/calculator/">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br>]]>
+    
     </summary>
     
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
@@ -107,7 +107,7 @@
     <link href="http://blog.qwerdf.com/2017/07/15/configure-msys2/"/>
     <id>http://blog.qwerdf.com/2017/07/15/configure-msys2/</id>
     <published>2017-07-15T13:40:26.000Z</published>
-    <updated>2017-07-15T16:35:26.056Z</updated>
+    <updated>2017-07-17T17:55:26.517Z</updated>
     <content type="html"><![CDATA[<p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
 <h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
 <h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
@@ -138,7 +138,7 @@
     <link href="http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/"/>
     <id>http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/</id>
     <published>2017-03-30T14:56:10.000Z</published>
-    <updated>2017-03-30T15:56:10.000Z</updated>
+    <updated>2017-07-17T17:54:23.485Z</updated>
     <content type="html"><![CDATA[<p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[All]</span><br><span class="line">ts_advice=<span class="number">10.22</span></span><br><span class="line">autoarrange=<span class="number">3</span></span><br><span class="line">hide_on_fullscreen=<span class="number">0</span></span><br><span class="line">click_through=<span class="number">1</span>   //鼠标穿透</span><br><span class="line">trayicon=<span class="number">0</span>    //托盘图标</span><br><span class="line">...</span><br></pre></td></tr></table></figure></username></p>
 <p>或者直接带参数运行,调出菜单<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfosspeed<span class="class">.exe</span> -context_menu</span><br></pre></td></tr></table></figure></p>
 ]]></content>
@@ -146,7 +146,7 @@
     <![CDATA[<p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><p]]>
     </summary>
     
-      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+      <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
     
   </entry>
   
@@ -155,7 +155,7 @@
     <link href="http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/"/>
     <id>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</id>
     <published>2016-12-04T11:07:28.000Z</published>
-    <updated>2016-12-04T12:07:28.000Z</updated>
+    <updated>2017-07-17T17:55:13.275Z</updated>
     <content type="html"><![CDATA[<p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/" target="_blank" rel="external">下载</a>了，今日下载了下来玩了下。</p>
 <h2 id="默认全部在线安装">默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br><a id="more"></a></p>
 <h2 id="新的安装界面和选择组件方式">新的安装界面和选择组件方式</h2><p>感觉vs2017外在改变最大的就是这个安装界面了，曾经有这么一个说法：vs是非常庞大(亦或者是臃肿?)的，不仅仅是他的功能强大，还有他强大的占用空间。有时候我们仅仅需要使用其来进行一个方向的开发，但是vs其默认安装总是安装一些我们一般并不需要的功能。这一点在2017中有了极大改善。新版安装界面比之前我用过的几个版本相比简直就是两个软件，改变了在我眼中vs一贯臃肿的看法。<br><img src="/uploads/2016-12-04_6.png" alt="默认的分组" title="默认的分组"><br><img src="/uploads/2016-12-04_4.png" alt="安装时下载的界面与速度" title="安装中..."><br>速度还是能看的，至少比android studio好多了，我安装的时候能把带宽跑满。</p>
@@ -169,7 +169,7 @@
     
     </summary>
     
-      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+      <category term="Misc" scheme="http://blog.qwerdf.com/tags/Misc/"/>
     
   </entry>
   
