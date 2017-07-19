@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="game," />
 
 
 
@@ -53,19 +53,22 @@
 
 
 
-<meta name="description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta name="description" content="今天随机到的游戏是Socxel | Pixel Soccer
+开发商是 BUG-Studio 😄 这名字好啊.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Windows下好用的shell--msys2">
-<meta property="og:url" content="http://blog.qwerdf.com/2017/07/15/configure-msys2/index.html">
+<meta property="og:title" content="Socxel | Pixel Soccer">
+<meta property="og:url" content="http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
-<meta property="og:updated_time" content="2017-07-17T17:55:26.517Z">
+<meta property="og:description" content="今天随机到的游戏是Socxel | Pixel Soccer
+开发商是 BUG-Studio 😄 这名字好啊.">
+<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904374506/CDFF35FB840FE8005A79B9033A4064DBA3660AB0/?pic1.jpg">
+<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904376477/21F5B11383251C1780C429311A7057A4EE1E2DF3/?pic2.jpg">
+<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904378919/8B1A1F937B7690D771B009D8417FD8887E57943A/?pic3.jpg">
+<meta property="og:updated_time" content="2017-07-19T17:56:19.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Windows下好用的shell--msys2">
-<meta name="twitter:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta name="twitter:title" content="Socxel | Pixel Soccer">
+<meta name="twitter:description" content="今天随机到的游戏是Socxel | Pixel Soccer
+开发商是 BUG-Studio 😄 这名字好啊.">
 
 
 
@@ -77,7 +80,7 @@
   };
 </script>
 
-  <title> Windows下好用的shell--msys2 | zzzZZZ </title>
+  <title> Socxel | Pixel Soccer | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -206,7 +209,7 @@
             
             
               
-                Windows下好用的shell--msys2
+                Socxel | Pixel Soccer
               
             
           </h1>
@@ -215,8 +218,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-07-15T22:40:26+09:00" content="2017-07-15">
-              2017-07-15
+            <time itemprop="dateCreated" datetime="2017-07-19T15:41:11+09:00" content="2017-07-19">
+              2017-07-19
             </time>
           </span>
 
@@ -226,8 +229,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2017/07/15/configure-msys2/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/15/configure-msys2/" itemprop="commentsCount"></span>
+              <a href="/2017/07/19/Socxel-Pixel-Soccer/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/19/Socxel-Pixel-Soccer/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -246,20 +249,19 @@
       
 
       
-        <span itemprop="articleBody"><p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
-<h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
-<h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
-<p>于 /etc/pacman.d/mirrorlist.mingw64 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/x86_64</span></span><br></pre></td></tr></table></figure></p>
-<p>于/etc/pacman.d/mirrorlist.msys 文件开头添加：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="更新组件">更新组件</h2><p>msys2使用pacman来管理包,即<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Syu</span><br></pre></td></tr></table></figure></p>
-<p>第一次更新需要杀掉终端,重启后再更新一次</p>
-<p>更新完成后使用pacman -Scc清理空间</p>
-<h2 id="替换默认bash为zsh">替换默认bash为zsh</h2><p>安装zsh<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S zsh</span><br></pre></td></tr></table></figure></p>
-<p>配置<a href="http://ohmyz.sh" target="_blank" rel="external">Oh My Zsh</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
-<p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">SHELL</span>=<span class="regexp">/usr/bin</span><span class="regexp">/zsh</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="其他杂项">其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
-<h2 id="参考链接">参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="external">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
+        <span itemprop="articleBody"><p>今天随机到的游戏是Socxel | Pixel Soccer</p>
+<p><iframe src="https://store.steampowered.com/widget/586190/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>开发商是 BUG-Studio 😄 这名字好啊.<br><a id="more"></a></p>
+<h2 id="0x01_简单游玩">0x01 简单游玩</h2><p>游戏支持最大4人同时在一台电脑上游戏.</p>
+<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904374506/CDFF35FB840FE8005A79B9033A4064DBA3660AB0/?pic1.jpg" alt="进入游戏" title="进入游戏"></p>
+<p>下面可以更改操控键位设置,并不是常见的wasd控制方向什么的,而是…</p>
+<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904376477/21F5B11383251C1780C429311A7057A4EE1E2DF3/?pic2.jpg" alt="啥都不做都赢了" title="啥都不做居然还能赢了"></p>
+<p>btw,开了吧<code>1 vs AI</code>,摸索了半天都不知道用什么操控.然而我居然赢了…电脑经常把球踢进自己球门.所以这破游戏啥都不动只要是欧皇,对电脑怎么都赢了.</p>
+<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904378919/8B1A1F937B7690D771B009D8417FD8887E57943A/?pic3.jpg" alt="按键" title="按键提示"></p>
+<p>这游戏丧心病狂的只用一个按键(图中有提示)来操作,如果你不按任何按键的话,游戏内的任务会在原地转圈;而当你按下游戏一开始提示的按键的话,游戏中的人物将向前冲,并改变转向.</p>
+<h2 id="0x02_意外发现">0x02 意外发现</h2><p>在游戏中准备用f12截图,却意外的发现打开了<code>Devtools</code> ,难道这游戏直接是用HTML5开发的嘛?</p>
+<p>带着疑问大概看了下代码,发现了个关键字<code>c2canvasdiv</code> ,Google了下发现是一个游戏引擎 <a href="https://www.scirra.com" target="_blank" rel="external">Construct 2</a> . </p>
+<p><code>Construct</code>是一个HTML5的游戏引擎,类似于<code>GameMaker</code>,但是相比感觉前者更强大一些.类似的我只知道unity3d可以导出为web格式,但是前两者拥有所见即所得的简单编辑模式,只需要动动手拖动一下就可以很轻易的制作一些简单的游戏.简单易用的程度也表现在,我甚至在网上找到了面向14岁+开展的培训班.</p>
+<p>顺便一提,<a href="http://store.steampowered.com/app/227240/" target="_blank" rel="external">Construct 2</a>居然也在steam商店上架了.</p>
 </span>
       
     </div>
@@ -268,7 +270,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/game/" rel="tag">#game</a>
           
         </div>
       
@@ -277,17 +279,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/30/cFosSpeed_Menu/" rel="next" title="如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整">
-                <i class="fa fa-chevron-left"></i> 如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整
+              <a href="/2017/07/17/The-Next-Door/" rel="next" title="The Next Door">
+                <i class="fa fa-chevron-left"></i> The Next Door
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/16/play-random-game/" rel="prev" title="凭本事买的游戏为什么要玩">
-                凭本事买的游戏为什么要玩 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -433,7 +431,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置镜像以加速下载安装"><span class="nav-number">2.</span> <span class="nav-text">配置镜像以加速下载安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新组件"><span class="nav-number">3.</span> <span class="nav-text">更新组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#替换默认bash为zsh"><span class="nav-number">4.</span> <span class="nav-text">替换默认bash为zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他杂项"><span class="nav-number">5.</span> <span class="nav-text">其他杂项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">6.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01_简单游玩"><span class="nav-number">1.</span> <span class="nav-text">0x01 简单游玩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02_意外发现"><span class="nav-number">2.</span> <span class="nav-text">0x02 意外发现</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -498,9 +496,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2017/07/15/configure-msys2/';
-      var disqus_title = 'Windows下好用的shell--msys2';
-      var disqus_url = 'http://blog.qwerdf.com/2017/07/15/configure-msys2/';
+      var disqus_identifier = '2017/07/19/Socxel-Pixel-Soccer/';
+      var disqus_title = 'Socxel | Pixel Soccer';
+      var disqus_url = 'http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
