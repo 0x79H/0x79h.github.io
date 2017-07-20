@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2017-07-19T17:56:19.888Z</updated>
+  <updated>2017-07-20T17:20:52.552Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -13,6 +13,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[基于sh的简单爬虫]]></title>
+    <link href="http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/"/>
+    <id>http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/</id>
+    <published>2017-07-20T14:31:46.000Z</published>
+    <updated>2017-07-20T17:20:52.552Z</updated>
+    <content type="html"><![CDATA[<p>对于我这种买不起vps的穷逼来说,免费$$不失为一个很好的解决方案.然而大部分在飞机场里的免费$$都是隔一段时间变更一下端口和密码.</p>
+<p>爬虫什么的用py做的比较多一点,然而在路由器上那点可怜的空间并不足以装上py.遂查了资料上了shell的爬虫.<br><a id="more"></a><br>多话不说.</p>
+<pre><code>wget -t <span class="number">1</span> -T <span class="number">5</span> -q -O /tmp/auto_change_ss_xz https:<span class="comment">//xsjs.yhyhd.org/free-ss/</span>
+select=`tr -cd <span class="number">1</span>-<span class="number">3</span> &lt;/dev/urandom | head -c <span class="number">1</span>`
+xhead='ss-body'
+xend='modal-footer'
+sed -i -e <span class="string">"1,/$xhead/d"</span> -e <span class="string">"/$xend/,$ d"</span> -e <span class="attribute">'s</span>/&amp;nbsp;/\n/g' /tmp/auto_change_ss_xz
+ss_server=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-9))p"</span> -n|awk -F '<span class="annotation">[&lt;&gt;]</span>' '{print $<span class="number">3</span>}')
+ss_server_port=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-7))p"</span> -n|awk -F '<span class="annotation">[&lt;&gt;]</span>' '{print $<span class="number">3</span>}')
+ss_method=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-5))p"</span> -n|awk -F '<span class="annotation">[&lt;&gt;]</span>' '{print $<span class="number">3</span>}')
+ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p"</span> -n|awk -F '<span class="annotation">[&lt;&gt;]</span>' '{print $<span class="number">3</span>}')
+</code></pre><p>核心代码就是这么多,其中遇到的几个问题:</p>
+<ol>
+<li>sed/awk/grep就最后一个用过,前两个几乎没有用过,查了半天文档</li>
+<li>路由器上的shell不支持 <code>&lt;&lt;&lt;</code>,最后用<code>$(...)</code>来代替了</li>
+<li>wget默认重试和超时非常坑,在默认直接 <code>wget Url</code> 的情况下会默认重试 <code>900s*20次</code> .</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>对于我这种买不起vps的穷逼来说,免费$$不失为一个很好的解决方案.然而大部分在飞机场里的免费$$都是隔一段时间变更一下端口和密码.</p>
+<p>爬虫什么的用py做的比较多一点,然而在路由器上那点可怜的空间并不足以装上py.遂查了资料上了shell的爬虫.<br>]]>
+    
+    </summary>
+    
+      <category term="Misc" scheme="http://blog.qwerdf.com/tags/Misc/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Socxel | Pixel Soccer]]></title>

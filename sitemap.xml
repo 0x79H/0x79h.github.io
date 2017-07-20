@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/</loc>
+    <lastmod>2017-07-20T17:20:52.552Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/</loc>
     <lastmod>2017-07-19T17:56:19.888Z</lastmod>
   </url>

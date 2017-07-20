@@ -56,7 +56,7 @@
 <meta name="description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zzzZZZ">
-<meta property="og:url" content="http://blog.qwerdf.com/archives/2016/02/index.html">
+<meta property="og:url" content="http://blog.qwerdf.com/page/2/index.html">
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta name="twitter:card" content="summary">
@@ -73,7 +73,7 @@
   };
 </script>
 
-  <title> Archive | zzzZZZ </title>
+  <title> zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -103,7 +103,9 @@
 
 
 
-  <div class="container one-column  page-archive ">
+  <div class="container one-column 
+   page-home 
+">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -180,59 +182,106 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 11 posts in total. Keep on posting.
-    </span>
+  <section id="posts" class="posts-expand">
 
     
 
-      
+    
+    
       
       
 
       
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/18/hexo-blog/" itemprop="url">
+                  搭了个博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2015-11-18T05:23:10+09:00" content="2015-11-18">
+              2015-11-18
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/18/hexo-blog/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/11/18/hexo-blog/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
         </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/02/04/WAN-miniport/" itemprop="url">
-              
-                <span itemprop="name">修复由于WAN_Miniport导致的网络问题</span>
-              
+          <p>简单说一说我是怎么搭建这个博客的吧<br>由于hexo是基于node.js的，所以需要先安装node.js<br>由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)</p>
+<h2 id="安装node-js">安装node.js</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/joyent/node.git</span><br><span class="line">git checkout v0.<span class="number">12.7</span>-release</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></span>
+</code></pre><p>若提示命令不存在，则<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">where</span> node</span><br><span class="line">ln <span class="operator">-s</span> 原位置 错误提示的位置</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/18/hexo-blog/#more" rel="contents">
+              Read more &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-04T13:58:09+09:00"
-              content="2016-02-04" >
-          02-04
-        </time>
-      </div>
+    <footer class="post-footer">
+      
 
-    </header>
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
-
 
 
     
@@ -240,6 +289,9 @@
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 
@@ -392,12 +444,6 @@ Mod by xz
 
   
   
-  
-    <script type="text/javascript">
-      postMotionOptions = {stagger: 100, drag: true};
-    </script>
-  
-
 
   
     
@@ -407,7 +453,7 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = 'archives/2016/02/index.html';
+      var disqus_identifier = 'page/2/index.html';
       var disqus_title = '';
       var disqus_url = '';
 
@@ -443,12 +489,6 @@ Mod by xz
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   <script type="text/javascript" src="/js/bootstrap.js"></script>
 
