@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2018-01-16T06:28:58.742Z</updated>
+  <updated>2018-01-16T06:34:34.833Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -18,14 +18,14 @@
     <title><![CDATA[Steam Web Tools 与 Steam Economy Enhancer 共存]]></title>
     <link href="http://blog.qwerdf.com/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/"/>
     <id>http://blog.qwerdf.com/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/</id>
-    <published>2018-01-16T06:04:46.000Z</published>
-    <updated>2018-01-16T06:28:58.742Z</updated>
-    <content type="html"><![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"&lt;style&gt;.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;top:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;display:none&#125;.swt_hidden&#123;display:none&#125;&lt;/style&gt;"</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'&lt;style&gt;.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;bottom:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;&#125;.swt_hidden&#123;display:none&#125;&lt;/style&gt;'</span><br></pre></td></tr></table></figure></p>
+    <published>2018-01-16T05:04:46.000Z</published>
+    <updated>2018-01-16T06:34:34.833Z</updated>
+    <content type="html"><![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.checkedForSend</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#366836</span><span class="important">!important</span></span></span></span>&#125;<span class="class">.itemcount</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#292929</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#FFF</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"><span class="number">700</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon</span><span class="rules">&#123;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon-st</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#CF6A32</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fff</span></span></span></span>&#125;<span class="class">.swt_icon-t</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#FDEC14</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#000</span></span></span></span>&#125;<span class="id">#inventory_logos</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;<span class="class">.swt_hidden</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
+<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.checkedForSend</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#366836</span><span class="important">!important</span></span></span></span>&#125;<span class="class">.itemcount</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#292929</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#FFF</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"><span class="number">700</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">bottom</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon</span><span class="rules">&#123;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon-st</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#CF6A32</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fff</span></span></span></span>&#125;<span class="class">.swt_icon-t</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#FDEC14</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#000</span></span></span></span>&#125;<span class="id">#inventory_logos</span><span class="rules">&#123;&#125;</span><span class="class">.swt_hidden</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
 <p>即可</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight"><table><tr><td class="gutter"><pre><sp]]>
+    <![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pr]]>
     </summary>
     
       <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
@@ -36,7 +36,7 @@
     <title><![CDATA[基于sh的简单爬虫]]></title>
     <link href="http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/"/>
     <id>http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/</id>
-    <published>2017-07-20T15:31:46.000Z</published>
+    <published>2017-07-20T14:31:46.000Z</published>
     <updated>2017-07-20T17:20:52.552Z</updated>
     <content type="html"><![CDATA[<p>对于我这种买不起vps的穷逼来说,免费$$不失为一个很好的解决方案.然而大部分在飞机场里的免费$$都是隔一段时间变更一下端口和密码.</p>
 <p>爬虫什么的用py做的比较多一点,然而在路由器上那点可怜的空间并不足以装上py.遂查了资料上了shell的爬虫.<br><a id="more"></a><br>多话不说.</p>
@@ -70,8 +70,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[Socxel | Pixel Soccer]]></title>
     <link href="http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/"/>
     <id>http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/</id>
-    <published>2017-07-19T07:41:11.000Z</published>
-    <updated>2017-07-19T17:56:19.888Z</updated>
+    <published>2017-07-19T06:41:11.000Z</published>
+    <updated>2018-01-16T06:30:47.577Z</updated>
     <content type="html"><![CDATA[<p>今天随机到的游戏是Socxel | Pixel Soccer</p>
 <p><iframe src="https://store.steampowered.com/widget/586190/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>开发商是 BUG-Studio 😄 这名字好啊.<br><a id="more"></a></p>
 <h2 id="0x01_简单游玩">0x01 简单游玩</h2><p>游戏支持最大4人同时在一台电脑上游戏.</p>
@@ -100,7 +100,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[The Next Door]]></title>
     <link href="http://blog.qwerdf.com/2017/07/17/The-Next-Door/"/>
     <id>http://blog.qwerdf.com/2017/07/17/The-Next-Door/</id>
-    <published>2017-07-16T17:35:48.000Z</published>
+    <published>2017-07-16T16:35:48.000Z</published>
     <updated>2017-07-17T17:55:44.498Z</updated>
     <content type="html"><![CDATA[<p>今天随机到的游戏是”The Next Door”.</p>
 <p><iframe src="https://store.steampowered.com/widget/447850/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>不不不,不是你想的那个意♂思,和”Boy♂Next♂Door”的那个一点关系都没有.此游戏是一个融合了宗教元素的正常向解密游戏,只是我第一次玩的时候直白的xx画面吓得我赶紧把游戏关掉了而已.<br><a id="more"></a></p>
@@ -166,7 +166,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[凭本事买的游戏为什么要玩]]></title>
     <link href="http://blog.qwerdf.com/2017/07/16/play-random-game/"/>
     <id>http://blog.qwerdf.com/2017/07/16/play-random-game/</id>
-    <published>2017-07-16T01:22:07.000Z</published>
+    <published>2017-07-16T00:22:07.000Z</published>
     <updated>2017-07-17T17:52:14.152Z</updated>
     <content type="html"><![CDATA[<p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
 <p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
@@ -188,7 +188,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[Windows下好用的shell--msys2]]></title>
     <link href="http://blog.qwerdf.com/2017/07/15/configure-msys2/"/>
     <id>http://blog.qwerdf.com/2017/07/15/configure-msys2/</id>
-    <published>2017-07-15T14:40:26.000Z</published>
+    <published>2017-07-15T13:40:26.000Z</published>
     <updated>2017-07-17T17:55:26.517Z</updated>
     <content type="html"><![CDATA[<p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
 <h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
@@ -219,7 +219,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整]]></title>
     <link href="http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/"/>
     <id>http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/</id>
-    <published>2017-03-30T15:56:10.000Z</published>
+    <published>2017-03-30T14:56:10.000Z</published>
     <updated>2017-07-17T17:54:23.485Z</updated>
     <content type="html"><![CDATA[<p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[All]</span><br><span class="line">ts_advice=<span class="number">10.22</span></span><br><span class="line">autoarrange=<span class="number">3</span></span><br><span class="line">hide_on_fullscreen=<span class="number">0</span></span><br><span class="line">click_through=<span class="number">1</span>   //鼠标穿透</span><br><span class="line">trayicon=<span class="number">0</span>    //托盘图标</span><br><span class="line">...</span><br></pre></td></tr></table></figure></username></p>
 <p>或者直接带参数运行,调出菜单<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfosspeed<span class="class">.exe</span> -context_menu</span><br></pre></td></tr></table></figure></p>
@@ -236,7 +236,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[vs2017 rc 初体验]]></title>
     <link href="http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/"/>
     <id>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</id>
-    <published>2016-12-04T12:07:28.000Z</published>
+    <published>2016-12-04T11:07:28.000Z</published>
     <updated>2017-07-17T17:55:13.275Z</updated>
     <content type="html"><![CDATA[<p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/" target="_blank" rel="external">下载</a>了，今日下载了下来玩了下。</p>
 <h2 id="默认全部在线安装">默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br><a id="more"></a></p>
@@ -259,7 +259,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[修复由于WAN_Miniport导致的网络问题]]></title>
     <link href="http://blog.qwerdf.com/2016/02/04/WAN-miniport/"/>
     <id>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</id>
-    <published>2016-02-04T05:58:09.000Z</published>
+    <published>2016-02-04T04:58:09.000Z</published>
     <updated>2016-12-08T16:54:21.054Z</updated>
     <content type="html"><![CDATA[<p>在硬件管理器中出现了’WAN_Miniport（*）’，这六个理论上应该是 <del>隐藏的，</del> 没有错误的，但是有时候就会莫名其妙的出现好几个 WAN Miniport (IPv6 L2TP Network_Monitor PPPOE PPTP SSTP)，出现的原因很多，不过我见过的最多的就是xxx加速器/校园宽带客户端引起的。</p>
 <p>修复方法:<br>1.打开设备管理器，右键WAN_Miniport，选择更新驱动。<br>2.选择下面那个”浏览我的计算机xxxxxxx”<br>3.点下面那个”兼容设备”<br>4.勾掉”显示xxx”的复选框<br>5.左边选”Microsoft”，右边选”Microsoft KM-TEST Loopback Adapter“或者”Generic Mobile Broadband Adapter“<br>6.确定，完成。然后右键WAN_Miniport，卸载。<br>7.重复以上步骤，直到将所有WAN_Miniport都做一遍。<br>8.重启电脑。<br>9.打开设备管理器，扫描硬件。<br>10.完成</p>
@@ -278,7 +278,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[win10更新工具]]></title>
     <link href="http://blog.qwerdf.com/2016/01/13/win10-update-tools/"/>
     <id>http://blog.qwerdf.com/2016/01/13/win10-update-tools/</id>
-    <published>2016-01-13T11:53:20.000Z</published>
+    <published>2016-01-13T10:53:20.000Z</published>
     <updated>2016-01-13T11:53:20.000Z</updated>
     <content type="html"><![CDATA[<p>一次偶然发现使得我找到了<a href="http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab" target="_blank" rel="external">wushowhide.diagcab</a>这个工具，他可以使得win10实现win7/8/8.1的wuapp.exe的隐藏更新的功能，此外也可以显示可选更新。win10那反人类的自动更新就不说什么了，更可气的是可选更新的驱动也不能自己安装更新，所以我每次都是查看可选更新后在设备管理器中找半天，然后右键更新驱动。而且有些设备更新驱动前后名字会变！这让我更菊酸乳疼了…</p>
 <p>现在我发现了”<a href="http://forum.ru-board.com/topic.cgi?forum=5&amp;topic=48142#2" target="_blank" rel="external">Windows Update MiniTool</a>”……可以方便的安装可选补丁了……还有其他一些对于更新的功能可用，比如设置自动更新方式(手动/自动/关闭等)……</p>
@@ -295,7 +295,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[修复Airplane Mode Hid设备异常]]></title>
     <link href="http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/"/>
     <id>http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/</id>
-    <published>2015-12-04T21:23:10.000Z</published>
+    <published>2015-12-04T20:23:10.000Z</published>
     <updated>2017-07-15T13:38:26.397Z</updated>
     <content type="html"><![CDATA[<p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
 <p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="external">这里</a>找到解决问题的方案。</p>
@@ -317,7 +317,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <title><![CDATA[搭了个博客]]></title>
     <link href="http://blog.qwerdf.com/2015/11/18/hexo-blog/"/>
     <id>http://blog.qwerdf.com/2015/11/18/hexo-blog/</id>
-    <published>2015-11-17T21:23:10.000Z</published>
+    <published>2015-11-17T20:23:10.000Z</published>
     <updated>2015-11-17T21:23:10.000Z</updated>
     <content type="html"><![CDATA[<p>简单说一说我是怎么搭建这个博客的吧<br>由于hexo是基于node.js的，所以需要先安装node.js<br>由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)</p>
 <h2 id="安装node-js">安装node.js</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/joyent/node.git</span><br><span class="line">git checkout v0.<span class="number">12.7</span>-release</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></span>
