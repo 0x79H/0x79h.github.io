@@ -220,6 +220,102 @@
             
               
                 
+                <a class="post-title-link" href="/2018/03/31/unable-login-SSH-with-key/" itemprop="url">
+                  记一次诡异的ssh密钥登录失败
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-03-31T01:21:55+09:00" content="2018-03-31">
+              2018-03-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/03/31/unable-login-SSH-with-key/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/31/unable-login-SSH-with-key/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_19_31_centos ~]<span class="comment"># ls -al                               </span></span><br><span class="line">total <span class="number">80</span>                                                       </span><br><span class="line">drwxrwxrwx.  <span class="number">3</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                  </span><br><span class="line">dr-xr-xr-x. <span class="number">24</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">51</span> ..</span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root   <span class="number">790</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">07</span> .bash_<span class="built_in">history</span>      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root    <span class="number">18</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_<span class="built_in">logout</span>       </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_profile      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> Sep <span class="number">23</span>  <span class="number">2004</span> .bashrc            </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">100</span> Sep <span class="number">23</span>  <span class="number">2004</span> .cshrc             </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root <span class="number">12754</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log        </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root  <span class="number">5520</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log.syslog      </span><br><span class="line">drwxrwxrwx   <span class="number">2</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .ssh               </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">129</span> Dec  <span class="number">4</span>  <span class="number">2004</span> .tcshrc            </span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root  <span class="number">1005</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .viminfo           </span><br><span class="line">[root@VM_19_31_centos ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@VM_19_31_centos .ssh]<span class="comment"># ls -al                            </span></span><br><span class="line">total <span class="number">12</span>                                                       </span><br><span class="line">drwxrwxrwx  <span class="number">2</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                    </span><br><span class="line">drwxrwxrwx. <span class="number">3</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> ..                   </span><br><span class="line">-rwxrwxrwx  <span class="number">1</span> root root <span class="number">1157</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">08</span> authorized_keys</span><br></pre></td></tr></table></figure>
+<p>明显<em>.ssh/</em>与<em>authorized_keys</em>权限设置错误,改之</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>退出登录,然而依然不能用密钥登陆…猜测是<em>sshd</em>配置问题.去sshd_config查看</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#RSAAuthentication yes</span></span><br><span class="line"><span class="comment">#PubkeyAuthentication yes</span></span><br><span class="line"><span class="comment">#AuthorizedKeysFile       .ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
+<p>取消注释,重启sshd服务,退出登录,问题依旧……<br>谷歌之,用<em>ssh -vv server</em>来查看登陆日志,发现报<em>we did not send a packet, disable method</em><br><img src="/uploads/2018-03-31_1.png" alt="we did not send a packet, disable method"><br>谷歌之,发现是<em>~</em>的权限设置<a href="https://unix.stackexchange.com/questions/205842/unable-to-login-with-ssh-rsa-key" target="_blank" rel="external">问题</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">755</span> ~</span><br></pre></td></tr></table></figure>
+<p>退出登录,问题解决😂</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/16/ssm/" itemprop="url">
                   SSM
                 </a>
@@ -1007,97 +1103,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/04/WAN-miniport/" itemprop="url">
-                  修复由于WAN_Miniport导致的网络问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2016-02-04T13:58:09+09:00" content="2016-02-04">
-              2016-02-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/04/WAN-miniport/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/04/WAN-miniport/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>在硬件管理器中出现了’WAN_Miniport（*）’，这六个理论上应该是 <del>隐藏的，</del> 没有错误的，但是有时候就会莫名其妙的出现好几个 WAN Miniport (IPv6 L2TP Network_Monitor PPPOE PPTP SSTP)，出现的原因很多，不过我见过的最多的就是xxx加速器/校园宽带客户端引起的。</p>
-<p>修复方法:<br>1.打开设备管理器，右键WAN_Miniport，选择更新驱动。<br>2.选择下面那个”浏览我的计算机xxxxxxx”<br>3.点下面那个”兼容设备”<br>4.勾掉”显示xxx”的复选框<br>5.左边选”Microsoft”，右边选”Microsoft KM-TEST Loopback Adapter“或者”Generic Mobile Broadband Adapter“<br>6.确定，完成。然后右键WAN_Miniport，卸载。<br>7.重复以上步骤，直到将所有WAN_Miniport都做一遍。<br>8.重启电脑。<br>9.打开设备管理器，扫描硬件。<br>10.完成</p>
-<p>或者</p>
-<p><a href="http://download.microsoft.com/download/D/9/2/D923C013-E9AD-4BBE-A52C-AC1F16685036/MicrosoftFixit20114.mini.diagcab" target="_blank" rel="external">下载我</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1144,7 +1149,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1158,7 +1163,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
