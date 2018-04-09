@@ -61,7 +61,7 @@
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="简单说一说我是怎么搭建这个博客的吧由于hexo是基于node.js的，所以需要先安装node.js由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)
 安装node.js12345git clone git://github.com/joyent/node.gitgit checkout v0.12.7-release./configure">
-<meta property="og:updated_time" content="2015-11-17T21:23:10.000Z">
+<meta property="og:updated_time" content="2018-03-30T19:13:14.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭了个博客">
 <meta name="twitter:description" content="简单说一说我是怎么搭建这个博客的吧由于hexo是基于node.js的，所以需要先安装node.js由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)
@@ -252,15 +252,16 @@
 <a id="more"></a>
 <h2 id="hexo的安装">hexo的安装</h2><p>新建了个目录<br>./blog/<br>在目录中<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br><span class="line">hexo init</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
 <p>这时访问<em><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></em>应该就可以看到你的博客了</p>
-<h2 id="github的推送设置">github的推送设置</h2><p>首先安装组件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
-<p>然后设置git仓库信息<br>    <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"><span class="attribute">type</span>: git</span><br><span class="line"><span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:<span class="attribute">XXX</span>:XXX.github.io.git</span><br><span class="line"><span class="attribute">branch</span>: master</span><br><span class="line"><span class="attribute">message</span>: update</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以用<strong>hexo d</strong>来推送到github了(其实本质就是推送./public/的所有文件到github)</p>
-<h2 id="域名绑定:">域名绑定:</h2><p>暂时是直接<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> blog.qwerdf.com &gt;./blog/public/CNAME</span><br></pre></td></tr></table></figure></p>
+<h2 id="github的推送设置">github的推送设置</h2><p>首先安装组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<p>然后设置git仓库信息<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"><span class="attribute">type</span>: git</span><br><span class="line"><span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:<span class="attribute">XXX</span>:XXX.github.io.git</span><br><span class="line"><span class="attribute">branch</span>: master</span><br><span class="line"><span class="attribute">message</span>: update</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以用<strong>hexo d</strong>来推送到github了(其实本质就是<!--2018-03-31修改--> <del>推送./public/的所有文件</del><strong>复制./public/的文件到./.deploy_git/并推送</strong>到github)</p>
+<h2 id="域名绑定:">域名绑定:</h2><p>暂时是直接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> blog.qwerdf.com &gt;./blog/public/CNAME</span><br></pre></td></tr></table></figure></p>
 <p>然后设置A记录到github</p>
-<h2 id="平时怎么用?">平时怎么用?</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span></span><br><span class="line">vim ./blog/<span class="built_in">source</span>/_posts/标题.md</span><br></pre></td></tr></table></figure></span>
-</code></pre><p>然后<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h2 id="常用hexo命令">常用hexo命令</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br><span class="line">hexo clean&amp;&amp;hexo g&amp;&amp;hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure></span>
-</code></pre><p>使用两次<strong>hexo g</strong>是因为有时生成的主页<a href="https://github.com/iissnan/hexo-theme-next/issues/482" target="_blank" rel="external">有问题</a>,首页仅显示一篇文章。</p>
+<h2 id="平时怎么用?">平时怎么用?</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span></span><br><span class="line">vim ./blog/<span class="built_in">source</span>/_posts/标题.md</span><br></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h2 id="常用hexo命令">常用hexo命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br><span class="line">hexo clean&amp;&amp;hexo g&amp;&amp;hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
+<p>使用两次<strong>hexo g</strong>是因为有时生成的主页<a href="https://github.com/iissnan/hexo-theme-next/issues/482" target="_blank" rel="external">有问题</a>,首页仅显示一篇文章。</p>
 <p>最后表示终于<strong>有时间</strong>来干这事了</p>
 </span>
       
@@ -357,7 +358,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -371,7 +372,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

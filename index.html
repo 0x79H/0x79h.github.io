@@ -220,6 +220,96 @@
             
               
                 
+                <a class="post-title-link" href="/2018/04/06/sql/" itemprop="url">
+                  sql injection
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-04-06T20:19:18+09:00" content="2018-04-06">
+              2018-04-06
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/04/06/sql/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/06/sql/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>SQL注入,问题经常来源于sql语句字符串拼接的时候未作过滤,其中世界上最好的语言之一——PHP——出现的问题最多.</p>
+<p>SQl注入通常用于在线管理自己的数据库👌,臃肿的PhpMyAdmin,需要下载的数据库连接软件.哪里有直接抄起键盘在地址栏直接输入就能管理来的快乐</p>
+<h1 id="我选择IE6">我选择IE6</h1><p>有比在IE里面上网冲浪更快乐的事情么?<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/04/06/sql/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/03/31/unable-login-SSH-with-key/" itemprop="url">
                   记一次诡异的ssh密钥登录失败
                 </a>
@@ -263,20 +353,16 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
+          <p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_19_31_centos ~]<span class="comment"># ls -al                               </span></span><br><span class="line">total <span class="number">80</span>                                                       </span><br><span class="line">drwxrwxrwx.  <span class="number">3</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                  </span><br><span class="line">dr-xr-xr-x. <span class="number">24</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">51</span> ..</span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root   <span class="number">790</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">07</span> .bash_<span class="built_in">history</span>      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root    <span class="number">18</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_<span class="built_in">logout</span>       </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_profile      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> Sep <span class="number">23</span>  <span class="number">2004</span> .bashrc            </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">100</span> Sep <span class="number">23</span>  <span class="number">2004</span> .cshrc             </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root <span class="number">12754</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log        </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root  <span class="number">5520</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log.syslog      </span><br><span class="line">drwxrwxrwx   <span class="number">2</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .ssh               </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">129</span> Dec  <span class="number">4</span>  <span class="number">2004</span> .tcshrc            </span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root  <span class="number">1005</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .viminfo           </span><br><span class="line">[root@VM_19_31_centos ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@VM_19_31_centos .ssh]<span class="comment"># ls -al                            </span></span><br><span class="line">total <span class="number">12</span>                                                       </span><br><span class="line">drwxrwxrwx  <span class="number">2</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                    </span><br><span class="line">drwxrwxrwx. <span class="number">3</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> ..                   </span><br><span class="line">-rwxrwxrwx  <span class="number">1</span> root root <span class="number">1157</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">08</span> authorized_keys</span><br></pre></td></tr></table></figure>
 <p>明显<em>.ssh/</em>与<em>authorized_keys</em>权限设置错误,改之</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>退出登录,然而依然不能用密钥登陆…猜测是<em>sshd</em>配置问题.去sshd_config查看</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#RSAAuthentication yes</span></span><br><span class="line"><span class="comment">#PubkeyAuthentication yes</span></span><br><span class="line"><span class="comment">#AuthorizedKeysFile       .ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
-<p>取消注释,重启sshd服务,退出登录,问题依旧……<br>谷歌之,用<em>ssh -vv server</em>来查看登陆日志,发现报<em>we did not send a packet, disable method</em><br><img src="/uploads/2018-03-31_1.png" alt="we did not send a packet, disable method"><br>谷歌之,发现是<em>~</em>的权限设置<a href="https://unix.stackexchange.com/questions/205842/unable-to-login-with-ssh-rsa-key" target="_blank" rel="external">问题</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">755</span> ~</span><br></pre></td></tr></table></figure>
-<p>退出登录,问题解决😂</p>
-
-            
-          </span>
+<p>退出登录,然而依然不能用密钥登陆…<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/31/unable-login-SSH-with-key/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1014,95 +1100,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/04/vs2017-rc-preview/" itemprop="url">
-                  vs2017 rc 初体验
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2016-12-04T20:07:28+09:00" content="2016-12-04">
-              2016-12-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/12/04/vs2017-rc-preview/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/04/vs2017-rc-preview/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/">下载</a>了，今日下载了下来玩了下。</p>
-<h2 id="默认全部在线安装">默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/04/vs2017-rc-preview/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1149,7 +1146,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1163,7 +1160,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

