@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Steam,game," />
+  <meta name="keywords" content="game,Steam," />
 
 
 
@@ -53,22 +53,18 @@
 
 
 
-<meta name="description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.
-看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.
-使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta name="description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta name="keywords" content="game,Steam">
 <meta property="og:type" content="article">
 <meta property="og:title" content="凭本事买的游戏为什么要玩">
 <meta property="og:url" content="http://blog.qwerdf.com/2017/07/16/play-random-game/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.
-看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.
-使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta property="og:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-03-30T19:00:35.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="凭本事买的游戏为什么要玩">
-<meta name="twitter:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.
-看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.
-使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta name="twitter:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
 
 
 
@@ -251,8 +247,8 @@
       
         <span itemprop="articleBody"><p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
 <p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
-<p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="external">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br><a id="more"></a><br>然而并不行,随机的只是在几个游戏中随机…</p>
-<p>访问<a href="https://store.steampowered.com/dynamicstore/userdata/" target="_blank" rel="external">steam</a>获得账户游戏信息.其中rgOwnedApps即为所拥有游戏.</p>
+<p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="noopener">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br><a id="more"></a><br>然而并不行,随机的只是在几个游戏中随机…</p>
+<p>访问<a href="https://store.steampowered.com/dynamicstore/userdata/" target="_blank" rel="noopener">steam</a>获得账户游戏信息.其中rgOwnedApps即为所拥有游戏.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice <span class="keyword">as</span> roll</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system <span class="keyword">as</span> shell</span><br><span class="line">rgOwnedApps = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,.....,<span class="number">635780</span>]</span><br><span class="line">shell(<span class="string">'"C:/Program Files/Internet Explorer/iexplore.exe" \"steam://run/'</span>+str(roll(rgOwnedApps))+<span class="string">'\"'</span>)</span><br></pre></td></tr></table></figure></span>
       
     </div>
@@ -261,9 +257,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Steam/" rel="tag">#Steam</a>
-          
             <a href="/tags/game/" rel="tag">#game</a>
+          
+            <a href="/tags/Steam/" rel="tag">#Steam</a>
           
         </div>
       
@@ -354,7 +350,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

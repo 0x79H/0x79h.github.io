@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="windows,VisualStudio," />
+  <meta name="keywords" content="security,windows,game," />
 
 
 
@@ -53,24 +53,21 @@
 
 
 
-<meta name="description" content="早几日听说vs2017 Rc已经可以下载了，今日下载了下来玩了下。 默认全部在线安装我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。">
-<meta name="keywords" content="windows,VisualStudio">
+<meta name="description" content="身为一个手残，小时候玩游戏经常不能通关，于是各种修改器即是我的选择。小时候会用一些什么金山游侠之类的本土修改器，但是使用过程中往往有一个问题：游戏重新开始，或者软件关了重开后上次搜索出来的结果就不能再次使用了。当时也是对这类问题一头雾水，只好使用别人做好的修改器。">
+<meta name="keywords" content="security,windows,game">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vs2017 rc 初体验">
-<meta property="og:url" content="http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/index.html">
+<meta property="og:title" content="查找并修改游戏的内存数据">
+<meta property="og:url" content="http://blog.qwerdf.com/2018/04/11/Modify-memory/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="早几日听说vs2017 Rc已经可以下载了，今日下载了下来玩了下。 默认全部在线安装我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。">
+<meta property="og:description" content="身为一个手残，小时候玩游戏经常不能通关，于是各种修改器即是我的选择。小时候会用一些什么金山游侠之类的本土修改器，但是使用过程中往往有一个问题：游戏重新开始，或者软件关了重开后上次搜索出来的结果就不能再次使用了。当时也是对这类问题一头雾水，只好使用别人做好的修改器。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://blog.qwerdf.com/uploads/2016-12-04_1.png">
-<meta property="og:image" content="http://blog.qwerdf.com/uploads/2016-12-04_2.png">
-<meta property="og:image" content="http://blog.qwerdf.com/uploads/2016-12-04_6.png">
-<meta property="og:image" content="http://blog.qwerdf.com/uploads/2016-12-04_4.png">
-<meta property="og:image" content="http://blog.qwerdf.com/uploads/2016-12-04_5.png">
-<meta property="og:updated_time" content="2018-03-30T19:01:13.105Z">
+<meta property="og:image" content="http://blog.qwerdf.com/uploads/2018-04-11_1.png">
+<meta property="og:image" content="http://blog.qwerdf.com/uploads/2018-04-11_2.png">
+<meta property="og:updated_time" content="2018-04-11T05:45:44.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vs2017 rc 初体验">
-<meta name="twitter:description" content="早几日听说vs2017 Rc已经可以下载了，今日下载了下来玩了下。 默认全部在线安装我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。">
-<meta name="twitter:image" content="http://blog.qwerdf.com/uploads/2016-12-04_1.png">
+<meta name="twitter:title" content="查找并修改游戏的内存数据">
+<meta name="twitter:description" content="身为一个手残，小时候玩游戏经常不能通关，于是各种修改器即是我的选择。小时候会用一些什么金山游侠之类的本土修改器，但是使用过程中往往有一个问题：游戏重新开始，或者软件关了重开后上次搜索出来的结果就不能再次使用了。当时也是对这类问题一头雾水，只好使用别人做好的修改器。">
+<meta name="twitter:image" content="http://blog.qwerdf.com/uploads/2018-04-11_1.png">
 
 
 
@@ -82,7 +79,7 @@
   };
 </script>
 
-  <title> vs2017 rc 初体验 | zzzZZZ </title>
+  <title> 查找并修改游戏的内存数据 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -211,7 +208,7 @@
             
             
               
-                vs2017 rc 初体验
+                查找并修改游戏的内存数据
               
             
           </h1>
@@ -220,8 +217,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2016-12-04T20:07:28+09:00" content="2016-12-04">
-              2016-12-04
+            <time itemprop="dateCreated" datetime="2018-04-11T05:02:16+09:00" content="2018-04-11">
+              2018-04-11
             </time>
           </span>
 
@@ -231,8 +228,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/12/04/vs2017-rc-preview/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/04/vs2017-rc-preview/" itemprop="commentsCount"></span>
+              <a href="/2018/04/11/Modify-memory/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/Modify-memory/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -251,12 +248,32 @@
       
 
       
-        <span itemprop="articleBody"><p>早几日听说vs2017 Rc已经可以<a href="https://www.visualstudio.com/vs/visual-studio-2017-rc/" target="_blank" rel="noopener">下载</a>了，今日下载了下来玩了下。</p>
-<h2 id="默认全部在线安装"><a href="#默认全部在线安装" class="headerlink" title="默认全部在线安装"></a>默认全部在线安装</h2><p><img src="/uploads/2016-12-04_1.png" alt="一个在线安装的安装程序" title="全新的在线安装的安装程序"><br>我已经开始了下载，并准备做好去蹲坑的准备,结果我刚拿上了纸就听到了下载完成的提示声音。<br><img src="/uploads/2016-12-04_2.png" alt="837 kb" title="大小仅仅有837 kb"><br><a id="more"></a></p>
-<h2 id="新的安装界面和选择组件方式"><a href="#新的安装界面和选择组件方式" class="headerlink" title="新的安装界面和选择组件方式"></a>新的安装界面和选择组件方式</h2><p>感觉vs2017外在改变最大的就是这个安装界面了，曾经有这么一个说法：vs是非常庞大(亦或者是臃肿?)的，不仅仅是他的功能强大，还有他强大的占用空间。有时候我们仅仅需要使用其来进行一个方向的开发，但是vs其默认安装总是安装一些我们一般并不需要的功能。这一点在2017中有了极大改善。新版安装界面比之前我用过的几个版本相比简直就是两个软件，改变了在我眼中vs一贯臃肿的看法。<br><img src="/uploads/2016-12-04_6.png" alt="默认的分组" title="默认的分组"><br><img src="/uploads/2016-12-04_4.png" alt="安装时下载的界面与速度" title="安装中..."><br>速度还是能看的，至少比android studio好多了，我安装的时候能把带宽跑满。</p>
-<h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p>官方提供了下载离线安装包的<a href="https://www.visualstudio.com/zh-CN/news/releasenotes/vs2017-relnotes#a-idwillow-anew-installation-experience" target="_blank" rel="noopener">方法</a><br>  <figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">vs_enterprise</span><span class="string">.</span><span class="comment">exe</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">layout</span> <span class="comment">c:\download_path\</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">lang</span> <span class="comment">zh</span><span class="literal">-</span><span class="comment">CN</span></span><br></pre></td></tr></table></figure></p>
-<p>其中若不填写路径，则下载到当前路径。</p>
-<h2 id="还保留有windows-XP-support-for-c艹"><a href="#还保留有windows-XP-support-for-c艹" class="headerlink" title="还保留有windows XP support for c艹"></a>还保留有windows XP support for c艹</h2><p><img src="/uploads/2016-12-04_5.png" alt="windows XP support for c++"><br>虽然对于xp，微软已经停止了发布补丁，但是我们仍然可以在最新版的vs2017中看到微软为了兼容旧版本所保修的组件。</p>
+        <span itemprop="articleBody"><p>身为一个手残，小时候玩游戏经常不能通关，于是各种修改器即是我的选择。小时候会用一些什么金山游侠之类的本土修改器，但是使用过程中往往有一个问题：游戏重新开始，或者软件关了重开后上次搜索出来的结果就不能再次使用了。当时也是对这类问题一头雾水，只好使用别人做好的修改器。</p>
+<p></p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="52" src="//music.163.com/outchain/player?type=2&id=28138236&auto=0&height=32"></iframe><p></p>
+<a id="more"></a>
+<h1 id="使用Cheat-Engine查找并修改数据"><a href="#使用Cheat-Engine查找并修改数据" class="headerlink" title="使用Cheat Engine查找并修改数据"></a>使用Cheat Engine查找并修改数据</h1><p>是个人都会的搜索–&gt;改变数值–&gt;继续搜索–&gt;改变数值–&gt;再搜索–&gt;找到地址。</p>
+<p>关键的步骤来了：找到正确地址后，通过下内存读取/内存写入断点找到修改此资源的汇编语句，通过该汇编语句寻找该地址的基地址与偏移量，并在此地址附近寻找有关资源数据。</p>
+<h2 id="寻找资源地址的基地址与偏移量"><a href="#寻找资源地址的基地址与偏移量" class="headerlink" title="寻找资源地址的基地址与偏移量"></a>寻找资源地址的基地址与偏移量</h2><p>比如说，通过搜索寻找到了目标地址为 <em>0x6937d54</em> ，通过下断点的方式找到了写入的汇编语句为 <strong>movss [eax+0x04],xmm2</strong> ，其中 <em>eax=0x6937d54</em>。 那么这个eax的值即可能是基址，0x04即是偏移量。而这个eax是每个游戏进程，甚至每一局游戏都是不一样的，那么需要找到指向eax的指针，来确定新游戏中eax的值是多少，而不用每一局新游戏都进行一轮搜索了。</p>
+<p><img src="/uploads/2018-04-11_1.png" alt="经过多次重复上述步骤后的结果"></p>
+<p>一般游戏的一类资源都是存在同一个结构体中，所以我们可以观察不同偏移量的内存数值是否即是我们需要寻找的其他数值，从而进行下一步操作。</p>
+<h2 id="在此地址附近寻找有关资源数据"><a href="#在此地址附近寻找有关资源数据" class="headerlink" title="在此地址附近寻找有关资源数据"></a>在此地址附近寻找有关资源数据</h2><p><img src="/uploads/2018-04-11_2.png" alt="所要寻找的其他资源"></p>
+<p>如图所示，我们即可很方便的寻找到此游戏的资源所在内存，并进行修改。</p>
+<h1 id="修改游戏流程实现自定义功能"><a href="#修改游戏流程实现自定义功能" class="headerlink" title="修改游戏流程实现自定义功能"></a>修改游戏流程实现自定义功能</h1><p>搞定在CE内修改后，我们需要实现一些更智能的功能。我们可以控制流程来使得原本减少的变成不变不减少的，甚至可以增加。如上图在内存中patch了 <em>可用人口</em> 的代码，使得可用人口不变。</p>
+<h2 id="直接patch文件"><a href="#直接patch文件" class="headerlink" title="直接patch文件"></a>直接patch文件</h2><p>直接修改文件，实现硬补丁。一般常见于游戏的”未加密版”与软件的”无限制版”上。</p>
+<h2 id="使用调试函数来进行内存的修改"><a href="#使用调试函数来进行内存的修改" class="headerlink" title="使用调试函数来进行内存的修改"></a>使用调试函数来进行内存的修改</h2><p>即是使用如下三个函数</p>
+<ul>
+<li>OpenProcess</li>
+<li>ReadProcessMemory</li>
+<li>WriteProcessMemory</li>
+</ul>
+<p>获取该程序运行后的基地址可以使用<a href="https://stackoverflow.com/questions/14467229/get-base-address-of-process" target="_blank" rel="noopener">这个办法</a></p>
+<h2 id="通过注入DLL到进程来进行相关操作"><a href="#通过注入DLL到进程来进行相关操作" class="headerlink" title="通过注入DLL到进程来进行相关操作"></a>通过注入DLL到进程来进行相关操作</h2><p>注入了DLL后既可以修改内存，还可以调用游戏内现有的功能CALL。简直就是为所欲为。</p>
+<p>我使用过的注入方法只有<code>CreateRemoteThread --&gt; LoadLibrary</code>和<code>SetWindowsHookEx</code></p>
+<p>更多的注入方法有：NtCreateThreadEx/QueueUserAPC/RtlCreateUserThread/SetThreadContext/反射式DLL</p>
+<p><code>CreateRemoteThread --&gt; LoadLibrary</code>就是字面意思，给指定进程创建一个新的线程，新的线程里进行载入DLL的操作</p>
+<p><code>SetWindowsHookEx</code>也是字面意思，在系统层面hook住相关函数，从而操作指定进程的流程。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><p style="font-size:16px">参考资料</p></h1><p><a href="https://github.com/fdiskyou/injectAllTheThings" target="_blank" rel="noopener">injectAllTheThings</a></p>
+<p><a href="http://forum.cheatengine.org/" target="_blank" rel="noopener">CE Forum</a></p>
 </span>
       
     </div>
@@ -265,9 +282,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/security/" rel="tag">#security</a>
+          
             <a href="/tags/windows/" rel="tag">#windows</a>
           
-            <a href="/tags/VisualStudio/" rel="tag">#VisualStudio</a>
+            <a href="/tags/game/" rel="tag">#game</a>
           
         </div>
       
@@ -276,16 +295,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/04/WAN-miniport/" rel="next" title="修复由于WAN_Miniport导致的网络问题">
-                <i class="fa fa-chevron-left"></i> 修复由于WAN_Miniport导致的网络问题
+              <a href="/2018/04/06/sql/" rel="next" title="sql injection">
+                <i class="fa fa-chevron-left"></i> sql injection
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/03/30/cFosSpeed_Menu/" rel="prev" title="如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整">
-                如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/11/csgo-command/" rel="prev" title="csgo 修改血量控制台命令">
+                csgo 修改血量控制台命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -432,7 +451,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认全部在线安装"><span class="nav-number">1.</span> <span class="nav-text">默认全部在线安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的安装界面和选择组件方式"><span class="nav-number">2.</span> <span class="nav-text">新的安装界面和选择组件方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离线安装"><span class="nav-number">3.</span> <span class="nav-text">离线安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#还保留有windows-XP-support-for-c艹"><span class="nav-number">4.</span> <span class="nav-text">还保留有windows XP support for c艹</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Cheat-Engine查找并修改数据"><span class="nav-number">1.</span> <span class="nav-text">使用Cheat Engine查找并修改数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#寻找资源地址的基地址与偏移量"><span class="nav-number">1.1.</span> <span class="nav-text">寻找资源地址的基地址与偏移量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在此地址附近寻找有关资源数据"><span class="nav-number">1.2.</span> <span class="nav-text">在此地址附近寻找有关资源数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改游戏流程实现自定义功能"><span class="nav-number">2.</span> <span class="nav-text">修改游戏流程实现自定义功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直接patch文件"><span class="nav-number">2.1.</span> <span class="nav-text">直接patch文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用调试函数来进行内存的修改"><span class="nav-number">2.2.</span> <span class="nav-text">使用调试函数来进行内存的修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过注入DLL到进程来进行相关操作"><span class="nav-number">2.3.</span> <span class="nav-text">通过注入DLL到进程来进行相关操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -497,9 +516,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2016/12/04/vs2017-rc-preview/';
-      var disqus_title = 'vs2017 rc 初体验';
-      var disqus_url = 'http://blog.qwerdf.com/2016/12/04/vs2017-rc-preview/';
+      var disqus_identifier = '2018/04/11/Modify-memory/';
+      var disqus_title = '查找并修改游戏的内存数据';
+      var disqus_url = 'http://blog.qwerdf.com/2018/04/11/Modify-memory/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

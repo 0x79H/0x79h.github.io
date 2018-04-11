@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fix,windows," />
+  <meta name="keywords" content="windows,fix," />
 
 
 
@@ -53,22 +53,18 @@
 
 
 
-<meta name="description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="keywords" content="windows,fix">
 <meta property="og:type" content="article">
 <meta property="og:title" content="修复Airplane Mode Hid设备异常">
 <meta property="og:url" content="http://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta property="og:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-03-30T19:07:29.682Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修复Airplane Mode Hid设备异常">
-<meta name="twitter:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000
-在这里找到解决问题的方案。
-导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="twitter:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
 
 
 
@@ -250,8 +246,8 @@
 
       
         <span itemprop="articleBody"><p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
-<p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="external">这里</a>找到解决问题的方案。</p>
-<p>导入注册表<br>    <figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span><br><span class="line">;fix error code 10 (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line"><span class="special">[</span>HKEY_LOCAL_MACHINE<span class="command">\SYSTEM</span><span class="command">\CurrentControlSet</span><span class="command">\Services</span><span class="command">\AirplaneModeHid</span><span class="command">\Parameters</span><span class="special">]</span></span><br><span class="line">"ECRAMBASE"=dword:ff700100</span><br></pre></td></tr></table></figure></p>
+<p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="noopener">这里</a>找到解决问题的方案。</p>
+<p>导入注册表<br>    <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line">;fix <span class="built_in">error</span> code <span class="number">10</span> (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AirplaneModeHid\Parameters]</span><br><span class="line"><span class="string">"ECRAMBASE"</span>=<span class="name">dword</span>:ff700100</span><br></pre></td></tr></table></figure></p>
 <p>仔细看了看应该是这个驱动的安装程序的锅…</p>
 <p>此文章基于以下驱动版本完成:1.4.0.3</p>
 <p>最新更新的1.4.0.4(签名日期2017-01-19)并未解决这个bug</p>
@@ -264,9 +260,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/fix/" rel="tag">#fix</a>
-          
             <a href="/tags/windows/" rel="tag">#windows</a>
+          
+            <a href="/tags/fix/" rel="tag">#fix</a>
           
         </div>
       
@@ -357,7 +353,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

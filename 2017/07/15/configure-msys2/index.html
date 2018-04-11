@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="linux,shell,windows," />
+  <meta name="keywords" content="windows,linux,shell," />
 
 
 
@@ -53,19 +53,18 @@
 
 
 
-<meta name="description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta name="description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta name="keywords" content="windows,linux,shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows下好用的shell--msys2">
 <meta property="og:url" content="http://blog.qwerdf.com/2017/07/15/configure-msys2/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta property="og:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-03-30T18:59:10.389Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下好用的shell--msys2">
-<meta name="twitter:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.
-安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
+<meta name="twitter:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
 
 
 
@@ -247,19 +246,19 @@
 
       
         <span itemprop="articleBody"><p>对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2.</p>
-<h2 id="安装">安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="external">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="external">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
-<h2 id="配置镜像以加速下载安装">配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
-<p>于 /etc/pacman.d/mirrorlist.mingw64 文件开头添加：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = <span class="string">http:</span><span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/x86_64</span></span><br></pre></td></tr></table></figure></p>
-<p>于/etc/pacman.d/mirrorlist.msys 文件开头添加：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Server = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="更新组件">更新组件</h2><p>msys2使用pacman来管理包,即<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -Syu</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>国内镜像<br><a href="http://mirrors.ustc.edu.cn/msys2/distrib/" target="_blank" rel="noopener">http://mirrors.ustc.edu.cn/msys2/distrib/</a><br>官方源<br><a href="http://repo.msys2.org/distrib/" target="_blank" rel="noopener">http://repo.msys2.org/distrib/</a><br><a id="more"></a></p>
+<h2 id="配置镜像以加速下载安装"><a href="#配置镜像以加速下载安装" class="headerlink" title="配置镜像以加速下载安装"></a>配置镜像以加速下载安装</h2><p>于 /etc/pacman.d/mirrorlist.mingw32 文件开头添加：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Server</span> = http:<span class="comment">//mirrors.ustc.edu.cn/msys2/mingw/i686</span></span><br></pre></td></tr></table></figure></p>
+<p>于 /etc/pacman.d/mirrorlist.mingw64 文件开头添加：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Server</span> = http://mirrors.ustc.edu.cn/msys2/mingw/x<span class="number">86_64</span></span><br></pre></td></tr></table></figure></p>
+<p>于/etc/pacman.d/mirrorlist.msys 文件开头添加：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Server</span> = http://mirrors.ustc.edu.cn/msys2/msys/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="更新组件"><a href="#更新组件" class="headerlink" title="更新组件"></a>更新组件</h2><p>msys2使用pacman来管理包,即<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pacman -Syu</span></span><br></pre></td></tr></table></figure></p>
 <p>第一次更新需要杀掉终端,重启后再更新一次</p>
 <p>更新完成后使用pacman -Scc清理空间</p>
-<h2 id="替换默认bash为zsh">替换默认bash为zsh</h2><p>安装zsh<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">pacman</span> -S zsh</span><br></pre></td></tr></table></figure></p>
-<p>配置<a href="http://ohmyz.sh" target="_blank" rel="external">Oh My Zsh</a></p>
+<h2 id="替换默认bash为zsh"><a href="#替换默认bash为zsh" class="headerlink" title="替换默认bash为zsh"></a>替换默认bash为zsh</h2><p>安装zsh<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pacman -S zsh</span></span><br></pre></td></tr></table></figure></p>
+<p>配置<a href="http://ohmyz.sh" target="_blank" rel="noopener">Oh My Zsh</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
-<p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="constant">SHELL</span>=<span class="regexp">/usr/bin</span><span class="regexp">/zsh</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="其他杂项">其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
-<h2 id="参考链接">参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="external">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
+<p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHELL</span><span class="bash">=/usr/bin/zsh</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="其他杂项"><a href="#其他杂项" class="headerlink" title="其他杂项"></a>其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="noopener">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
 </span>
       
     </div>
@@ -268,11 +267,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/windows/" rel="tag">#windows</a>
+          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
             <a href="/tags/shell/" rel="tag">#shell</a>
-          
-            <a href="/tags/windows/" rel="tag">#windows</a>
           
         </div>
       
@@ -363,7 +362,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
