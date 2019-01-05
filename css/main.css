@@ -962,7 +962,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #1d63ff;
+  background: #3dc75e;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1985,4 +1985,7 @@ body {
   .use-motion .site-search form {
     top: 0 !important;
   }
+}
+.post-body p {
+  text-indent: 2em;
 }

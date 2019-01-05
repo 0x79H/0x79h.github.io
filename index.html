@@ -32,7 +32,7 @@
 
 <link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="qwerdf, blog" />
@@ -46,7 +46,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2.0" />
 
 
 
@@ -221,7 +221,275 @@
             
               
                 
-                <a class="post-title-link" href="/2018/04/11/csgo-command/" itemprop="url">
+                <a class="post-title-link" href="/2019/01/04/zabbix/" itemprop="url">
+                  zabbix的安装与使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-01-04T23:02:16+08:00" content="2019-01-04">
+              2019-01-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/01/04/zabbix/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/04/zabbix/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>面试了一家公司,问我有没有用过zabbix.然而我并没有用过,讲道理之前最多打打补丁,系统搞搞加固,因为没出过什么大事也就一直这么搞了,并没有说时时刻刻监控着服务器.所以索性自己搭建一个看看怎么用.</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>系统是debian(其实是kali),直接apt-get安装莫名其妙没有找到数据库的sql文件(后来发现在包里有),索性直接源码编译安装了<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/01/04/zabbix/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/12/31/overflow/" itemprop="url">
+                  PWN学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-12-31T22:53:11+08:00" content="2018-12-31">
+              2018-12-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/12/31/overflow/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/overflow/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>简单来说，pwn既是使用某种方法，修改内存中的数据，劫持程序的执行流程(即改变eip)，使程序执行我们的shellcode。shellcode可以简单理解为一串汇编代码对应的机器码，因为它通常就是用机器代码编写的。</p>
+<p>对于<em>call _fun</em>与<em>jmp _fun</em>他们都会使<em>eip</em>变为对于_fun的地址；而对于<em>ret</em>它实际上就是<em>pop eip</em>，如果此时栈顶的数据为我们的shellcode的地址，就可以实现pwn。</p>
+<p>而如何修改内存中的数据呢？大概主要就是字符读取的函数函数<em>gets()</em>和<em>scanf()</em>与其类似的函数、字符串处理函数<em>strcpy()</em>和<em>strcat()</em>等函数，所造成的缓冲区溢出，从而覆盖返回地址/对内存地址进行赋值操作了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/12/31/overflow/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/11/23/tcp-udp-connect-info/" itemprop="url">
+                  获取pid对应Tcp与Udp连接的信息
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-11-23T18:23:51+08:00" content="2018-11-23">
+              2018-11-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/11/23/tcp-udp-connect-info/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/23/tcp-udp-connect-info/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>最近疯狂的在肝<a href="https://store.steampowered.com/app/230410/" target="_blank" rel="noopener">Warframe</a>，疯狂的挂生存模式，但是在开多人后总有人瞎玩搞乱，为了把他们踢出房间，我需要获取他们的ip。</p>
+<h1 id="简单？"><a href="#简单？" class="headerlink" title="简单？"></a>简单？</h1><p>一开始用过<code>ipip.net</code>出的一个工具，能够获取到tcp与udp连接的源地址、目的地址与PID。但是有个问题，就是他那个工具用着用着就莫名其妙卡死了，所以遂决定自己造个一样的轮子。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/11/23/tcp-udp-connect-info/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/04/11/csgo-blood/" itemprop="url">
                   csgo 修改血量控制台命令
                 </a>
               
@@ -232,7 +500,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-04-11T14:47:35+09:00" content="2018-04-11">
+            <time itemprop="dateCreated" datetime="2018-04-11T14:47:35+08:00" content="2018-04-11">
               2018-04-11
             </time>
           </span>
@@ -243,8 +511,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2018/04/11/csgo-command/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/csgo-command/" itemprop="commentsCount"></span>
+              <a href="/2018/04/11/csgo-blood/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/04/11/csgo-blood/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -267,7 +535,7 @@
           <span itemprop="articleBody">
             
               <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">ent_fire</span> !<span class="keyword">self </span><span class="keyword">addoutput </span><span class="string">"health 666"</span></span><br><span class="line"><span class="symbol">ent_fire</span> !<span class="keyword">self </span>SetHealth <span class="number">1337</span></span><br><span class="line"><span class="symbol">hurtme</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p><img src="../uploads/2018-04-11_3.png" alt=""></p>
+<p><img src="/uploads/2018-04-11_3.png" alt=""></p>
 <p><a href="https://github.com/iisp33dii/CSGO-Netvar-Class-Dump/blob/master/DT_BasePlayer.txt" target="_blank" rel="noopener">参考连接</a></p>
 
             
@@ -322,7 +590,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-04-11T05:02:16+09:00" content="2018-04-11">
+            <time itemprop="dateCreated" datetime="2018-04-11T05:02:16+08:00" content="2018-04-11">
               2018-04-11
             </time>
           </span>
@@ -411,7 +679,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-04-06T20:19:18+09:00" content="2018-04-06">
+            <time itemprop="dateCreated" datetime="2018-04-06T20:19:18+08:00" content="2018-04-06">
               2018-04-06
             </time>
           </span>
@@ -501,7 +769,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-03-31T01:21:55+09:00" content="2018-03-31">
+            <time itemprop="dateCreated" datetime="2018-03-31T01:21:55+08:00" content="2018-03-31">
               2018-03-31
             </time>
           </span>
@@ -593,7 +861,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-03-16T15:13:38+09:00" content="2018-03-16">
+            <time itemprop="dateCreated" datetime="2018-03-16T15:13:38+08:00" content="2018-03-16">
               2018-03-16
             </time>
           </span>
@@ -687,7 +955,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-01-16T14:04:46+09:00" content="2018-01-16">
+            <time itemprop="dateCreated" datetime="2018-01-16T14:04:46+08:00" content="2018-01-16">
               2018-01-16
             </time>
           </span>
@@ -721,8 +989,8 @@
         
           <span itemprop="articleBody">
             
-              <p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">top</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;<span class="attribute">display</span>:none&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">bottom</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
+              <p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined">.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;top:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;display:none&#125;.swt_hidden&#123;display:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
+<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined">.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;bottom:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;&#125;.swt_hidden&#123;display:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
 <p>即可</p>
 
             
@@ -777,7 +1045,7 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-07-20T23:31:46+09:00" content="2017-07-20">
+            <time itemprop="dateCreated" datetime="2017-07-20T23:31:46+08:00" content="2017-07-20">
               2017-07-20
             </time>
           </span>
@@ -813,274 +1081,6 @@
 <p>爬虫什么的用py做的比较多一点,然而在路由器上那点可怜的空间并不足以装上py.遂查了资料上了shell的爬虫.<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/07/20/simple-spider-with-bash/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/19/Socxel-Pixel-Soccer/" itemprop="url">
-                  Socxel | Pixel Soccer
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2017-07-19T15:41:11+09:00" content="2017-07-19">
-              2017-07-19
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/07/19/Socxel-Pixel-Soccer/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/19/Socxel-Pixel-Soccer/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>今天随机到的游戏是Socxel | Pixel Soccer</p>
-<p><iframe src="https://store.steampowered.com/widget/586190/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>开发商是 BUG-Studio 😄 这名字好啊.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/07/19/Socxel-Pixel-Soccer/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/17/The-Next-Door/" itemprop="url">
-                  The Next Door
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2017-07-17T01:35:48+09:00" content="2017-07-17">
-              2017-07-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/07/17/The-Next-Door/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/17/The-Next-Door/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>今天随机到的游戏是”The Next Door”.</p>
-<p><iframe src="https://store.steampowered.com/widget/447850/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>不不不,不是你想的那个意♂思,和”Boy♂Next♂Door”的那个一点关系都没有.此游戏是一个融合了宗教元素的正常向解密游戏,只是我第一次玩的时候直白的xx画面吓得我赶紧把游戏关掉了而已.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/07/17/The-Next-Door/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/16/play-random-game/" itemprop="url">
-                  凭本事买的游戏为什么要玩
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2017-07-16T09:22:07+09:00" content="2017-07-16">
-              2017-07-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2017/07/16/play-random-game/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/16/play-random-game/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
-<p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
-<p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="noopener">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/07/16/play-random-game/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1148,7 +1148,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1162,7 +1162,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -1204,7 +1204,7 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://groverchou.com/blog" target="_blank">Grochou</a>
+                <a href="http://blog.groverchou.com/" target="_blank">GroverChou</a>
               </span>
             
           
@@ -1226,7 +1226,7 @@
         <div class="copyright" >
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="icon-next-heart fa fa-heart"></i>
   </span>
@@ -1292,14 +1292,14 @@ Mod by xz
 
   
   <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2.0"></script>
 
 
-  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2.0"></script>
   <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
 <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2.0" id="motion.global"></script>
 
 
   <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
