@@ -962,7 +962,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff7c88;
+  background: #d44e5c;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1986,6 +1986,6 @@ body {
     top: 0 !important;
   }
 }
-.post-body p {
-  text-indent: 2em;
+#placement-bottom {
+  display: none;
 }
