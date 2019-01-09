@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2018/11/23/tcp-udp-connect-info/</loc>
+    
+    <lastmod>2019-01-09T09:37:35.232Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2019/01/08/GetFunctionAddr/</loc>
+    
+    <lastmod>2019-01-09T09:36:50.545Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2019/01/04/zabbix/</loc>
     
-    <lastmod>2019-01-05T21:34:25.624Z</lastmod>
+    <lastmod>2019-01-05T22:17:12.126Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>http://blog.qwerdf.com/2018/12/31/overflow/</loc>
     
     <lastmod>2018-12-31T15:12:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2018/11/23/tcp-udp-connect-info/</loc>
-    
-    <lastmod>2018-11-23T11:25:21.000Z</lastmod>
     
   </url>
   
