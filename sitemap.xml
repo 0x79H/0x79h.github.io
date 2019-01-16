@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.qwerdf.com/2018/11/23/tcp-udp-connect-info/</loc>
+    <loc>http://blog.qwerdf.com/2019/01/16/StructuredExceptionHanding/</loc>
     
-    <lastmod>2019-01-09T09:37:35.232Z</lastmod>
+    <lastmod>2019-01-16T11:35:50.194Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.qwerdf.com/2019/01/08/GetFunctionAddr/</loc>
     
-    <lastmod>2019-01-09T09:36:50.545Z</lastmod>
+    <lastmod>2019-01-16T11:35:25.672Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.qwerdf.com/2019/01/04/zabbix/</loc>
     
-    <lastmod>2019-01-05T22:17:12.126Z</lastmod>
+    <lastmod>2019-01-16T11:34:42.973Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2018/11/23/tcp-udp-connect-info/</loc>
+    
+    <lastmod>2019-01-09T09:37:35.232Z</lastmod>
     
   </url>
   

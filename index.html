@@ -221,6 +221,95 @@
             
               
                 
+                <a class="post-title-link" href="/2019/01/16/StructuredExceptionHanding/" itemprop="url">
+                  SEH学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-01-16T19:03:10+08:00" content="2019-01-16">
+              2019-01-16
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/01/16/StructuredExceptionHanding/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/16/StructuredExceptionHanding/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Structured Exception Handling,即SEH,是windows的异常处理机制.官方已不建议使用SEH,而是用ISO标准的c++异常处理.但是因为要向前兼容,所以在windows下SEH还是可以使用的,除了系统的代码大量使用以外,自己在一些特殊情况下,也是非常好用的.</p>
+<p>也是一些基础啦.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/01/16/StructuredExceptionHanding/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/01/08/GetFunctionAddr/" itemprop="url">
                   获取DLL的函数地址
                 </a>
@@ -1013,96 +1102,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/" itemprop="url">
-                  Steam Web Tools 与 Steam Economy Enhancer 共存
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2018-01-16T14:04:46+08:00" content="2018-01-16">
-              2018-01-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/16/SteamWebToolsAndSteamEconomyEnhancerFix/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">top</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;<span class="attribute">display</span>:none&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">bottom</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
-<p>即可</p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1149,7 +1148,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
