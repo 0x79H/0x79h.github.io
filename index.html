@@ -222,7 +222,7 @@
               
                 
                 <a class="post-title-link" href="/2019/01/16/StructuredExceptionHanding/" itemprop="url">
-                  SEH学习
+                  SEH
                 </a>
               
             
@@ -354,7 +354,7 @@
       
         
           <p>一些基础啦</p>
-<h1 id="常规方法"><a href="#常规方法" class="headerlink" title="常规方法"></a>常规方法</h1><p>使用<em>LoadLibrary</em>与<em>GetProcAddress</em></p>
+<h1 id="C语言的常规方法"><a href="#C语言的常规方法" class="headerlink" title="C语言的常规方法"></a>C语言的常规方法</h1><p>使用<em>LoadLibrary</em>与<em>GetProcAddress</em>这两个API</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PDWORD _addr = (<span class="name">PDWORD</span>)GetProcAddress(<span class="name">LoadLibrary</span>(<span class="name">&lt;DllName&gt;</span>), &lt;FunctionName&gt;)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2019/01/08/GetFunctionAddr/#more" rel="contents">
