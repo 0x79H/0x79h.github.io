@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2019-02-22T08:26:58.786Z</updated>
+  <updated>2019-02-22T08:34:21.867Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://blog.qwerdf.com/2019/02/22/android-xposed-frida/"/>
     <id>http://blog.qwerdf.com/2019/02/22/android-xposed-frida/</id>
     <published>2019-02-22T06:32:48.000Z</published>
-    <updated>2019-02-22T08:26:58.786Z</updated>
+    <updated>2019-02-22T08:34:21.867Z</updated>
     
-    <content type="html"><![CDATA[<p>年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm, etc…</p><h1 id="基础的前置工具"><a href="#基础的前置工具" class="headerlink" title="基础的前置工具"></a>基础的前置工具</h1><p>到现在依旧好用的apktools, signapk.jar, dex2jar, jd-gui, jeb, ida;以及最近发现的jadx, Luytan</p><h2 id="apktools"><a href="#apktools" class="headerlink" title="apktools"></a>apktools</h2><p>哪一部分出错了就删哪一部分, 再出错了再尝试修复.有时候甚至你用–no-res会出现问题,不使用却没问题.</p><h2 id="ida"><a href="#ida" class="headerlink" title="ida"></a>ida</h2><p><em>Shift + F11</em>直接导入头文件即可,<em>JNIEnv</em>和<em>JavaVM</em>给你自动识别还有啥不满足的,还要啥自行车.<br><em>Alt + G</em>修改ARM工作模式,这还是之前做pwnable.kr的题知道的.</p><h1 id="基础工具"><a href="#基础工具" class="headerlink" title="基础工具"></a>基础工具</h1><h2 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h2><p>简单来说,Xposed仅仅用findAndHookMethod就可以搞定99%的应用场景.<br>Xposed最近读了一遍它的源码,过了一遍Xposed的流程.<br><a id="more"></a><br>Xposed的实现原理,既是在Android系统的Zygote进程启动之前,使用了de.robv.android.Xposed.XposedInit.hookResources()来注入自身框架.因此,由Zygote启动的所有app进程都会包含Xposed框架的相关文件.<br>Xposed在启动时调用了de.robv.android.Xposed.XposedInit.loadModules(),由此来加载所有启用的Xposed模块.此过程在有且仅有一次调用.<br>之后Xposed框架会在应用启动后,以启动app的相关信息作为参数,回调Xposed模块中Xposed_int文件定义的类的handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam)方法.Xposed模块根据传入的参数,来进行相关操作.</p><h3 id="Xposed免重启更改Xposed模块"><a href="#Xposed免重启更改Xposed模块" class="headerlink" title="Xposed免重启更改Xposed模块"></a>Xposed免重启更改Xposed模块</h3><p>因为Xposed只是在loadModules()的时候加载Xposed模块到内存中,此过程只进行一次.Xposed模块的怎么更新也不会影响到内存中的数据,除非通过反射,或修改bridage源码的方式再调用loadModules()重新载入Xposed模块.<br>因为Xposed模块的方法不可变,我们只需要在Xposed模块中手动<em>动态调用</em>其他可更新的方法即可.其中Class由PathClassLoader来通过File获取.</p><h3 id="Xposed-MutiDex-hook"><a href="#Xposed-MutiDex-hook" class="headerlink" title="Xposed MutiDex hook"></a>Xposed MutiDex hook</h3><p>在app有多dex的情况下,Xposed去hook某函数可能会出现ClassNotFound的异常.这是因为Xposed默认的classLoader只会获取到app主要dex下的方法.<br>我们只需要手动替换classLoader为Content.classLoader即可.而Content据开发者在<a href="https://github.com/rovo89/xposedbridge/issues/30#issuecomment-68488797" target="_blank" rel="noopener">某issue</a>中提示,对android.app.Application.Attach(Context)进行hook即可取到Content.<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(<span class="keyword">final</span> XC_LoadPackage.LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">  XposedHelpers.findAndHookMethod(Application.class,<span class="string">"attach"</span>, Context.class, <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">      <span class="keyword">if</span> (loadPackageParam.packageName.equal(<span class="string">'com.example.test'</span>))&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">          Context context=(Context) param.args[<span class="number">0</span>];</span><br><span class="line">          lpparam.classLoader = context.getClassLoader();</span><br><span class="line">          XposedHelpers.findAndHookMethod(<span class="string">"con.example.test.test_class"</span>,lpparam.classLoader,<span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">              <span class="comment">//TODO :D</span></span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p>跨平台的,爽的1b的.<br>javascript直接一把梭就是了,破js是弱类型的,绝对不会报错.<br>对于Android的java层,对于知道类型的直接Java.use和Java.cast就可以直接用Class的参数和成员变量.从一般函数到构造函数(因为<em>.$new() = .alloc() + .init()</em>)无所不能. <em>Java.choose</em>甚至可以让你实时监测<em>onMatch</em>和<em>onComplete</em>.<br>对于Android的so,你需要的一切都在<em>Module.findExportByName(“&lt;so_name&gt;.so”,”&lt;func_name&gt;”)</em>中.<em>Interceptor.attach()</em>的<em>onEnter</em>和<em>onLeave</em> 既是 <em>Java.choose</em> 的翻版.</p><p>简单改了下<a href="https://github.com/nccgroup/house/wiki/Overview" target="_blank" rel="noopener">house</a>, 在获取到的参数类型为Object的情况下, 通过getClass()和getDeclaredFields()来解析Object内容,并显示到log中.<br>让house的历史脚本兼容了下windows:将houseSock.py中的四个path的末尾加个<em>\</em>即可.</p><h1 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM"></a>LLVM</h1><p>虚拟机, 简单来说就是跨平台的VMProtect<br>虽然说知道原理,但是连windows下的VMP都不能手脱.真是菜的抠脚<br>LLVM和vmp一样,被我加入到了清单列表中.</p><h1 id="调试与反调试"><a href="#调试与反调试" class="headerlink" title="调试与反调试"></a>调试与反调试</h1><p>理论上可以通过修改android源码来bypass掉,但是又没钱买谷歌亲儿子,又不会做适配.<br>mprop真是神器,直接改ro判断,思路真是猥琐至极,是大佬.<br>反反调试只知道一些简单的常规的,姿势还是不够多.</p>]]></content>
+    <content type="html"><![CDATA[<p>年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm, etc…</p><h1 id="基础的前置工具"><a href="#基础的前置工具" class="headerlink" title="基础的前置工具"></a>基础的前置工具</h1><p>到现在依旧好用的apktools, signapk.jar, dex2jar, jd-gui, jeb, ida;以及最近发现的jadx, Luytan</p><h2 id="apktools"><a href="#apktools" class="headerlink" title="apktools"></a>apktools</h2><p>哪一部分出错了就删哪一部分, 再出错了再尝试修复.有时候甚至你用–no-res会出现问题,不使用却没问题.</p><h2 id="ida"><a href="#ida" class="headerlink" title="ida"></a>ida</h2><p><em>Shift + F11</em>直接导入头文件即可,<em>JNIEnv</em>和<em>JavaVM</em>给你自动识别还有啥不满足的,还要啥自行车.<br><em>Alt + G</em>修改ARM工作模式,这还是之前做pwnable.kr的题知道的.</p><h2 id="Android-Studio"><a href="#Android-Studio" class="headerlink" title="Android Studio"></a>Android Studio</h2><p>没错!是AS!这玩意可以直接解包apk,配合smalidea,设置为<em>code</em>目录即可直接开始调试.</p><h1 id="基础工具"><a href="#基础工具" class="headerlink" title="基础工具"></a>基础工具</h1><h2 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h2><p>简单来说,Xposed仅仅用findAndHookMethod就可以搞定99%的应用场景.<br>Xposed最近读了一遍它的源码,过了一遍Xposed的流程.<br><a id="more"></a><br>Xposed的实现原理,既是在Android系统的Zygote进程启动之前,使用了de.robv.android.Xposed.XposedInit.hookResources()来注入自身框架.因此,由Zygote启动的所有app进程都会包含Xposed框架的相关文件.<br>Xposed在启动时调用了de.robv.android.Xposed.XposedInit.loadModules(),由此来加载所有启用的Xposed模块.此过程在有且仅有一次调用.<br>之后Xposed框架会在应用启动后,以启动app的相关信息作为参数,回调Xposed模块中Xposed_int文件定义的类的handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam)方法.Xposed模块根据传入的参数,来进行相关操作.</p><h3 id="Xposed免重启更改Xposed模块"><a href="#Xposed免重启更改Xposed模块" class="headerlink" title="Xposed免重启更改Xposed模块"></a>Xposed免重启更改Xposed模块</h3><p>因为Xposed只是在loadModules()的时候加载Xposed模块到内存中,此过程只进行一次.Xposed模块的怎么更新也不会影响到内存中的数据,除非通过反射,或修改bridage源码的方式再调用loadModules()重新载入Xposed模块.<br>因为Xposed模块的方法不可变,我们只需要在Xposed模块中手动<em>动态调用</em>其他可更新的方法即可.其中Class由PathClassLoader来通过File获取.</p><h3 id="Xposed-MutiDex-hook"><a href="#Xposed-MutiDex-hook" class="headerlink" title="Xposed MutiDex hook"></a>Xposed MutiDex hook</h3><p>在app有多dex的情况下,Xposed去hook某函数可能会出现ClassNotFound的异常.这是因为Xposed默认的classLoader只会获取到app主要dex下的方法.<br>我们只需要手动替换classLoader为Content.classLoader即可.而Content据开发者在<a href="https://github.com/rovo89/xposedbridge/issues/30#issuecomment-68488797" target="_blank" rel="noopener">某issue</a>中提示,对android.app.Application.Attach(Context)进行hook即可取到Content.<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(<span class="keyword">final</span> XC_LoadPackage.LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">  XposedHelpers.findAndHookMethod(Application.class,<span class="string">"attach"</span>, Context.class, <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">      <span class="keyword">if</span> (loadPackageParam.packageName.equal(<span class="string">'com.example.test'</span>))&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">          Context context=(Context) param.args[<span class="number">0</span>];</span><br><span class="line">          lpparam.classLoader = context.getClassLoader();</span><br><span class="line">          XposedHelpers.findAndHookMethod(<span class="string">"con.example.test.test_class"</span>,lpparam.classLoader,<span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">              <span class="comment">//TODO :D</span></span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p>跨平台的,爽的1b的.<br>javascript直接一把梭就是了,破js是弱类型的,绝对不会报错.</p><p>对于Android的java层,对于知道类型的直接Java.use和Java.cast就可以直接用Class的参数和成员变量.从一般函数到构造函数(因为<em>.$new() = .alloc() + .init()</em>)无所不能. <em>Java.choose</em>甚至可以让你实时监测<em>onMatch</em>和<em>onComplete</em>.<br>对于Android的so,你需要的一切都在<em>Module.findExportByName(“&lt;so_name&gt;.so”,”&lt;func_name&gt;”)</em>中.<em>Interceptor.attach()</em>的<em>onEnter</em>和<em>onLeave</em> 既是 <em>Java.choose</em> 的翻版.</p><p>简单改了下<a href="https://github.com/nccgroup/house/wiki/Overview" target="_blank" rel="noopener">house</a>, 在获取到的参数类型为Object的情况下, 通过getClass()和getDeclaredFields()来解析Object内容,并显示到log中.<br>让house的历史脚本兼容了下windows:将houseSock.py中的四个path的末尾加个<em>\</em>即可.</p><h1 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM"></a>LLVM</h1><p>虚拟机, 简单来说就是跨平台的VMProtect<br>虽然说知道原理,但是连windows下的VMP都不能手脱.真是菜的抠脚<br>LLVM和vmp一样,被我加入到了清单列表中.</p><h1 id="调试与反调试"><a href="#调试与反调试" class="headerlink" title="调试与反调试"></a>调试与反调试</h1><p>理论上可以通过修改android源码来bypass掉,但是又没钱买谷歌亲儿子,又不会做适配.<br>mprop真是神器,直接改ro判断,思路真是猥琐至极,是大佬.<br>反反调试只知道一些简单的常规的,姿势还是不够多.</p>]]></content>
     
     <summary type="html">
     
@@ -31,6 +31,7 @@
 &lt;h1 id=&quot;基础的前置工具&quot;&gt;&lt;a href=&quot;#基础的前置工具&quot; class=&quot;headerlink&quot; title=&quot;基础的前置工具&quot;&gt;&lt;/a&gt;基础的前置工具&lt;/h1&gt;&lt;p&gt;到现在依旧好用的apktools, signapk.jar, dex2jar, jd-gui, jeb, ida;以及最近发现的jadx, Luytan&lt;/p&gt;
 &lt;h2 id=&quot;apktools&quot;&gt;&lt;a href=&quot;#apktools&quot; class=&quot;headerlink&quot; title=&quot;apktools&quot;&gt;&lt;/a&gt;apktools&lt;/h2&gt;&lt;p&gt;哪一部分出错了就删哪一部分, 再出错了再尝试修复.有时候甚至你用–no-res会出现问题,不使用却没问题.&lt;/p&gt;
 &lt;h2 id=&quot;ida&quot;&gt;&lt;a href=&quot;#ida&quot; class=&quot;headerlink&quot; title=&quot;ida&quot;&gt;&lt;/a&gt;ida&lt;/h2&gt;&lt;p&gt;&lt;em&gt;Shift + F11&lt;/em&gt;直接导入头文件即可,&lt;em&gt;JNIEnv&lt;/em&gt;和&lt;em&gt;JavaVM&lt;/em&gt;给你自动识别还有啥不满足的,还要啥自行车.&lt;br&gt;&lt;em&gt;Alt + G&lt;/em&gt;修改ARM工作模式,这还是之前做pwnable.kr的题知道的.&lt;/p&gt;
+&lt;h2 id=&quot;Android-Studio&quot;&gt;&lt;a href=&quot;#Android-Studio&quot; class=&quot;headerlink&quot; title=&quot;Android Studio&quot;&gt;&lt;/a&gt;Android Studio&lt;/h2&gt;&lt;p&gt;没错!是AS!这玩意可以直接解包apk,配合smalidea,设置为&lt;em&gt;code&lt;/em&gt;目录即可直接开始调试.&lt;/p&gt;
 &lt;h1 id=&quot;基础工具&quot;&gt;&lt;a href=&quot;#基础工具&quot; class=&quot;headerlink&quot; title=&quot;基础工具&quot;&gt;&lt;/a&gt;基础工具&lt;/h1&gt;&lt;h2 id=&quot;Xposed&quot;&gt;&lt;a href=&quot;#Xposed&quot; class=&quot;headerlink&quot; title=&quot;Xposed&quot;&gt;&lt;/a&gt;Xposed&lt;/h2&gt;&lt;p&gt;简单来说,Xposed仅仅用findAndHookMethod就可以搞定99%的应用场景.&lt;br&gt;Xposed最近读了一遍它的源码,过了一遍Xposed的流程.&lt;br&gt;
     
     </summary>
@@ -203,11 +204,11 @@
     </summary>
     
     
+      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
+    
       <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
     
       <category term="security" scheme="http://blog.qwerdf.com/tags/security/"/>
-    
-      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
   
@@ -354,9 +355,9 @@
     </summary>
     
     
-      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
-    
       <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
+      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
   
@@ -377,9 +378,9 @@
     </summary>
     
     
-      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
-    
       <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
+      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
   
@@ -401,9 +402,9 @@
     </summary>
     
     
-      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
-    
       <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
+      <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
   </entry>
   
