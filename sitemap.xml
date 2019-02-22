@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2019/02/22/android-xposed-frida/</loc>
+    
+    <lastmod>2019-02-22T08:26:58.786Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2019/01/08/GetFunctionAddr/</loc>
     
-    <lastmod>2019-01-18T20:38:43.570Z</lastmod>
+    <lastmod>2019-01-19T08:36:01.299Z</lastmod>
     
   </url>
   

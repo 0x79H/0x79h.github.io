@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="game,Steam," />
+  <meta name="keywords" content="android,Xposed,frida,llvm," />
 
 
 
@@ -53,22 +53,18 @@
 
 
 
-<meta name="description" content="今天随机到的游戏是Socxel | Pixel Soccer 开发商是 BUG-Studio 😄 这名字好啊.">
-<meta name="keywords" content="game,Steam">
+<meta name="description" content="年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm,">
+<meta name="keywords" content="android,Xposed,frida,llvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Socxel | Pixel Soccer">
-<meta property="og:url" content="http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/index.html">
+<meta property="og:title" content="Android安全">
+<meta property="og:url" content="http://blog.qwerdf.com/2019/02/22/android-xposed-frida/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="今天随机到的游戏是Socxel | Pixel Soccer 开发商是 BUG-Studio 😄 这名字好啊.">
+<meta property="og:description" content="年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm,">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904374506/CDFF35FB840FE8005A79B9033A4064DBA3660AB0/?pic1.jpg">
-<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904376477/21F5B11383251C1780C429311A7057A4EE1E2DF3/?pic2.jpg">
-<meta property="og:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904378919/8B1A1F937B7690D771B009D8417FD8887E57943A/?pic3.jpg">
-<meta property="og:updated_time" content="2018-03-30T19:00:26.852Z">
+<meta property="og:updated_time" content="2019-02-22T08:26:58.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Socxel | Pixel Soccer">
-<meta name="twitter:description" content="今天随机到的游戏是Socxel | Pixel Soccer 开发商是 BUG-Studio 😄 这名字好啊.">
-<meta name="twitter:image" content="https://steamuserimages-a.akamaihd.net/ugc/836958712904374506/CDFF35FB840FE8005A79B9033A4064DBA3660AB0/?pic1.jpg">
+<meta name="twitter:title" content="Android安全">
+<meta name="twitter:description" content="年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm,">
 
 
 
@@ -80,7 +76,7 @@
   };
 </script>
 
-  <title> Socxel | Pixel Soccer | zzzZZZ </title>
+  <title> Android安全 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -209,7 +205,7 @@
             
             
               
-                Socxel | Pixel Soccer
+                Android安全
               
             
           </h1>
@@ -218,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-07-19T15:41:11+08:00" content="2017-07-19">
-              2017-07-19
+            <time itemprop="dateCreated" datetime="2019-02-22T14:32:48+08:00" content="2019-02-22">
+              2019-02-22
             </time>
           </span>
 
@@ -229,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2017/07/19/Socxel-Pixel-Soccer/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/19/Socxel-Pixel-Soccer/" itemprop="commentsCount"></span>
+              <a href="/2019/02/22/android-xposed-frida/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/22/android-xposed-frida/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -249,19 +245,17 @@
       
 
       
-        <span itemprop="articleBody"><p>今天随机到的游戏是Socxel | Pixel Soccer</p>
-<p><iframe src="https://store.steampowered.com/widget/586190/" style="border:none;height:190px;width:100%;max-width:646px;"></iframe><br>开发商是 BUG-Studio 😄 这名字好啊.<br><a id="more"></a></p>
-<h2 id="0x01-简单游玩"><a href="#0x01-简单游玩" class="headerlink" title="0x01 简单游玩"></a>0x01 简单游玩</h2><p>游戏支持最大4人同时在一台电脑上游戏.</p>
-<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904374506/CDFF35FB840FE8005A79B9033A4064DBA3660AB0/?pic1.jpg" alt="进入游戏" title="进入游戏"></p>
-<p>下面可以更改操控键位设置,并不是常见的wasd控制方向什么的,而是…</p>
-<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904376477/21F5B11383251C1780C429311A7057A4EE1E2DF3/?pic2.jpg" alt="啥都不做都赢了" title="啥都不做居然还能赢了"></p>
-<p>btw,开了吧<code>1 vs AI</code>,摸索了半天都不知道用什么操控.然而我居然赢了…电脑经常把球踢进自己球门.所以这破游戏啥都不动只要是欧皇,对电脑怎么都赢了.</p>
-<p><img src="https://steamuserimages-a.akamaihd.net/ugc/836958712904378919/8B1A1F937B7690D771B009D8417FD8887E57943A/?pic3.jpg" alt="按键" title="按键提示"></p>
-<p>这游戏丧心病狂的只用一个按键(图中有提示)来操作,如果你不按任何按键的话,游戏内的任务会在原地转圈;而当你按下游戏一开始提示的按键的话,游戏中的人物将向前冲,并改变转向.</p>
-<h2 id="0x02-意外发现"><a href="#0x02-意外发现" class="headerlink" title="0x02 意外发现"></a>0x02 意外发现</h2><p>在游戏中准备用f12截图,却意外的发现打开了<code>Devtools</code> ,难道这游戏直接是用HTML5开发的嘛?</p>
-<p>带着疑问大概看了下代码,发现了个关键字<code>c2canvasdiv</code> ,Google了下发现是一个游戏引擎 <a href="https://www.scirra.com" target="_blank" rel="noopener">Construct 2</a> . </p>
-<p><code>Construct</code>是一个HTML5的游戏引擎,类似于<code>GameMaker</code>,但是相比感觉前者更强大一些.类似的我只知道unity3d可以导出为web格式,但是前两者拥有所见即所得的简单编辑模式,只需要动动手拖动一下就可以很轻易的制作一些简单的游戏.简单易用的程度也表现在,我甚至在网上找到了面向14岁+开展的培训班.</p>
-<p>顺便一提,<a href="http://store.steampowered.com/app/227240/" target="_blank" rel="noopener">Construct 2</a>居然也在steam商店上架了.</p>
+        <span itemprop="articleBody"><p>年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm, etc…</p>
+<h1 id="基础的前置工具"><a href="#基础的前置工具" class="headerlink" title="基础的前置工具"></a>基础的前置工具</h1><p>到现在依旧好用的apktools, signapk.jar, dex2jar, jd-gui, jeb, ida;以及最近发现的jadx, Luytan</p>
+<h2 id="apktools"><a href="#apktools" class="headerlink" title="apktools"></a>apktools</h2><p>哪一部分出错了就删哪一部分, 再出错了再尝试修复.有时候甚至你用–no-res会出现问题,不使用却没问题.</p>
+<h2 id="ida"><a href="#ida" class="headerlink" title="ida"></a>ida</h2><p><em>Shift + F11</em>直接导入头文件即可,<em>JNIEnv</em>和<em>JavaVM</em>给你自动识别还有啥不满足的,还要啥自行车.<br><em>Alt + G</em>修改ARM工作模式,这还是之前做pwnable.kr的题知道的.</p>
+<h1 id="基础工具"><a href="#基础工具" class="headerlink" title="基础工具"></a>基础工具</h1><h2 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h2><p>简单来说,Xposed仅仅用findAndHookMethod就可以搞定99%的应用场景.<br>Xposed最近读了一遍它的源码,过了一遍Xposed的流程.<br><a id="more"></a><br>Xposed的实现原理,既是在Android系统的Zygote进程启动之前,使用了de.robv.android.Xposed.XposedInit.hookResources()来注入自身框架.因此,由Zygote启动的所有app进程都会包含Xposed框架的相关文件.<br>Xposed在启动时调用了de.robv.android.Xposed.XposedInit.loadModules(),由此来加载所有启用的Xposed模块.此过程在有且仅有一次调用.<br>之后Xposed框架会在应用启动后,以启动app的相关信息作为参数,回调Xposed模块中Xposed_int文件定义的类的handleLoadPackage(final XC_LoadPackage.LoadPackageParam loadPackageParam)方法.Xposed模块根据传入的参数,来进行相关操作.</p>
+<h3 id="Xposed免重启更改Xposed模块"><a href="#Xposed免重启更改Xposed模块" class="headerlink" title="Xposed免重启更改Xposed模块"></a>Xposed免重启更改Xposed模块</h3><p>因为Xposed只是在loadModules()的时候加载Xposed模块到内存中,此过程只进行一次.Xposed模块的怎么更新也不会影响到内存中的数据,除非通过反射,或修改bridage源码的方式再调用loadModules()重新载入Xposed模块.<br>因为Xposed模块的方法不可变,我们只需要在Xposed模块中手动<em>动态调用</em>其他可更新的方法即可.其中Class由PathClassLoader来通过File获取.</p>
+<h3 id="Xposed-MutiDex-hook"><a href="#Xposed-MutiDex-hook" class="headerlink" title="Xposed MutiDex hook"></a>Xposed MutiDex hook</h3><p>在app有多dex的情况下,Xposed去hook某函数可能会出现ClassNotFound的异常.这是因为Xposed默认的classLoader只会获取到app主要dex下的方法.<br>我们只需要手动替换classLoader为Content.classLoader即可.而Content据开发者在<a href="https://github.com/rovo89/xposedbridge/issues/30#issuecomment-68488797" target="_blank" rel="noopener">某issue</a>中提示,对android.app.Application.Attach(Context)进行hook即可取到Content.<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">handleLoadPackage</span><span class="params">(<span class="keyword">final</span> XC_LoadPackage.LoadPackageParam lpparam)</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line">  XposedHelpers.findAndHookMethod(Application.class,<span class="string">"attach"</span>, Context.class, <span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">      <span class="keyword">if</span> (loadPackageParam.packageName.equal(<span class="string">'com.example.test'</span>))&#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">protected</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeHookedMethod</span><span class="params">(MethodHookParam param)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">          Context context=(Context) param.args[<span class="number">0</span>];</span><br><span class="line">          lpparam.classLoader = context.getClassLoader();</span><br><span class="line">          XposedHelpers.findAndHookMethod(<span class="string">"con.example.test.test_class"</span>,lpparam.classLoader,<span class="keyword">new</span> XC_MethodHook() &#123;</span><br><span class="line">              <span class="comment">//TODO :D</span></span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="frida"><a href="#frida" class="headerlink" title="frida"></a>frida</h1><p>跨平台的,爽的1b的.<br>javascript直接一把梭就是了,破js是弱类型的,绝对不会报错.<br>对于Android的java层,对于知道类型的直接Java.use和Java.cast就可以直接用Class的参数和成员变量.从一般函数到构造函数(因为<em>.$new() = .alloc() + .init()</em>)无所不能. <em>Java.choose</em>甚至可以让你实时监测<em>onMatch</em>和<em>onComplete</em>.<br>对于Android的so,你需要的一切都在<em>Module.findExportByName(“&lt;so_name&gt;.so”,”&lt;func_name&gt;”)</em>中.<em>Interceptor.attach()</em>的<em>onEnter</em>和<em>onLeave</em> 既是 <em>Java.choose</em> 的翻版.</p>
+<p>简单改了下<a href="https://github.com/nccgroup/house/wiki/Overview" target="_blank" rel="noopener">house</a>, 在获取到的参数类型为Object的情况下, 通过getClass()和getDeclaredFields()来解析Object内容,并显示到log中.<br>让house的历史脚本兼容了下windows:将houseSock.py中的四个path的末尾加个<em>\</em>即可.</p>
+<h1 id="LLVM"><a href="#LLVM" class="headerlink" title="LLVM"></a>LLVM</h1><p>虚拟机, 简单来说就是跨平台的VMProtect<br>虽然说知道原理,但是连windows下的VMP都不能手脱.真是菜的抠脚<br>LLVM和vmp一样,被我加入到了清单列表中.</p>
+<h1 id="调试与反调试"><a href="#调试与反调试" class="headerlink" title="调试与反调试"></a>调试与反调试</h1><p>理论上可以通过修改android源码来bypass掉,但是又没钱买谷歌亲儿子,又不会做适配.<br>mprop真是神器,直接改ro判断,思路真是猥琐至极,是大佬.<br>反反调试只知道一些简单的常规的,姿势还是不够多.</p>
 </span>
       
     </div>
@@ -270,9 +264,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/game/" rel="tag">#game</a>
+            <a href="/tags/android/" rel="tag">#android</a>
           
-            <a href="/tags/Steam/" rel="tag">#Steam</a>
+            <a href="/tags/Xposed/" rel="tag">#Xposed</a>
+          
+            <a href="/tags/frida/" rel="tag">#frida</a>
+          
+            <a href="/tags/llvm/" rel="tag">#llvm</a>
           
         </div>
       
@@ -281,17 +279,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/17/The-Next-Door/" rel="next" title="The Next Door">
-                <i class="fa fa-chevron-left"></i> The Next Door
+              <a href="/2019/01/16/StructuredExceptionHanding/" rel="next" title="SEH">
+                <i class="fa fa-chevron-left"></i> SEH
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/20/simple-spider-with-bash/" rel="prev" title="基于sh的简单爬虫">
-                基于sh的简单爬虫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -438,7 +432,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0x01-简单游玩"><span class="nav-number">1.</span> <span class="nav-text">0x01 简单游玩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#0x02-意外发现"><span class="nav-number">2.</span> <span class="nav-text">0x02 意外发现</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础的前置工具"><span class="nav-number">1.</span> <span class="nav-text">基础的前置工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apktools"><span class="nav-number">1.1.</span> <span class="nav-text">apktools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ida"><span class="nav-number">1.2.</span> <span class="nav-text">ida</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础工具"><span class="nav-number">2.</span> <span class="nav-text">基础工具</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Xposed"><span class="nav-number">2.1.</span> <span class="nav-text">Xposed</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Xposed免重启更改Xposed模块"><span class="nav-number">2.1.1.</span> <span class="nav-text">Xposed免重启更改Xposed模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Xposed-MutiDex-hook"><span class="nav-number">2.1.2.</span> <span class="nav-text">Xposed MutiDex hook</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#frida"><span class="nav-number">3.</span> <span class="nav-text">frida</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LLVM"><span class="nav-number">4.</span> <span class="nav-text">LLVM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调试与反调试"><span class="nav-number">5.</span> <span class="nav-text">调试与反调试</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -503,9 +497,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2017/07/19/Socxel-Pixel-Soccer/';
-      var disqus_title = 'Socxel | Pixel Soccer';
-      var disqus_url = 'http://blog.qwerdf.com/2017/07/19/Socxel-Pixel-Soccer/';
+      var disqus_identifier = '2019/02/22/android-xposed-frida/';
+      var disqus_title = 'Android安全';
+      var disqus_url = 'http://blog.qwerdf.com/2019/02/22/android-xposed-frida/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

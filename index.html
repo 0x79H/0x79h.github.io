@@ -221,6 +221,98 @@
             
               
                 
+                <a class="post-title-link" href="/2019/02/22/android-xposed-frida/" itemprop="url">
+                  Android安全
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-02-22T14:32:48+08:00" content="2019-02-22">
+              2019-02-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/02/22/android-xposed-frida/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/22/android-xposed-frida/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>年前疯狂更了一波博客,是因为准备换工作了,说不定可以拿博客出去吹一吹.然而这么菜,根本没有勇气拿出来吹.本来是打算搞搞windows内核那些东西,结果感觉自己菜的一笔,没勇气干,还是面的Web.最终在年前,面上了某家的渗透测试(实质上是安服),工作后就莫名其妙偏了点移动方面的安全,于是就又捡起来以前的东西搞了搞.这一搞,不但发现了之前绕的弯路,也发现了一大堆有意思的东西:frida, llvm, etc…</p>
+<h1 id="基础的前置工具"><a href="#基础的前置工具" class="headerlink" title="基础的前置工具"></a>基础的前置工具</h1><p>到现在依旧好用的apktools, signapk.jar, dex2jar, jd-gui, jeb, ida;以及最近发现的jadx, Luytan</p>
+<h2 id="apktools"><a href="#apktools" class="headerlink" title="apktools"></a>apktools</h2><p>哪一部分出错了就删哪一部分, 再出错了再尝试修复.有时候甚至你用–no-res会出现问题,不使用却没问题.</p>
+<h2 id="ida"><a href="#ida" class="headerlink" title="ida"></a>ida</h2><p><em>Shift + F11</em>直接导入头文件即可,<em>JNIEnv</em>和<em>JavaVM</em>给你自动识别还有啥不满足的,还要啥自行车.<br><em>Alt + G</em>修改ARM工作模式,这还是之前做pwnable.kr的题知道的.</p>
+<h1 id="基础工具"><a href="#基础工具" class="headerlink" title="基础工具"></a>基础工具</h1><h2 id="Xposed"><a href="#Xposed" class="headerlink" title="Xposed"></a>Xposed</h2><p>简单来说,Xposed仅仅用findAndHookMethod就可以搞定99%的应用场景.<br>Xposed最近读了一遍它的源码,过了一遍Xposed的流程.<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/02/22/android-xposed-frida/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/01/16/StructuredExceptionHanding/" itemprop="url">
                   SEH
                 </a>
@@ -1008,100 +1100,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/16/ssm/" itemprop="url">
-                  SSM
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2018-03-16T15:13:38+08:00" content="2018-03-16">
-              2018-03-16
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2018/03/16/ssm/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/16/ssm/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="SSM"><a href="#SSM" class="headerlink" title="SSM:"></a>SSM:</h1><p>即是<strong>S</strong>pring <strong>S</strong>pringMVC <strong>M</strong>ybatis的开头字母</p>
-<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><p><img src="https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle/images/spring-overview.png" alt="Spring Framework Runtime"></p>
-<p><strong>S</strong>SM里的Spring其实主要常用的是IoC和Aop,还有Test</p>
-<ul>
-<li>Spring默认的xml配置文件为 <em>applicationContext.xml</em></li>
-</ul>
-<h2 id="Spring-IoC"><a href="#Spring-IoC" class="headerlink" title="Spring IoC"></a>Spring IoC</h2><p>中文译名:控制反转/依赖注入,简单来说,即是原来的<code>new xxx();</code>用spring中content的bean代替,实现在构造函数的时候自动注入参数,有三种配置方式:基于xml,基于注解,基于java类,有三种注入方式:构造注入,set注入,工厂注入(不常用).<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/16/ssm/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1148,7 +1146,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1162,7 +1160,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
