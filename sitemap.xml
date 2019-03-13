@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2019/03/13/git-pull-req/</loc>
+    
+    <lastmod>2019-03-13T10:50:51.790Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2017/07/15/configure-msys2/</loc>
+    
+    <lastmod>2019-03-13T10:35:11.485Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2019/02/22/android-xposed-frida/</loc>
     
     <lastmod>2019-02-22T08:34:21.867Z</lastmod>
@@ -145,13 +159,6 @@
     <loc>http://blog.qwerdf.com/2017/07/20/simple-spider-with-bash/</loc>
     
     <lastmod>2018-03-30T18:59:16.470Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2017/07/15/configure-msys2/</loc>
-    
-    <lastmod>2018-03-30T18:59:10.390Z</lastmod>
     
   </url>
   
