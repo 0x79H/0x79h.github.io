@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="game,Steam," />
+  <meta name="keywords" content="linux,Android,arm64,wireshark,tcpdump," />
 
 
 
@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
-<meta name="keywords" content="game,Steam">
+<meta name="description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
+<meta name="keywords" content="linux,Android,arm64,wireshark,tcpdump">
 <meta property="og:type" content="article">
-<meta property="og:title" content="凭本事买的游戏为什么要玩">
-<meta property="og:url" content="http://blog.qwerdf.com/2017/07/16/play-random-game/index.html">
+<meta property="og:title" content="实时抓取Android上的网卡数据包">
+<meta property="og:url" content="http://blog.qwerdf.com/2019/03/25/wireshark-with-android/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta property="og:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-20T10:57:29.044Z">
+<meta property="og:updated_time" content="2019-03-25T08:09:23.942Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="凭本事买的游戏为什么要玩">
-<meta name="twitter:description" content="当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来. 看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏. 使用steamdb.info页面下方提供的”i’m feeling lucky”来实现.">
+<meta name="twitter:title" content="实时抓取Android上的网卡数据包">
+<meta name="twitter:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
 
 
 
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title> 凭本事买的游戏为什么要玩 | zzzZZZ </title>
+  <title> 实时抓取Android上的网卡数据包 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -205,7 +205,7 @@
             
             
               
-                凭本事买的游戏为什么要玩
+                实时抓取Android上的网卡数据包
               
             
           </h1>
@@ -214,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-07-16T09:22:07+09:00" content="2017-07-16">
-              2017-07-16
+            <time itemprop="dateCreated" datetime="2019-03-25T17:08:03+09:00" content="2019-03-25">
+              2019-03-25
             </time>
           </span>
 
@@ -225,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2017/07/16/play-random-game/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/07/16/play-random-game/" itemprop="commentsCount"></span>
+              <a href="/2019/03/25/wireshark-with-android/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/25/wireshark-with-android/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -245,11 +245,15 @@
       
 
       
-        <span itemprop="articleBody"><p>当今年steam夏季促销完成后,随着身体的一阵抖动,顿时感觉索然无味了起来.</p>
-<p>看着库里各种慈善包/免费领取的喜加一,想着这破博客的更新频率,我决定搞一个一个喜加一小游戏的游玩记录,玩玩各种”多半差评”的神奇游戏.</p>
-<p><del>使用<a href="https://steamdb.info/calculator/" target="_blank" rel="noopener">steamdb.info</a>页面下方提供的”i’m feeling lucky”来实现.</del><br><a id="more"></a><br>然而并不行,随机的只是在几个游戏中随机…</p>
-<p>访问<a href="https://store.steampowered.com/dynamicstore/userdata/" target="_blank" rel="noopener">steam</a>获得账户游戏信息.其中rgOwnedApps即为所拥有游戏.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> choice <span class="keyword">as</span> roll</span><br><span class="line"><span class="keyword">from</span> os <span class="keyword">import</span> system <span class="keyword">as</span> shell</span><br><span class="line">rgOwnedApps = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>,<span class="number">60</span>,.....,<span class="number">635780</span>]</span><br><span class="line">shell(<span class="string">'"C:/Program Files/Internet Explorer/iexplore.exe" \"steam://run/'</span>+str(roll(rgOwnedApps))+<span class="string">'\"'</span>)</span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>一个apk,上burp死活抓不到数据包,应用还正常.<br>想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法.</p>
+<h1 id="非实时"><a href="#非实时" class="headerlink" title="非实时"></a>非实时</h1><p>tcpdump直接抓<br>但是不够优雅,不能实时反应过来,而且也没wireshark易用</p>
+<h1 id="实时"><a href="#实时" class="headerlink" title="实时"></a>实时</h1><h2 id="wifi热点法"><a href="#wifi热点法" class="headerlink" title="wifi热点法"></a>wifi热点法</h2><p>垃圾红米手机和win10配不上.</p>
+<h2 id="管道法"><a href="#管道法" class="headerlink" title="管道法"></a>管道法</h2><p>老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了<a href="https://www.freebuf.com/articles/wireless/6517.html" target="_blank" rel="noopener">这篇文章</a>.既是用ADVsock2pipe来将Android转发来的socket重定向为一个pipe,让wireshark认为是一个设备.<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn -w - -U -s <span class="number">0</span> -i wlan0 | nc &lt;ip&gt; <span class="number">6666</span></span><br><span class="line">ADVsock2pipe.exe -pipe=pipeName -port <span class="number">6666</span></span><br><span class="line">&lt; choose \\.\pipe\pipeName in wireshark &gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="socket法"><a href="#socket法" class="headerlink" title="socket法"></a>socket法</h2><p>就是把pipe换成了nc接受后重定向<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -n -s 0 -i wlan0 -w -| nc -l -p 7101</span><br><span class="line">adb forward tcp:6100 tcp:7101</span><br><span class="line">D:<span class="symbol">\b</span>ackup<span class="symbol">\t</span>ools<span class="symbol">\m</span>sys64<span class="symbol">\u</span>sr<span class="symbol">\b</span>in<span class="symbol">\n</span>c.exe 127.0.0.1 6100 | "C:<span class="symbol">\P</span>rogram Files<span class="symbol">\W</span>ireshark<span class="symbol">\w</span>ireshark.exe" -k -S -i -</span><br></pre></td></tr></table></figure></p>
+<h2 id="RPCAP协议法"><a href="#RPCAP协议法" class="headerlink" title="RPCAP协议法"></a>RPCAP协议法</h2><p>在wireshark里发现了<strong><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChCapInterfaceRemoteSection.html" target="_blank" rel="noopener">Remote Capture Interfaces</a></strong>,直接填tcpdump重定向过来的socket是不行的,查了查,发现是用了一种叫做<a href="http://rpcap.sourceforge.net/" target="_blank" rel="noopener">rpcap</a>的玩意.直接交叉编译相应的版本丢过去运行就ok了.</p>
+<p>交叉编译未完待续(其实是菜没交叉编译过</p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p>那破apk协议走的是udp,怪不得抓不到.</p>
+</span>
       
     </div>
 
@@ -257,9 +261,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/game/" rel="tag">#game</a>
+            <a href="/tags/linux/" rel="tag">#linux</a>
           
-            <a href="/tags/Steam/" rel="tag">#Steam</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/arm64/" rel="tag">#arm64</a>
+          
+            <a href="/tags/wireshark/" rel="tag">#wireshark</a>
+          
+            <a href="/tags/tcpdump/" rel="tag">#tcpdump</a>
           
         </div>
       
@@ -268,17 +278,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/15/configure-msys2/" rel="next" title="Windows下好用的shell--msys2">
-                <i class="fa fa-chevron-left"></i> Windows下好用的shell--msys2
+              <a href="/2019/03/20/EasyToBypassAV/" rel="next" title="Easy To Bypass AV">
+                <i class="fa fa-chevron-left"></i> Easy To Bypass AV
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/17/The-Next-Door/" rel="prev" title="The Next Door">
-                The Next Door <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -425,7 +431,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缘由"><span class="nav-number">1.</span> <span class="nav-text">缘由</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非实时"><span class="nav-number">2.</span> <span class="nav-text">非实时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实时"><span class="nav-number">3.</span> <span class="nav-text">实时</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wifi热点法"><span class="nav-number">3.1.</span> <span class="nav-text">wifi热点法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道法"><span class="nav-number">3.2.</span> <span class="nav-text">管道法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket法"><span class="nav-number">3.3.</span> <span class="nav-text">socket法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPCAP协议法"><span class="nav-number">3.4.</span> <span class="nav-text">RPCAP协议法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结果"><span class="nav-number">4.</span> <span class="nav-text">结果</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -490,9 +496,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2017/07/16/play-random-game/';
-      var disqus_title = '凭本事买的游戏为什么要玩';
-      var disqus_url = 'http://blog.qwerdf.com/2017/07/16/play-random-game/';
+      var disqus_identifier = '2019/03/25/wireshark-with-android/';
+      var disqus_title = '实时抓取Android上的网卡数据包';
+      var disqus_url = 'http://blog.qwerdf.com/2019/03/25/wireshark-with-android/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
