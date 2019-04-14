@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
+<meta name="description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark.">
 <meta name="keywords" content="linux,Android,arm64,wireshark,tcpdump">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实时抓取Android上的网卡数据包">
 <meta property="og:url" content="http://blog.qwerdf.com/2019/03/25/wireshark-with-android/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
+<meta property="og:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-25T08:09:23.942Z">
+<meta property="og:updated_time" content="2019-03-25T08:17:57.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实时抓取Android上的网卡数据包">
-<meta name="twitter:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了这">
+<meta name="twitter:description" content="缘由一个apk,上burp死活抓不到数据包,应用还正常.想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法. 非实时tcpdump直接抓但是不够优雅,不能实时反应过来,而且也没wireshark易用 实时wifi热点法垃圾红米手机和win10配不上. 管道法老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark.">
 
 
 
@@ -248,7 +248,7 @@
         <span itemprop="articleBody"><h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>一个apk,上burp死活抓不到数据包,应用还正常.<br>想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法.</p>
 <h1 id="非实时"><a href="#非实时" class="headerlink" title="非实时"></a>非实时</h1><p>tcpdump直接抓<br>但是不够优雅,不能实时反应过来,而且也没wireshark易用</p>
 <h1 id="实时"><a href="#实时" class="headerlink" title="实时"></a>实时</h1><h2 id="wifi热点法"><a href="#wifi热点法" class="headerlink" title="wifi热点法"></a>wifi热点法</h2><p>垃圾红米手机和win10配不上.</p>
-<h2 id="管道法"><a href="#管道法" class="headerlink" title="管道法"></a>管道法</h2><p>老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark,找了找,发现了<a href="https://www.freebuf.com/articles/wireless/6517.html" target="_blank" rel="noopener">这篇文章</a>.既是用ADVsock2pipe来将Android转发来的socket重定向为一个pipe,让wireshark认为是一个设备.<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn -w - -U -s <span class="number">0</span> -i wlan0 | nc &lt;ip&gt; <span class="number">6666</span></span><br><span class="line">ADVsock2pipe.exe -pipe=pipeName -port <span class="number">6666</span></span><br><span class="line">&lt; choose \\.\pipe\pipeName in wireshark &gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="管道法"><a href="#管道法" class="headerlink" title="管道法"></a>管道法</h2><p>老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark.<br><a id="more"></a><br>找了找,发现了<a href="https://www.freebuf.com/articles/wireless/6517.html" target="_blank" rel="noopener">这篇文章</a>.既是用ADVsock2pipe来将Android转发来的socket重定向为一个pipe,让wireshark认为是一个设备.<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -nn -w - -U -s <span class="number">0</span> -i wlan0 | nc &lt;ip&gt; <span class="number">6666</span></span><br><span class="line">ADVsock2pipe.exe -pipe=pipeName -port <span class="number">6666</span></span><br><span class="line">&lt; choose \\.\pipe\pipeName in wireshark &gt;</span><br></pre></td></tr></table></figure></p>
 <h2 id="socket法"><a href="#socket法" class="headerlink" title="socket法"></a>socket法</h2><p>就是把pipe换成了nc接受后重定向<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -n -s 0 -i wlan0 -w -| nc -l -p 7101</span><br><span class="line">adb forward tcp:6100 tcp:7101</span><br><span class="line">D:<span class="symbol">\b</span>ackup<span class="symbol">\t</span>ools<span class="symbol">\m</span>sys64<span class="symbol">\u</span>sr<span class="symbol">\b</span>in<span class="symbol">\n</span>c.exe 127.0.0.1 6100 | "C:<span class="symbol">\P</span>rogram Files<span class="symbol">\W</span>ireshark<span class="symbol">\w</span>ireshark.exe" -k -S -i -</span><br></pre></td></tr></table></figure></p>
 <h2 id="RPCAP协议法"><a href="#RPCAP协议法" class="headerlink" title="RPCAP协议法"></a>RPCAP协议法</h2><p>在wireshark里发现了<strong><a href="https://www.wireshark.org/docs/wsug_html_chunked/ChCapInterfaceRemoteSection.html" target="_blank" rel="noopener">Remote Capture Interfaces</a></strong>,直接填tcpdump重定向过来的socket是不行的,查了查,发现是用了一种叫做<a href="http://rpcap.sourceforge.net/" target="_blank" rel="noopener">rpcap</a>的玩意.直接交叉编译相应的版本丢过去运行就ok了.</p>
 <p>交叉编译未完待续(其实是菜没交叉编译过</p>
@@ -285,6 +285,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/15/fix-win10-fix-your-account/" rel="prev" title="修复win10总是提示验证您的账户">
+                修复win10总是提示验证您的账户 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -357,7 +361,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
