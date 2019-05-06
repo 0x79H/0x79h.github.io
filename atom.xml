@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.qwerdf.com/"/>
-  <updated>2019-04-25T12:22:28.047Z</updated>
+  <updated>2019-05-06T06:19:01.842Z</updated>
   <id>http://blog.qwerdf.com/</id>
   
   <author>
@@ -21,21 +21,25 @@
     <link href="http://blog.qwerdf.com/2019/04/25/requests-post-always-get/"/>
     <id>http://blog.qwerdf.com/2019/04/25/requests-post-always-get/</id>
     <published>2019-04-25T12:08:19.000Z</published>
-    <updated>2019-04-25T12:22:28.047Z</updated>
+    <updated>2019-05-06T06:19:01.842Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Q"><a href="#Q" class="headerlink" title="Q:"></a>Q:</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it"</span>,cookies=_cookies,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"error"</span>,<span class="string">"code"</span>:<span class="string">"不能以get的方式请求"</span>&#125;</span><br></pre></td></tr></table></figure><h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>求求你吧网址最后的<strong>/</strong>加上,网址写全了.</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it/"</span>,cookies=_cookies,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"ok"</span>&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Q"><a href="#Q" class="headerlink" title="Q:"></a>Q:</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it"</span>,data=_data,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"error"</span>,<span class="string">"code"</span>:<span class="string">"不能以get的方式请求"</span>&#125;</span><br></pre></td></tr></table></figure><h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>求求你吧网址最后的<strong>/</strong>加上,网址写全了.</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it/"</span>,data=_data,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"ok"</span>&#125;</span><br></pre></td></tr></table></figure><h1 id="why"><a href="#why" class="headerlink" title="why:"></a>why:</h1><p>访问<strong><a href="http://www.example.com/post_it" target="_blank" rel="noopener">http://www.example.com/post_it</a></strong>,服务器自动301到<strong><a href="http://www.example.com/post_it/" target="_blank" rel="noopener">http://www.example.com/post_it/</a></strong>了.于是requests就跟随了.<br><a id="more"></a><br>然而301会将post请求变成get请求(准确的说是get请求resp的header中的Location).<br>如果使用的是Nginx的reweite总会产生301相应.所以这时候需要将post的请求用proxy_pass来代理一下.</p><p>至于为啥这个界面会301呢.别问,问就是django.</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;Q&quot;&gt;&lt;a href=&quot;#Q&quot; class=&quot;headerlink&quot; title=&quot;Q:&quot;&gt;&lt;/a&gt;Q:&lt;/h1&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c
-      
+      &lt;h1 id=&quot;Q&quot;&gt;&lt;a href=&quot;#Q&quot; class=&quot;headerlink&quot; title=&quot;Q:&quot;&gt;&lt;/a&gt;Q:&lt;/h1&gt;&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;req=requests.post(&lt;span class=&quot;string&quot;&gt;&quot;http://www.example.com/post_it&quot;&lt;/span&gt;,data=_data,headers=_headers)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;req.&lt;span class=&quot;attribute&quot;&gt;content&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;status&quot;&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&quot;error&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;code&quot;&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&quot;不能以get的方式请求&quot;&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;A&quot;&gt;&lt;a href=&quot;#A&quot; class=&quot;headerlink&quot; title=&quot;A:&quot;&gt;&lt;/a&gt;A:&lt;/h1&gt;&lt;p&gt;求求你吧网址最后的&lt;strong&gt;/&lt;/strong&gt;加上,网址写全了.&lt;/p&gt;
+&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;req=requests.post(&lt;span class=&quot;string&quot;&gt;&quot;http://www.example.com/post_it/&quot;&lt;/span&gt;,data=_data,headers=_headers)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;req.&lt;span class=&quot;attribute&quot;&gt;content&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#&amp;#123;&lt;span class=&quot;string&quot;&gt;&quot;status&quot;&lt;/span&gt;:&lt;span class=&quot;string&quot;&gt;&quot;ok&quot;&lt;/span&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;why&quot;&gt;&lt;a href=&quot;#why&quot; class=&quot;headerlink&quot; title=&quot;why:&quot;&gt;&lt;/a&gt;why:&lt;/h1&gt;&lt;p&gt;访问&lt;strong&gt;&lt;a href=&quot;http://www.example.com/post_it&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.example.com/post_it&lt;/a&gt;&lt;/strong&gt;,服务器自动301到&lt;strong&gt;&lt;a href=&quot;http://www.example.com/post_it/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.example.com/post_it/&lt;/a&gt;&lt;/strong&gt;了.于是requests就跟随了.&lt;br&gt;
     
     </summary>
     
     
       <category term="python" scheme="http://blog.qwerdf.com/tags/python/"/>
+    
+      <category term="301" scheme="http://blog.qwerdf.com/tags/301/"/>
+    
+      <category term="http_code" scheme="http://blog.qwerdf.com/tags/http-code/"/>
     
   </entry>
   
@@ -330,9 +334,9 @@
     </summary>
     
     
-      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
-    
       <category term="security" scheme="http://blog.qwerdf.com/tags/security/"/>
+    
+      <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
     
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
     
@@ -435,9 +439,9 @@
     
       <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
     
-      <category term="javascript" scheme="http://blog.qwerdf.com/tags/javascript/"/>
-    
       <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
+    
+      <category term="javascript" scheme="http://blog.qwerdf.com/tags/javascript/"/>
     
   </entry>
   

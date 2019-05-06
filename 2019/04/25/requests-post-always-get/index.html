@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python," />
+  <meta name="keywords" content="python,301,http_code," />
 
 
 
@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,cookies=_cookies,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http">
-<meta name="keywords" content="python">
+<meta name="description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,data=_data,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http://www">
+<meta name="keywords" content="python,301,http_code">
 <meta property="og:type" content="article">
 <meta property="og:title" content="requests的post请求总是以get的方式提交">
 <meta property="og:url" content="http://blog.qwerdf.com/2019/04/25/requests-post-always-get/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,cookies=_cookies,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http">
+<meta property="og:description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,data=_data,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http://www">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-25T12:22:28.047Z">
+<meta property="og:updated_time" content="2019-05-06T06:19:01.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="requests的post请求总是以get的方式提交">
-<meta name="twitter:description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,cookies=_cookies,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http">
+<meta name="twitter:description" content="Q:123req=requests.post(&quot;http://www.example.com/post_it&quot;,data=_data,headers=_headers)req.content#&amp;#123;&quot;status&quot;:&quot;error&quot;,&quot;code&quot;:&quot;不能以get的方式请求&quot;&amp;#125; A:求求你吧网址最后的/加上,网址写全了. 123req=requests.post(&quot;http://www">
 
 
 
@@ -245,9 +245,12 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="Q"><a href="#Q" class="headerlink" title="Q:"></a>Q:</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it"</span>,cookies=_cookies,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"error"</span>,<span class="string">"code"</span>:<span class="string">"不能以get的方式请求"</span>&#125;</span><br></pre></td></tr></table></figure>
+        <span itemprop="articleBody"><h1 id="Q"><a href="#Q" class="headerlink" title="Q:"></a>Q:</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it"</span>,data=_data,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"error"</span>,<span class="string">"code"</span>:<span class="string">"不能以get的方式请求"</span>&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="A"><a href="#A" class="headerlink" title="A:"></a>A:</h1><p>求求你吧网址最后的<strong>/</strong>加上,网址写全了.</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it/"</span>,cookies=_cookies,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"ok"</span>&#125;</span><br></pre></td></tr></table></figure></span>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">req=requests.post(<span class="string">"http://www.example.com/post_it/"</span>,data=_data,headers=_headers)</span><br><span class="line">req.<span class="attribute">content</span></span><br><span class="line">#&#123;<span class="string">"status"</span>:<span class="string">"ok"</span>&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="why"><a href="#why" class="headerlink" title="why:"></a>why:</h1><p>访问<strong><a href="http://www.example.com/post_it" target="_blank" rel="noopener">http://www.example.com/post_it</a></strong>,服务器自动301到<strong><a href="http://www.example.com/post_it/" target="_blank" rel="noopener">http://www.example.com/post_it/</a></strong>了.于是requests就跟随了.<br><a id="more"></a><br>然而301会将post请求变成get请求(准确的说是get请求resp的header中的Location).<br>如果使用的是Nginx的reweite总会产生301相应.所以这时候需要将post的请求用proxy_pass来代理一下.</p>
+<p>至于为啥这个界面会301呢.别问,问就是django.</p>
+</span>
       
     </div>
 
@@ -256,6 +259,10 @@
         <div class="post-tags">
           
             <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/301/" rel="tag">#301</a>
+          
+            <a href="/tags/http-code/" rel="tag">#http_code</a>
           
         </div>
       
@@ -357,7 +364,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -417,7 +424,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q"><span class="nav-number">1.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">2.</span> <span class="nav-text">A:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Q"><span class="nav-number">1.</span> <span class="nav-text">Q:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">2.</span> <span class="nav-text">A:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#why"><span class="nav-number">3.</span> <span class="nav-text">why:</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
