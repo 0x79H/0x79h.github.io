@@ -382,9 +382,9 @@
     
       <category term="windows" scheme="http://blog.qwerdf.com/tags/windows/"/>
     
-      <category term="security" scheme="http://blog.qwerdf.com/tags/security/"/>
-    
       <category term="game" scheme="http://blog.qwerdf.com/tags/game/"/>
+    
+      <category term="security" scheme="http://blog.qwerdf.com/tags/security/"/>
     
   </entry>
   
@@ -483,9 +483,9 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://blog.qwerdf.com/tags/javascript/"/>
-    
       <category term="Steam" scheme="http://blog.qwerdf.com/tags/Steam/"/>
+    
+      <category term="javascript" scheme="http://blog.qwerdf.com/tags/javascript/"/>
     
       <category term="fix" scheme="http://blog.qwerdf.com/tags/fix/"/>
     
