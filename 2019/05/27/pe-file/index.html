@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="security,asm," />
+  <meta name="keywords" content="windows,pe," />
 
 
 
@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="前言简单来说，pwn既是使用某种方法，修改内存中的数据，劫持程序的执行流程(即改变eip)，使程序执行我们的shellcode。shellcode可以简单理解为一串汇编代码对应的机器码，因为它通常就是用机器代码编写的。 对于call _fun与jmp _fun他们都会使eip变为对于_fun的地址；而对于ret它实际上就是pop eip，如果此时栈顶的数据为我们的shellcode的地址，就可以实">
-<meta name="keywords" content="security,asm">
+<meta name="description" content="PE结构也是一些基础啦 文件头一开始DOS头的最后一个成员指向NT头.NT头的中定义了加载地址,加载选项,入口地址.也在最后一个成员IMAGE_DATA_DIRECTORY_ARRAY定义了pe文件包含导入表、导出表、资源表、重定位表在内的、固定的15个表信息,包含RVA与大小信息.NT头后的IMAGE_SECTION_HEADER定义了所有的区块(如.upx0、.upx1、.text等)的加载信">
+<meta name="keywords" content="windows,pe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PWN学习">
-<meta property="og:url" content="http://blog.qwerdf.com/2018/12/31/overflow/index.html">
+<meta property="og:title" content="PE结构">
+<meta property="og:url" content="http://blog.qwerdf.com/2019/05/27/pe-file/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="前言简单来说，pwn既是使用某种方法，修改内存中的数据，劫持程序的执行流程(即改变eip)，使程序执行我们的shellcode。shellcode可以简单理解为一串汇编代码对应的机器码，因为它通常就是用机器代码编写的。 对于call _fun与jmp _fun他们都会使eip变为对于_fun的地址；而对于ret它实际上就是pop eip，如果此时栈顶的数据为我们的shellcode的地址，就可以实">
+<meta property="og:description" content="PE结构也是一些基础啦 文件头一开始DOS头的最后一个成员指向NT头.NT头的中定义了加载地址,加载选项,入口地址.也在最后一个成员IMAGE_DATA_DIRECTORY_ARRAY定义了pe文件包含导入表、导出表、资源表、重定位表在内的、固定的15个表信息,包含RVA与大小信息.NT头后的IMAGE_SECTION_HEADER定义了所有的区块(如.upx0、.upx1、.text等)的加载信">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-20T10:57:29.038Z">
+<meta property="og:updated_time" content="2019-05-27T11:14:26.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PWN学习">
-<meta name="twitter:description" content="前言简单来说，pwn既是使用某种方法，修改内存中的数据，劫持程序的执行流程(即改变eip)，使程序执行我们的shellcode。shellcode可以简单理解为一串汇编代码对应的机器码，因为它通常就是用机器代码编写的。 对于call _fun与jmp _fun他们都会使eip变为对于_fun的地址；而对于ret它实际上就是pop eip，如果此时栈顶的数据为我们的shellcode的地址，就可以实">
+<meta name="twitter:title" content="PE结构">
+<meta name="twitter:description" content="PE结构也是一些基础啦 文件头一开始DOS头的最后一个成员指向NT头.NT头的中定义了加载地址,加载选项,入口地址.也在最后一个成员IMAGE_DATA_DIRECTORY_ARRAY定义了pe文件包含导入表、导出表、资源表、重定位表在内的、固定的15个表信息,包含RVA与大小信息.NT头后的IMAGE_SECTION_HEADER定义了所有的区块(如.upx0、.upx1、.text等)的加载信">
 
 
 
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title> PWN学习 | zzzZZZ </title>
+  <title> PE结构 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -205,7 +205,7 @@
             
             
               
-                PWN学习
+                PE结构
               
             
           </h1>
@@ -214,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2018-12-31T22:53:11+08:00" content="2018-12-31">
-              2018-12-31
+            <time itemprop="dateCreated" datetime="2019-05-27T13:12:26+08:00" content="2019-05-27">
+              2019-05-27
             </time>
           </span>
 
@@ -225,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2018/12/31/overflow/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/31/overflow/" itemprop="commentsCount"></span>
+              <a href="/2019/05/27/pe-file/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/27/pe-file/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -245,24 +245,17 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>简单来说，pwn既是使用某种方法，修改内存中的数据，劫持程序的执行流程(即改变eip)，使程序执行我们的shellcode。shellcode可以简单理解为一串汇编代码对应的机器码，因为它通常就是用机器代码编写的。</p>
-<p>对于<em>call _fun</em>与<em>jmp _fun</em>他们都会使<em>eip</em>变为对于_fun的地址；而对于<em>ret</em>它实际上就是<em>pop eip</em>，如果此时栈顶的数据为我们的shellcode的地址，就可以实现pwn。</p>
-<p>而如何修改内存中的数据呢？大概主要就是字符读取的函数函数<em>gets()</em>和<em>scanf()</em>与其类似的函数、字符串处理函数<em>strcpy()</em>和<em>strcat()</em>等函数，所造成的缓冲区溢出，从而覆盖返回地址/对内存地址进行赋值操作了。</p>
-<a id="more"></a>
-<h1 id="一般方法"><a href="#一般方法" class="headerlink" title="一般方法"></a>一般方法</h1><p>如果程序内有相应的功能函数，直接将<em>ret</em>时的栈顶esp，改为所选函数机器码开始的地址即可。</p>
-<p>若没有相应的函数，则可将shellcode输入到堆栈内，并使<em>ret</em>时的栈顶esp改为shellcode开始的地址即可。其中shellcode的地址可通过<em>printf()</em>函数来泄露。</p>
-<p>对于linux有PLT/POT表，对照结构，修改内存，可修改对应call的函数。</p>
-<p>对于继承的class有一个叫做vptr的东西，根据其结构，修改内存中的函数地址，可修改所对应call的函数。</p>
-<p>对于一些结构体(如链表)，通过uaf，也可修改指定内存位置的内容。</p>
-<h1 id="DEP-NX"><a href="#DEP-NX" class="headerlink" title="DEP/NX"></a>DEP/NX</h1><p>处理器和Linux系统有一种叫做NX(No eXecute)的技术，windows上对应的技术叫做DEP(Data Execution Prevention)，使得一些内存不能拥有<em>RWX</em>中的<strong>X</strong>执行属性。若尝试在不能执行的内存(如堆栈)中执行，则报错。</p>
-<p>此时，可使用ROP(Return-oriented programming)技术。具体操作为寻找以<em>ret</em>结尾，有<em>pop/lea/mov</em>的内存地址。以<em>ret</em>为主体，构造一个ROP链接，达到修改寄存器并调用指定call的目的。</p>
-<h1 id="ASLR-PIE"><a href="#ASLR-PIE" class="headerlink" title="ASLR/PIE"></a>ASLR/PIE</h1><p>Linux系统有一种叫做PIE(Position-independent executables)的技术，windows上对应的技术叫做ALSR，使得程序中的内存地址不再固定，变得随机化了。同一个程序每次运行的内存地址，都会发生改变。</p>
-<p>在ctf中一般通过地址泄露来获得相应的地址。</p>
-<p>而在实际中，可使用一种叫做堆喷射(Heap Spraying)的技术。这种技术通过申请大量的内存空间，填充一些无意义的滑行指令，并将shellcode放到申请的内存空间的末端。这样，只要eip落到所申请的空间内，即可在执行一串无意义的滑行指令后，执行我们的shellcode。<br>典型的例子有：使用0x0c0c0c0c来填充内存空间，而其对应的汇编恰好为无意义的指令<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0C0C0C0C | 0C 0C                | <span class="keyword">or</span>      <span class="built_in">al</span>, <span class="number">0xC</span>                    |</span><br><span class="line">0C0C0C0E | 0C 0C                | <span class="keyword">or</span>      <span class="built_in">al</span>, <span class="number">0xC</span>                    |</span><br></pre></td></tr></table></figure></p>
-<h1 id="GS-Canaries"><a href="#GS-Canaries" class="headerlink" title="GS/Canaries"></a>GS/Canaries</h1><p>有一种叫做stack-protector 的技术，Linux系统中的gcc称之为为Canaries，windows上的cl称之为GS。即是在<em>return</em>前，检查堆栈上的一个于函数之前生成的随机数是否被改变。<br>要么在<em>return</em>前调用shellcode，要么通过泄露此随机数来使得检测通过。</p>
-<p>有时候程序不退出，你甚至还能用这个来泄露地址。</p>
-<h1 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h1><p>使用<em>alpha_mixed</em>的encoders可生成由字母组成的shellcode，使用<em>–bad-chars</em>可排除一些字符</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><span class="_link" style="font-size:14px">参考资料</span></h1><p><a href="https://ctf-wiki.github.io/ctf-wiki/pwn/readme/" target="_blank" rel="noopener">Pwn Overview</a></p>
+        <span itemprop="articleBody"><h1 id="PE结构"><a href="#PE结构" class="headerlink" title="PE结构"></a>PE结构</h1><p>也是一些基础啦</p>
+<h2 id="文件头"><a href="#文件头" class="headerlink" title="文件头"></a>文件头</h2><p>一开始DOS头的最后一个成员指向NT头.<br>NT头的中定义了加载地址,加载选项,入口地址.也在最后一个成员<code>IMAGE_DATA_DIRECTORY_ARRAY</code>定义了pe文件包含导入表、导出表、资源表、重定位表在内的、固定的15个表信息,包含RVA与大小信息.<br>NT头后的<code>IMAGE_SECTION_HEADER</code>定义了所有的区块(如.upx0、.upx1、.text等)的加载信息,包含RVA、名称、大小等信息。</p>
+<h2 id="导入表"><a href="#导入表" class="headerlink" title="导入表"></a>导入表</h2><p>先来看一波结构体,其中前置的有:<code>dos头-&gt;nt头-&gt;附加头-&gt;导入表--(对应区段地址)--&gt;PIMAGE_IMPORT_DESCRIPTOR</code><br><a id="more"></a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_DESCRIPTOR</span> &#123;</span></span><br><span class="line"><span class="keyword">union</span> &#123;</span><br><span class="line">DWORD   Characteristics;</span><br><span class="line">DWORD   OriginalFirstThunk; <span class="comment">// 原始导入表(INT)的RVA (PIMAGE_THUNK_DATA)</span></span><br><span class="line">&#125; DUMMYUNIONNAME;</span><br><span class="line">DWORD   TimeDateStamp;</span><br><span class="line">DWORD   ForwarderChain;</span><br><span class="line">DWORD   Name;       <span class="comment">// 导入dll名称</span></span><br><span class="line">DWORD   FirstThunk; <span class="comment">// 导入表(IAT)的RVA (PIMAGE_THUNK_DATA)</span></span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"><span class="keyword">typedef</span> IMAGE_IMPORT_DESCRIPTOR UNALIGNED *PIMAGE_IMPORT_DESCRIPTOR;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_THUNK_DATA32</span> &#123;</span></span><br><span class="line"><span class="keyword">union</span> &#123;</span><br><span class="line">DWORD ForwarderString;</span><br><span class="line">DWORD Function; <span class="comment">// PDWORD</span></span><br><span class="line">DWORD Ordinal;  <span class="comment">// 序号</span></span><br><span class="line">DWORD AddressOfData;<span class="comment">// PIMAGE_IMPORT_BY_NAME</span></span><br><span class="line">&#125; u1;</span><br><span class="line">&#125; IMAGE_THUNK_DATA32;</span><br><span class="line"><span class="keyword">typedef</span> IMAGE_THUNK_DATA32 * PIMAGE_THUNK_DATA32;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_IMPORT_BY_NAME</span> &#123;</span>  </span><br><span class="line">WORD    Hint;   <span class="comment">//序号</span></span><br><span class="line">CHAR   Name[<span class="number">1</span>]; <span class="comment">// 函数名</span></span><br><span class="line">&#125; IMAGE_IMPORT_BY_NAME, *PIMAGE_IMPORT_BY_NAME;</span><br></pre></td></tr></table></figure></p>
+<p>未加载的pe文件,IAT(Import Address Table)与INT(Import Name Table)内容一致,都为<code>PIMAGE_THUNK_DATA-&gt;AddressOfData</code>.<br>然而加载后,pe装载器会根据INT,将IAT所指向的<code>PIMAGE_THUNK_DATA-&gt;AddressOfData</code>更新为<code>PIMAGE_THUNK_DATA-&gt;Function</code>.</p>
+<p>若使用序号导入,则不是<code>PIMAGE_THUNK_DATA-&gt;AddressOfData</code>,而是<code>PIMAGE_THUNK_DATA-&gt;Ordinal</code>.区别为查看该DWORD第一位是否为1.<br>这里设计的巧妙之处在于,即使只有31位来存储地址,也不可能超过2g的内存限制(指在32位非pae的情况下)</p>
+<h2 id="导出表"><a href="#导出表" class="headerlink" title="导出表"></a>导出表</h2><p>这边建议您查看之前的<a href="2019/01/08/GetFunctionAddr/">获取 DLL 的函数地址</a>呢</p>
+<h2 id="重定位表"><a href="#重定位表" class="headerlink" title="重定位表"></a>重定位表</h2><p>来看一波结构体,其中前置的有:<code>dos头-&gt;nt头-&gt;附加头-&gt;重定位表(BaseRelocationTable)--(对应区段地址,如.reloc)--&gt;PIMAGE_BASE_RELOCATION</code><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">IMAGE_BASE_RELOCATION</span> &#123;</span></span><br><span class="line">    DWORD   VirtualAddress;<span class="comment">//以0x1000为单位块的RVA</span></span><br><span class="line">    DWORD   SizeOfBlock;<span class="comment">//重定位表中此结构体的大小 总是4的倍数</span></span><br><span class="line">    WORD    TypeOffset[<span class="number">0</span>];<span class="comment">//包含重定位类型与重定位地址的两字节信息</span></span><br><span class="line">&#125; IMAGE_BASE_RELOCATION,* PIMAGE_BASE_RELOCATION;</span><br></pre></td></tr></table></figure></p>
+<p>TypeOffset中高4位(&amp;0xf000)为重定位类型,低12位(&amp;0x0fff+0x1000<em>n)为重定位地址.数量共`(SizeOfBlock-4</em>2)/2`个.<br>将重定位地址的值重定位为正确的位置即可.</p>
+<h2 id="资源表"><a href="#资源表" class="headerlink" title="资源表"></a>资源表</h2><p>三层导航啦,来看结构体,其中前置的有:<code>dos头-&gt;nt头-&gt;附加头-&gt;资源表(RelocTable)--(对应区段地址,如.rsrc)--&gt;PIMAGE_RESOURCE_DIRECTORY</code><br><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_RESOURCE_DIRECTORY &#123;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">Characteristics</span>;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">TimeDateStamp</span>;</span><br><span class="line">    <span class="type">USHORT</span>  <span class="type">MajorVersion</span>;</span><br><span class="line">    <span class="type">USHORT</span>  <span class="type">MinorVersion</span>;</span><br><span class="line">    <span class="type">USHORT</span>  <span class="type">NumberOfNamedEntries</span>;       //资源名</span><br><span class="line">    <span class="type">USHORT</span>  <span class="type">NumberOfIdEntries</span>;          //序号</span><br><span class="line">    //后跟<span class="type">IMAGE_RESOURCE_DIRECTORY_ENTRY</span></span><br><span class="line">&#125; <span class="type">IMAGE_RESOURCE_DIRECTORY</span>, *<span class="type">PIMAGE_RESOURCE_DIRECTORY</span>;</span><br><span class="line"></span><br><span class="line">typedef struct _IMAGE_RESOURCE_DIRECTORY_ENTRY &#123;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">Name</span>;           //名称或序号指针</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">OffsetToData</span>;   //指向下一个<span class="type">PIMAGE_RESOURCE_DIRECTORY</span> </span><br><span class="line">                            //或指向最终的<span class="type">PIMAGE_RESOURCE_DATA_ENTRY</span></span><br><span class="line">&#125; <span class="type">IMAGE_RESOURCE_DIRECTORY_ENTRY</span>, *<span class="type">PIMAGE_RESOURCE_DIRECTORY_ENTRY</span>;</span><br><span class="line">//以上为一层导航</span><br><span class="line">typedef struct _IMAGE_RESOURCE_DATA_ENTRY &#123;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">OffsetToData</span>;   //资源的<span class="type">RVA</span></span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">Size</span>;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">CodePage</span>;</span><br><span class="line">    <span class="type">ULONG</span>   <span class="type">Reserved</span>;</span><br><span class="line">&#125; <span class="type">IMAGE_RESOURCE_DATA_ENTRY</span>, *<span class="type">PIMAGE_RESOURCE_DATA_ENTRY</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p>010editor、stud_pe、pe-bear、x96dbg了解下</p>
+<p>hwh不动啊，都是waf，当然是选择水一水博客喽😀</p>
 </span>
       
     </div>
@@ -271,9 +264,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/security/" rel="tag">#security</a>
+            <a href="/tags/windows/" rel="tag">#windows</a>
           
-            <a href="/tags/asm/" rel="tag">#asm</a>
+            <a href="/tags/pe/" rel="tag">#pe</a>
           
         </div>
       
@@ -282,17 +275,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/23/tcp-udp-connect-info/" rel="next" title="获取pid对应Tcp与Udp连接的信息">
-                <i class="fa fa-chevron-left"></i> 获取pid对应Tcp与Udp连接的信息
+              <a href="/2019/05/09/windows-new-terminal-install/" rel="next" title="如何在Windows 1903上安装Windows Terminal">
+                <i class="fa fa-chevron-left"></i> 如何在Windows 1903上安装Windows Terminal
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/04/zabbix/" rel="prev" title="zabbix的安装与使用">
-                zabbix的安装与使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -439,7 +428,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一般方法"><span class="nav-number">2.</span> <span class="nav-text">一般方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DEP-NX"><span class="nav-number">3.</span> <span class="nav-text">DEP/NX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ASLR-PIE"><span class="nav-number">4.</span> <span class="nav-text">ASLR/PIE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GS-Canaries"><span class="nav-number">5.</span> <span class="nav-text">GS/Canaries</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#杂项"><span class="nav-number">6.</span> <span class="nav-text">杂项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PE结构"><span class="nav-number">1.</span> <span class="nav-text">PE结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件头"><span class="nav-number">1.1.</span> <span class="nav-text">文件头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导入表"><span class="nav-number">1.2.</span> <span class="nav-text">导入表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导出表"><span class="nav-number">1.3.</span> <span class="nav-text">导出表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定位表"><span class="nav-number">1.4.</span> <span class="nav-text">重定位表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源表"><span class="nav-number">1.5.</span> <span class="nav-text">资源表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工具"><span class="nav-number">2.</span> <span class="nav-text">工具</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -504,9 +493,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2018/12/31/overflow/';
-      var disqus_title = 'PWN学习';
-      var disqus_url = 'http://blog.qwerdf.com/2018/12/31/overflow/';
+      var disqus_identifier = '2019/05/27/pe-file/';
+      var disqus_title = 'PE结构';
+      var disqus_url = 'http://blog.qwerdf.com/2019/05/27/pe-file/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
