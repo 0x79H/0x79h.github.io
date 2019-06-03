@@ -221,6 +221,95 @@
             
               
                 
+                <a class="post-title-link" href="/2019/06/03/msys2-update-fix/" itemprop="url">
+                  msys2替换ncurses为pdcurses后更新失败
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-06-03T15:14:48+08:00" content="2019-06-03">
+              2019-06-03
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/06/03/msys2-update-fix/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/03/msys2-update-fix/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>解决msys2提示<code>替换 mingw-w64-i686-ncurses 为 mingw32/mingw-w64-i686-pdcurses 吗 ？</code>后失败的问题<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ pacman -Syyu</span><br><span class="line">:: Synchronizing package databases...</span><br><span class="line"> mingw32                   545.2 KiB   822K/s 00:01 [------------------------------------------------------------------------] 100%</span><br><span class="line"> mingw32.sig               119.0   B  5.81K/s 00:00 [------------------------------------------------------------------------] 100%</span><br><span class="line"> mingw64                   546.4 KiB  3.38M/s 00:00 [------------------------------------------------------------------------] 100%</span><br><span class="line"> mingw64.sig               119.0   B  9.68K/s 00:00 [------------------------------------------------------------------------] 100%</span><br><span class="line"> msys                      180.4 KiB  5.68M/s 00:00 [------------------------------------------------------------------------] 100%</span><br><span class="line"> msys.sig                  119.0   B  11.6K/s 00:00 [------------------------------------------------------------------------] 100%</span><br><span class="line">:: Starting core system upgrade...</span><br><span class="line"> there is nothing to <span class="keyword">do</span></span><br><span class="line">:: Starting full system upgrade...</span><br><span class="line">warning: mingw-w64-i686-binutils: <span class="built_in">local</span> (2.31.1-1) is newer than mingw32 (2.30-6)</span><br><span class="line">:: Replace mingw-w64-i686-ncurses with mingw32/mingw-w64-i686-pdcurses? [Y/n] y</span><br><span class="line">:: Replace mingw-w64-i686-termcap with mingw32/mingw-w64-i686-pdcurses? [Y/n] y</span><br><span class="line">warning: mingw-w64-x86_64-binutils: <span class="built_in">local</span> (2.31.1-1) is newer than mingw64 (2.30-6)</span><br><span class="line">:: Replace mingw-w64-x86_64-ncurses with mingw64/mingw-w64-x86_64-pdcurses? [Y/n] y</span><br><span class="line">:: Replace mingw-w64-x86_64-termcap with mingw64/mingw-w64-x86_64-pdcurses? [Y/n] y</span><br><span class="line">resolving dependencies...</span><br><span class="line">looking <span class="keyword">for</span> conflicting packages...</span><br><span class="line">error: failed to prepare transaction (could not satisfy dependencies)</span><br><span class="line">:: installing mingw-w64-i686-gcc (9.1.0-2) breaks dependency <span class="string">'mingw-w64-i686-gcc=7.4.0-1'</span> required by mingw-w64-i686-gcc-ada</span><br><span class="line">:: installing mingw-w64-i686-gcc (9.1.0-2) breaks dependency <span class="string">'mingw-w64-i686-gcc=7.4.0-1'</span> required by mingw-w64-i686-gcc-objc</span><br><span class="line">:: installing mingw-w64-x86_64-gcc (9.1.0-2) breaks dependency <span class="string">'mingw-w64-x86_64-gcc=8.3.0-2'</span> required by mingw-w64-x86_64-gcc-ada</span><br><span class="line">:: installing mingw-w64-x86_64-gcc (9.1.0-2) breaks dependency <span class="string">'mingw-w64-x86_64-gcc=8.3.0-2'</span> required by mingw-w64-x86_64-gcc-objc</span><br></pre></td></tr></table></figure></p>
+<p>查找资料，发现已将<code>*-ncurses</code>与<code>*-termcap</code>替换为<code>*-pdcurses</code>,但这不是导致错误的原因.导致错误的原因是<code>ada</code>与<code>objc</code>已经被(弃用)[<a href="https://github.com/msys2/MINGW-packages/issues/5434#issuecomment-497053126]，需要手动移除`ada`与`objc`" target="_blank" rel="noopener">https://github.com/msys2/MINGW-packages/issues/5434#issuecomment-497053126]，需要手动移除`ada`与`objc`</a>.<br><code>pacman -R --noconfirm mingw-w64-i686-gcc-ada mingw-w64-i686-gcc-objc mingw-w64-x86_64-gcc-ada mingw-w64-x86_64-gcc-objc</code>,然后<code>pacman -Syyu</code>问题解决</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/05/27/pe-file/" itemprop="url">
                   PE结构
                 </a>
@@ -1009,102 +1098,12 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/01/08/GetFunctionAddr/" itemprop="url">
-                  获取DLL的函数地址
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2019-01-08T23:22:56+08:00" content="2019-01-08">
-              2019-01-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2019/01/08/GetFunctionAddr/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/08/GetFunctionAddr/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>一些基础啦</p>
-<h1 id="C语言的常规方法"><a href="#C语言的常规方法" class="headerlink" title="C语言的常规方法"></a>C语言的常规方法</h1><p>使用<em>LoadLibrary</em>与<em>GetProcAddress</em>这两个API</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PDWORD _addr = (<span class="name">PDWORD</span>)GetProcAddress(<span class="name">LoadLibrary</span>(<span class="name">&lt;DllName&gt;</span>), &lt;FunctionName&gt;)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2019/01/08/GetFunctionAddr/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1145,7 +1144,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1159,7 +1158,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

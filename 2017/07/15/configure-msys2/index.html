@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="windows,linux,shell," />
+  <meta name="keywords" content="linux,shell,windows，msys2," />
 
 
 
@@ -54,14 +54,14 @@
 
 
 <meta name="description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
-<meta name="keywords" content="windows,linux,shell">
+<meta name="keywords" content="linux,shell,windows，msys2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows下好用的shell--msys2">
 <meta property="og:url" content="http://blog.qwerdf.com/2017/07/15/configure-msys2/index.html">
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-20T10:57:29.011Z">
+<meta property="og:updated_time" content="2019-06-03T07:16:54.981Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下好用的shell--msys2">
 <meta name="twitter:description" content="对于我这个linux伪粉来说,Windows下的cmd真的难用.在对比了多种同类型的工具(Gow,cygwin等)后,我选择了msys2. 安装国内镜像http://mirrors.ustc.edu.cn/msys2/distrib/官方源http://repo.msys2.org/distrib/">
@@ -258,7 +258,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"<span class="variable">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></span><br></pre></td></tr></table></figure>
 <p>替换默认bash为zsh<br>于mingw32.ini/mingw64.ini/msys2.ini末尾添加<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHELL</span><span class="bash">=/usr/bin/zsh</span></span><br></pre></td></tr></table></figure></p>
 <h2 id="安装中文man"><a href="#安装中文man" class="headerlink" title="安装中文man"></a>安装中文man</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="comment">//www.archlinux.org/packages/community/any/man-pages-zh_cn/download/</span></span><br><span class="line">pacman -U man-pages-zh_cn-<span class="number">1.6</span>.<span class="number">3.3</span>-<span class="number">1</span>-any<span class="selector-class">.pkg</span><span class="selector-class">.tar</span><span class="selector-class">.xz</span></span><br></pre></td></tr></table></figure>
-<h2 id="其他杂项"><a href="#其他杂项" class="headerlink" title="其他杂项"></a>其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内添加ILoveCandy😄</p>
+<h2 id="其他杂项"><a href="#其他杂项" class="headerlink" title="其他杂项"></a>其他杂项</h2><p>于.bashrc内取消大部分注释<br>于pacman.conf内删除<code>CheckSpace</code>并添加<code>ILoveCandy</code>😄</p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://wiki.archlinux.org/index.php/Pacman" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman</a><br><a href="https://superuser.com/questions/961699/change-default-shell-on-msys2" target="_blank" rel="noopener">https://superuser.com/questions/961699/change-default-shell-on-msys2</a></p>
 </span>
       
@@ -268,11 +268,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/windows/" rel="tag">#windows</a>
-          
             <a href="/tags/linux/" rel="tag">#linux</a>
           
             <a href="/tags/shell/" rel="tag">#shell</a>
+          
+            <a href="/tags/windows，msys2/" rel="tag">#windows，msys2</a>
           
         </div>
       
@@ -364,7 +364,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-count">31</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -378,7 +378,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">33</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>

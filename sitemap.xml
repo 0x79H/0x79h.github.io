@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.qwerdf.com/2019/06/03/msys2-update-fix/</loc>
+    
+    <lastmod>2019-06-03T07:18:23.949Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.qwerdf.com/2017/07/15/configure-msys2/</loc>
+    
+    <lastmod>2019-06-03T07:16:54.981Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.qwerdf.com/2019/05/27/pe-file/</loc>
     
     <lastmod>2019-05-27T11:14:26.075Z</lastmod>
@@ -152,13 +166,6 @@
     <loc>http://blog.qwerdf.com/2018/04/11/csgo-blood/</loc>
     
     <lastmod>2019-03-20T10:57:29.023Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.qwerdf.com/2017/07/15/configure-msys2/</loc>
-    
-    <lastmod>2019-03-20T10:57:29.011Z</lastmod>
     
   </url>
   
