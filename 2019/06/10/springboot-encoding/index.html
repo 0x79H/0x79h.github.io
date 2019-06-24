@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="fix," />
+  <meta name="keywords" content="fix,java," />
 
 
 
@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="编辑文件C:\Users\\AppData\Local\cFos\cFosSpeed\user_data.ini12345678...[All]ts_advice=10.22autoarrange=3hide_on_fullscreen=0click_through=1   //鼠标穿透trayicon=0    //托盘图标... 或者直接带参数运行,调出菜单1cfosspeed.exe -co">
-<meta name="keywords" content="fix">
+<meta name="description" content="idea测试不乱码，mvn clean package打包后运行乱码。是因为java的默认编码不是UTF8。直接运行java -Dfile.encoding=utf-8 -jar springboot_demo.jar；或者设置变量JAVA_TOOL_OPTIONS为-Dfile.encoding=utf-8后直接运行即可。">
+<meta name="keywords" content="fix,java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整">
-<meta property="og:url" content="http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/index.html">
+<meta property="og:title" content="SpringBoot 中文乱码">
+<meta property="og:url" content="http://blog.qwerdf.com/2019/06/10/springboot-encoding/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="编辑文件C:\Users\\AppData\Local\cFos\cFosSpeed\user_data.ini12345678...[All]ts_advice=10.22autoarrange=3hide_on_fullscreen=0click_through=1   //鼠标穿透trayicon=0    //托盘图标... 或者直接带参数运行,调出菜单1cfosspeed.exe -co">
+<meta property="og:description" content="idea测试不乱码，mvn clean package打包后运行乱码。是因为java的默认编码不是UTF8。直接运行java -Dfile.encoding=utf-8 -jar springboot_demo.jar；或者设置变量JAVA_TOOL_OPTIONS为-Dfile.encoding=utf-8后直接运行即可。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-20T10:57:29.009Z">
+<meta property="og:updated_time" content="2019-06-10T01:01:02.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整">
-<meta name="twitter:description" content="编辑文件C:\Users\\AppData\Local\cFos\cFosSpeed\user_data.ini12345678...[All]ts_advice=10.22autoarrange=3hide_on_fullscreen=0click_through=1   //鼠标穿透trayicon=0    //托盘图标... 或者直接带参数运行,调出菜单1cfosspeed.exe -co">
+<meta name="twitter:title" content="SpringBoot 中文乱码">
+<meta name="twitter:description" content="idea测试不乱码，mvn clean package打包后运行乱码。是因为java的默认编码不是UTF8。直接运行java -Dfile.encoding=utf-8 -jar springboot_demo.jar；或者设置变量JAVA_TOOL_OPTIONS为-Dfile.encoding=utf-8后直接运行即可。">
 
 
 
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title> 如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整 | zzzZZZ </title>
+  <title> SpringBoot 中文乱码 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -205,7 +205,7 @@
             
             
               
-                如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整
+                SpringBoot 中文乱码
               
             
           </h1>
@@ -214,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2017-03-30T23:56:10+09:00" content="2017-03-30">
-              2017-03-30
+            <time itemprop="dateCreated" datetime="2019-06-10T08:54:34+09:00" content="2019-06-10">
+              2019-06-10
             </time>
           </span>
 
@@ -225,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2017/03/30/cFosSpeed_Menu/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/30/cFosSpeed_Menu/" itemprop="commentsCount"></span>
+              <a href="/2019/06/10/springboot-encoding/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/10/springboot-encoding/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -245,8 +245,7 @@
       
 
       
-        <span itemprop="articleBody"><p>编辑文件<br>C:\Users\<username>\AppData\Local\cFos\cFosSpeed\user_data.ini<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[All]</span><br><span class="line">ts_advice=10.22</span><br><span class="line">autoarrange=3</span><br><span class="line">hide_on_fullscreen=0</span><br><span class="line">click_through=1   //鼠标穿透</span><br><span class="line">trayicon=0    //托盘图标</span><br><span class="line">...</span><br></pre></td></tr></table></figure></username></p>
-<p>或者直接带参数运行,调出菜单<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cfosspeed<span class="selector-class">.exe</span> -context_menu</span><br></pre></td></tr></table></figure></p>
+        <span itemprop="articleBody"><p>idea测试不乱码，<code>mvn clean package</code>打包后运行乱码。是因为java的默认编码不是UTF8。<br>直接运行<code>java -Dfile.encoding=utf-8 -jar springboot_demo.jar</code>；或者设置变量<code>JAVA_TOOL_OPTIONS</code>为<code>-Dfile.encoding=utf-8</code>后直接运行即可。</p>
 </span>
       
     </div>
@@ -257,6 +256,8 @@
           
             <a href="/tags/fix/" rel="tag">#fix</a>
           
+            <a href="/tags/java/" rel="tag">#java</a>
+          
         </div>
       
 
@@ -264,16 +265,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/04/vs2017-rc-preview/" rel="next" title="vs2017 rc 初体验">
-                <i class="fa fa-chevron-left"></i> vs2017 rc 初体验
+              <a href="/2019/06/03/msys2-update-fix/" rel="next" title="msys2替换ncurses为pdcurses后更新失败">
+                <i class="fa fa-chevron-left"></i> msys2替换ncurses为pdcurses后更新失败
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/15/configure-msys2/" rel="prev" title="Windows下好用的shell--msys2">
-                Windows下好用的shell--msys2 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/06/23/esrever-mv/" rel="prev" title="esrever-mv">
+                esrever-mv <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -486,9 +487,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2017/03/30/cFosSpeed_Menu/';
-      var disqus_title = '如何在cfosspeed隱藏圖標+鼠標穿透的情況下調出菜單進行調整';
-      var disqus_url = 'http://blog.qwerdf.com/2017/03/30/cFosSpeed_Menu/';
+      var disqus_identifier = '2019/06/10/springboot-encoding/';
+      var disqus_title = 'SpringBoot 中文乱码';
+      var disqus_url = 'http://blog.qwerdf.com/2019/06/10/springboot-encoding/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
