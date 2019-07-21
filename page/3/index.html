@@ -56,7 +56,7 @@
 <meta name="description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zzzZZZ">
-<meta property="og:url" content="http://blog.qwerdf.com/page/3/index.html">
+<meta property="og:url" content="https://blog.qwerdf.com/page/3/index.html">
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta property="og:locale" content="en">
@@ -194,6 +194,98 @@
 
       
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/31/unable-login-SSH-with-key/" itemprop="url">
+                  记一次诡异的ssh密钥登录失败
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2018-03-31T01:21:55+09:00" content="2018-03-31">
+              2018-03-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2018/03/31/unable-login-SSH-with-key/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/03/31/unable-login-SSH-with-key/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>问基友要了台服务器,密码与密钥均不能登陆.改了密码后可以登陆,但密钥依然不能登陆.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_19_31_centos ~]<span class="comment"># ls -al                               </span></span><br><span class="line">total 80                                                       </span><br><span class="line">drwxrwxrwx.  3 root root  4096 Mar 30 23:50 .                  </span><br><span class="line">dr-xr-xr-x. 24 root root  4096 Mar 30 23:51 ..</span><br><span class="line">-rwxrwxrwx   1 root root   790 Mar 31 00:07 .bash_history      </span><br><span class="line">-rwxrwxrwx.  1 root root    18 May 20  2009 .bash_logout       </span><br><span class="line">-rwxrwxrwx.  1 root root   176 May 20  2009 .bash_profile      </span><br><span class="line">-rwxrwxrwx.  1 root root   176 Sep 23  2004 .bashrc            </span><br><span class="line">-rwxrwxrwx.  1 root root   100 Sep 23  2004 .cshrc             </span><br><span class="line">-rwxrwxrwx.  1 root root 12754 Dec 25  2014 install.log        </span><br><span class="line">-rwxrwxrwx.  1 root root  5520 Dec 25  2014 install.log.syslog      </span><br><span class="line">drwxrwxrwx   2 root root  4096 Mar 30 23:50 .ssh               </span><br><span class="line">-rwxrwxrwx.  1 root root   129 Dec  4  2004 .tcshrc            </span><br><span class="line">-rwxrwxrwx   1 root root  1005 Mar 30 23:50 .viminfo           </span><br><span class="line">[root@VM_19_31_centos ~]<span class="comment"># cd .ssh/</span></span><br><span class="line">[root@VM_19_31_centos .ssh]<span class="comment"># ls -al                            </span></span><br><span class="line">total 12                                                       </span><br><span class="line">drwxrwxrwx  2 root root 4096 Mar 30 23:50 .                    </span><br><span class="line">drwxrwxrwx. 3 root root 4096 Mar 30 23:50 ..                   </span><br><span class="line">-rwxrwxrwx  1 root root 1157 Mar 31 00:08 authorized_keys</span><br></pre></td></tr></table></figure>
+<p>明显<em>.ssh/</em>与<em>authorized_keys</em>权限设置错误,改之</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 ~/.ssh</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>退出登录,然而依然不能用密钥登陆…<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/03/31/unable-login-SSH-with-key/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -356,8 +448,8 @@
         
           <span itemprop="articleBody">
             
-              <p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">top</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;<span class="attribute">display</span>:none&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"><span class="selector-class">.checkedForSend</span>&#123;<span class="attribute">background</span>:<span class="number">#366836</span><span class="meta">!important</span>&#125;<span class="selector-class">.itemcount</span>&#123;<span class="attribute">background</span>:<span class="number">#292929</span>;<span class="attribute">color</span>:<span class="number">#FFF</span>;<span class="attribute">font-weight</span>:<span class="number">700</span>;<span class="attribute">position</span>:absolute;<span class="attribute">right</span>:<span class="number">0</span>;<span class="attribute">bottom</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">top</span>:<span class="number">0</span>;<span class="attribute">left</span>:<span class="number">0</span>&#125;<span class="selector-class">.swt_icon-st</span>&#123;<span class="attribute">background</span>:<span class="number">#CF6A32</span>;<span class="attribute">color</span>:<span class="number">#fff</span>&#125;<span class="selector-class">.swt_icon-t</span>&#123;<span class="attribute">background</span>:<span class="number">#FDEC14</span>;<span class="attribute">color</span>:<span class="number">#000</span>&#125;<span class="selector-id">#inventory_logos</span>&#123;&#125;<span class="selector-class">.swt_hidden</span>&#123;<span class="attribute">display</span>:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
+              <p>steam常用脚本Steam Web Tools和Steam Economy Enhancer一起使用时,库存页面显示有冲突.此时仅需要将<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">"<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined">.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;top:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;display:none&#125;.swt_hidden&#123;display:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>"</span><br></pre></td></tr></table></figure></p>
+<p>修改为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">'<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined">.checkedForSend&#123;background:#366836!important&#125;.itemcount&#123;background:#292929;color:#FFF;font-weight:700;position:absolute;right:0;bottom:0&#125;.swt_icon&#123;position:absolute;top:0;left:0&#125;.swt_icon-st&#123;background:#CF6A32;color:#fff&#125;.swt_icon-t&#123;background:#FDEC14;color:#000&#125;#inventory_logos&#123;&#125;.swt_hidden&#123;display:none&#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>'</span><br></pre></td></tr></table></figure></p>
 <p>即可</p>
 <p>或者直接<a href="https://greasyfork.org/en/scripts/380533-fix-steamwebtools-steameconomyenhancer" target="_blank" rel="noopener">点击安装</a>即可</p>
 
@@ -1005,97 +1097,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/04/WAN-miniport/" itemprop="url">
-                  修复由于WAN_Miniport导致的网络问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2016-02-04T13:58:09+09:00" content="2016-02-04">
-              2016-02-04
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2016/02/04/WAN-miniport/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/04/WAN-miniport/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>在硬件管理器中出现了’WAN_Miniport（*）’，这六个理论上应该是 <del>隐藏的，</del> 没有错误的，但是有时候就会莫名其妙的出现好几个 WAN Miniport (IPv6 L2TP Network_Monitor PPPOE PPTP SSTP)，出现的原因很多，不过我见过的最多的就是xxx加速器/校园宽带客户端引起的。</p>
-<p>修复方法:<br>1.打开设备管理器，右键WAN_Miniport，选择更新驱动。<br>2.选择下面那个”浏览我的计算机xxxxxxx”<br>3.点下面那个”兼容设备”<br>4.勾掉”显示xxx”的复选框<br>5.左边选”Microsoft”，右边选”Microsoft KM-TEST Loopback Adapter“或者”Generic Mobile Broadband Adapter“<br>6.确定，完成。然后右键WAN_Miniport，卸载。<br>7.重复以上步骤，直到将所有WAN_Miniport都做一遍。<br>8.重启电脑。<br>9.打开设备管理器，扫描硬件。<br>10.完成</p>
-<p>或者</p>
-<p><a href="http://download.microsoft.com/download/D/9/2/D923C013-E9AD-4BBE-A52C-AC1F16685036/MicrosoftFixit20114.mini.diagcab" target="_blank" rel="noopener">下载我</a></p>
-
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1142,7 +1143,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>

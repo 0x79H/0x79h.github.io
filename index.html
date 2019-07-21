@@ -56,7 +56,7 @@
 <meta name="description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zzzZZZ">
-<meta property="og:url" content="http://blog.qwerdf.com/index.html">
+<meta property="og:url" content="https://blog.qwerdf.com/index.html">
 <meta property="og:site_name" content="zzzZZZ">
 <meta property="og:description" content="Some Place where I can write something总有一天你们会求我更博客的">
 <meta property="og:locale" content="en">
@@ -198,6 +198,105 @@
 
       
     
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/07/21/fmt/" itemprop="url">
+                  字符串格式化所导致的漏洞
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-07-21T21:36:17+09:00" content="2019-07-21">
+              2019-07-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/07/21/fmt/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/21/fmt/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="1-HelloWorld"><a href="#1-HelloWorld" class="headerlink" title="1 HelloWorld"></a>1 HelloWorld</h1><p>就个人来说，所学的c，第一个成功运行的程序既是HelloWorld了:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"Hello, World!"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当时觉得很简单、很理所当然。然而，如此简单的程序之下，调用的<code>printf</code>，却是一个非常难理解的”变参函数”。</p>
+<p>普通的参数遵守调用规则，从右到左参数依次压栈。而变参函数呢？堆栈又由谁恢复呢？</p>
+<h1 id="2-变参函数导致的问题"><a href="#2-变参函数导致的问题" class="headerlink" title="2 变参函数导致的问题"></a>2 变参函数导致的问题</h1><p>就<code>printf</code>来说，该函数的函数原型是<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *format,...)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>简单来说，该变参函数，使用<code>format</code>所指向的字符串来解析后面不定长(以<code>...</code>表示)的参数。</p>
+<p>那么，若<code>format</code>中所声明的参数，多于实际传入的变量又该如何呢？这就导致了所谓的<code>fmt</code>漏洞：<code>printf</code>函数会输出堆栈上传入参数之后的数据。</p>
+<p>对于<code>%s</code>来说，会输出传入值所指向的字符串；对于<code>%p</code>来说，会输出传入的值。当然，也可以使用<code>%c/%x/%d</code>等方式输出堆栈上的数据。</p>
+<h1 id="3-任意位置"><a href="#3-任意位置" class="headerlink" title="3 任意位置"></a>3 任意位置</h1><h2 id="3-1-使用-说明参数编号"><a href="#3-1-使用-说明参数编号" class="headerlink" title="3.1 使用$说明参数编号"></a>3.1 使用$说明参数编号</h2><p>此处参数编号从<code>format</code>之后开始，从1数起。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%3$s, %2$s!\n"</span>,<span class="string">"x"</span>,<span class="string">"World"</span>,<span class="string">"Hello"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Hello, World!!</span></span><br></pre></td></tr></table></figure></p>
+<p>看wiki上说不是c99标准，但是感觉遇到的都实现了这玩意吧。</p>
+<h2 id="3-2-使用传入的参数作为地址"><a href="#3-2-使用传入的参数作为地址" class="headerlink" title="3.2 使用传入的参数作为地址"></a>3.2 使用传入的参数作为地址</h2><p>因为传入的参数也是在堆栈上，所以很随意就可以用<code>$</code>来指出来，再搭配<code>$s</code>一波美滋滋。</p>
+<h1 id="4-写数据"><a href="#4-写数据" class="headerlink" title="4 写数据"></a>4 写数据</h1><p>甚至你还可以用<code>printf</code>来写内存, 参数<code>%i</code>会统计当前已输出的字符个数，并赋值到传入值所指向的位置。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"Hello%n, World!\n"</span>,&amp;x);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%d"</span>,x);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Hello, World!</span></span><br><span class="line"><span class="comment">//5#</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="5-其他"><a href="#5-其他" class="headerlink" title="5 其他"></a>5 其他</h1><p>突然、就水了一波。<br>最近在看CS的那些玩意，cna真乃神器。现在就差个beacon的源码搞一搞了，虽然看片子、看代码好像没有像那些exe能直接插的地方，但是说不定那些正版大佬的Arsenal就会附赠一份beacon源码呢。所以还是只能用那屎一样的ruby写的msf了么……</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -1006,94 +1105,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/03/13/git-pull-req/" itemprop="url">
-                  Git 合并两个不同的仓库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2019-03-13T19:36:43+09:00" content="2019-03-13">
-              2019-03-13
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2019/03/13/git-pull-req/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/13/git-pull-req/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="why"><a href="#why" class="headerlink" title="why?"></a>why?</h1><p>Github上看到了被Fork的仓库,因为种种原因pull requests主仓库没有接受,并且还往后更新了.需要在本地合并两个仓库.</p>
-<h1 id="how"><a href="#how" class="headerlink" title="how?"></a>how?</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/A/git.git</span><br><span class="line">git remote add other https://github.com/B/git.git</span><br><span class="line"><span class="comment">#git remote add -t remote-branch remote-name remote-url</span></span><br><span class="line">git fetch other master </span><br><span class="line"><span class="comment">#git branch -a</span></span><br><span class="line">git merge other/master</span><br></pre></td></tr></table></figure>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1140,7 +1151,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
