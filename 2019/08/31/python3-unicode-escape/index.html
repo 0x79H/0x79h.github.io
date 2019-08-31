@@ -1,0 +1,698 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.css.network/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,unicode," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="zzzZZZ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2.0" />
+
+
+
+
+
+
+<meta name="description" content="举个例子:1http-title: \xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\xA0\xE5\xB0\xB1\xE7\x9F\xA5\xE9\x81\x93 此处的\xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\x">
+<meta name="keywords" content="python,unicode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3中unicode编码解码">
+<meta property="og:url" content="https://blog.qwerdf.com/2019/08/31/python3-unicode-escape/index.html">
+<meta property="og:site_name" content="zzzZZZ">
+<meta property="og:description" content="举个例子:1http-title: \xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\xA0\xE5\xB0\xB1\xE7\x9F\xA5\xE9\x81\x93 此处的\xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\x">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-31T07:22:10.200Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3中unicode编码解码">
+<meta name="twitter:description" content="举个例子:1http-title: \xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\xA0\xE5\xB0\xB1\xE7\x9F\xA5\xE9\x81\x93 此处的\xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\x">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> python3中unicode编码解码 | zzzZZZ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-88654486-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">zzzZZZ</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python3中unicode编码解码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-08-31T15:53:09+09:00" content="2019-08-31">
+              2019-08-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/08/31/python3-unicode-escape/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/31/python3-unicode-escape/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>举个例子:<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-title: <span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93</span><br></pre></td></tr></table></figure></p>
+<p>此处的<code>\xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\xA0\xE5\xB0\xB1\xE7\x9F\xA5\xE9\x81\x93</code>既是字符串的UTF-8编码,那么<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [1]: b"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".decode("utf-8")</span><br><span class="line">Out[1]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
+<p>然而对于格式不是byte的字符串来说,python3的默认的编码是utf-8,导致encode出的是utf-8编码,此时只需要手动指定latin1方式解码为byte即可<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [2]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode()</span><br><span class="line">Out[2]: b'<span class="symbol">\x</span>c3<span class="symbol">\x</span>a7<span class="symbol">\x</span>c2<span class="symbol">\x</span>99<span class="symbol">\x</span>c2<span class="symbol">\x</span>be<span class="symbol">\x</span>c3<span class="symbol">\x</span>a5<span class="symbol">\x</span>c2<span class="symbol">\x</span>ba<span class="symbol">\x</span>c2<span class="symbol">\x</span>a6<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>b8<span class="symbol">\x</span>c2<span class="symbol">\x</span>80<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>b8<span class="symbol">\x</span>c2<span class="symbol">\x</span>8b<span class="symbol">\x</span>c3<span class="symbol">\x</span>af<span class="symbol">\x</span>c2<span class="symbol">\x</span>bc<span class="symbol">\x</span>c2<span class="symbol">\x</span>8c<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>bd<span class="symbol">\x</span>c2<span class="symbol">\x</span>a0<span class="symbol">\x</span>c3<span class="symbol">\x</span>a5<span class="symbol">\x</span>c2<span class="symbol">\x</span>b0<span class="symbol">\x</span>c2<span class="symbol">\x</span>b1<span class="symbol">\x</span>c3<span class="symbol">\x</span>a7<span class="symbol">\x</span>c2<span class="symbol">\x</span>9f<span class="symbol">\x</span>c2<span class="symbol">\x</span>a5<span class="symbol">\x</span>c3<span class="symbol">\x</span>a9<span class="symbol">\x</span>c2<span class="symbol">\x</span>81<span class="symbol">\x</span>c2<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [3]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("latin1")</span><br><span class="line">Out[3]: b'<span class="symbol">\x</span>e7<span class="symbol">\x</span>99<span class="symbol">\x</span>be<span class="symbol">\x</span>e5<span class="symbol">\x</span>ba<span class="symbol">\x</span>a6<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>80<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>8b<span class="symbol">\x</span>ef<span class="symbol">\x</span>bc<span class="symbol">\x</span>8c<span class="symbol">\x</span>e4<span class="symbol">\x</span>bd<span class="symbol">\x</span>a0<span class="symbol">\x</span>e5<span class="symbol">\x</span>b0<span class="symbol">\x</span>b1<span class="symbol">\x</span>e7<span class="symbol">\x</span>9f<span class="symbol">\x</span>a5<span class="symbol">\x</span>e9<span class="symbol">\x</span>81<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [4]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("latin1").decode("utf-8")</span><br><span class="line">Out[4]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
+<p>对于使用默认方式从文本中读出的字符串来说,<code>\</code>为了防止转义会变成<code>\\</code>,此时需要使用<code>unicode_escape</code>相互转换处理即可.(这里让我搞了许久,之前的解决方法是上正则匹配<code>\x</code>与<code>\u</code>开头的字符串)<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [11]: x=""</span><br><span class="line">    ...: with open(r"d:<span class="symbol">\u</span>.txt") as f:</span><br><span class="line">    ...:     x=f.read()</span><br><span class="line">    ...:     print(x)</span><br><span class="line">    ...:</span><br><span class="line"><span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93</span><br><span class="line"></span><br><span class="line">In [12]: x</span><br><span class="line">Out[12]: '<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xBE<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xBA<span class="symbol">\\</span>xA6<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x8B<span class="symbol">\\</span>xEF<span class="symbol">\\</span>xBC<span class="symbol">\\</span>x8C<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xBD<span class="symbol">\\</span>xA0<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xB0<span class="symbol">\\</span>xB1<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x9F<span class="symbol">\\</span>xA5<span class="symbol">\\</span>xE9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [13]: x.encode()</span><br><span class="line">Out[13]: b'<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xBE<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xBA<span class="symbol">\\</span>xA6<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x8B<span class="symbol">\\</span>xEF<span class="symbol">\\</span>xBC<span class="symbol">\\</span>x8C<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xBD<span class="symbol">\\</span>xA0<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xB0<span class="symbol">\\</span>xB1<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x9F<span class="symbol">\\</span>xA5<span class="symbol">\\</span>xE9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [19]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("unicode_escape")</span><br><span class="line">Out[19]: b'<span class="symbol">\\</span>xe7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xbe<span class="symbol">\\</span>xe5<span class="symbol">\\</span>xba<span class="symbol">\\</span>xa6<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xb8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xb8<span class="symbol">\\</span>x8b<span class="symbol">\\</span>xef<span class="symbol">\\</span>xbc<span class="symbol">\\</span>x8c<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xbd<span class="symbol">\\</span>xa0<span class="symbol">\\</span>xe5<span class="symbol">\\</span>xb0<span class="symbol">\\</span>xb1<span class="symbol">\\</span>xe7<span class="symbol">\\</span>x9f<span class="symbol">\\</span>xa5<span class="symbol">\\</span>xe9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [14]: x.encode().decode("unicode_escape").encode("latin1")</span><br><span class="line">Out[14]: b'<span class="symbol">\x</span>e7<span class="symbol">\x</span>99<span class="symbol">\x</span>be<span class="symbol">\x</span>e5<span class="symbol">\x</span>ba<span class="symbol">\x</span>a6<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>80<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>8b<span class="symbol">\x</span>ef<span class="symbol">\x</span>bc<span class="symbol">\x</span>8c<span class="symbol">\x</span>e4<span class="symbol">\x</span>bd<span class="symbol">\x</span>a0<span class="symbol">\x</span>e5<span class="symbol">\x</span>b0<span class="symbol">\x</span>b1<span class="symbol">\x</span>e7<span class="symbol">\x</span>9f<span class="symbol">\x</span>a5<span class="symbol">\x</span>e9<span class="symbol">\x</span>81<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [15]: x.encode().decode("unicode_escape").encode("latin1").decode("utf-8")</span><br><span class="line">Out[15]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag">#python</a>
+          
+            <a href="/tags/unicode/" rel="tag">#unicode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/21/fmt/" rel="next" title="字符串格式化所导致的漏洞">
+                <i class="fa fa-chevron-left"></i> 字符串格式化所导致的漏洞
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <script>document.write("<p>\u62b1\u6b49\u002c\u0020\u6839\u636e\u76f8\u5173\u6cd5\u5f8b\u6cd5\u89c4\u548c\u653f\u7b56\u002c\u0020\u60a8\u76ee\u524d\u53ea\u80fd\u6d4f\u89c8\u002c\u0020\u4e0d\u80fd\u8bc4\u8bba\u0028\u3000\u005e\u03c9\u005e\u0029</p>")</script>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/main.jpg" alt="xz" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">xz</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Some Place where I can write something<br>总有一天你们会求我更博客的</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">categories</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">Useful Links</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://techcat.me/" target="_blank">TechCat</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.spzkxj.com/" target="_blank">Spzkxj</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.groverchou.com/" target="_blank">GroverChou</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xz</span>
+</div>
+
+<div class="powered-by">
+  Powered by Hexo
+</div>
+
+<div class="theme-info">
+  Theme -
+  <!--a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a-->
+  <a class="theme-link">NexT</a>
+</div>
+
+<div class="mod-info">
+Mod by xz
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'tencentadmin';
+      var disqus_identifier = '2019/08/31/python3-unicode-escape/';
+      var disqus_title = 'python3中unicode编码解码';
+      var disqus_url = 'https://blog.qwerdf.com/2019/08/31/python3-unicode-escape/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2.0"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2.0"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2.0" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2.0" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
