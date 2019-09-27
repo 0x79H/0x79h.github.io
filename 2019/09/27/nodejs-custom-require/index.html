@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
+<meta name="description" content="tl;dr  参考require的函数内部流程,通过require.extensions[&amp;#39;ext&amp;#39;]可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些">
 <meta name="keywords" content="nodejs,docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nodejs的require载入自定义类型文件">
 <meta property="og:url" content="https://blog.qwerdf.com/2019/09/27/nodejs-custom-require/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
+<meta property="og:description" content="tl;dr  参考require的函数内部流程,通过require.extensions[&amp;#39;ext&amp;#39;]可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-27T09:34:00.337Z">
+<meta property="og:updated_time" content="2019-09-27T09:46:29.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nodejs的require载入自定义类型文件">
-<meta name="twitter:description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
+<meta name="twitter:description" content="tl;dr  参考require的函数内部流程,通过require.extensions[&amp;#39;ext&amp;#39;]可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些">
 
 
 
@@ -247,7 +247,7 @@
       
         <span itemprop="articleBody"><p>tl;dr</p>
 <blockquote>
-<p>require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程</p>
+<p>参考require的函数内部流程,通过<code>require.extensions[&#39;ext&#39;]</code>可以自定义require的流程</p>
 </blockquote>
 <p>简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西.</p>
 <p>该程序是用docker一键搭建的,使用<code>docker exec -it &lt;id&gt; bash</code>进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.</p>
