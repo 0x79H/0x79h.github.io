@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="windows,fix," />
+  <meta name="keywords" content="nodejs,docker," />
 
 
 
@@ -53,18 +53,18 @@
 
 
 
-<meta name="description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
-<meta name="keywords" content="windows,fix">
+<meta name="description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
+<meta name="keywords" content="nodejs,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="修复Airplane Mode Hid设备异常">
-<meta property="og:url" content="https://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/index.html">
+<meta property="og:title" content="nodejs的require载入自定义类型文件">
+<meta property="og:url" content="https://blog.qwerdf.com/2019/09/27/nodejs-custom-require/index.html">
 <meta property="og:site_name" content="zzzZZZ">
-<meta property="og:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta property="og:description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-20T10:57:29.027Z">
+<meta property="og:updated_time" content="2019-09-27T09:34:00.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="修复Airplane Mode Hid设备异常">
-<meta name="twitter:description" content="设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;amp;DEV_C000 在这里找到解决问题的方案。 导入注册表    12345Windows Registry Editor Version 5.00;fix error code 10 (insyde airplane mode hid mini-driver)">
+<meta name="twitter:title" content="nodejs的require载入自定义类型文件">
+<meta name="twitter:description" content="tl;dr  require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程  简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西. 该程序是用docker一键搭建的,使用docker exec -it &amp;lt;id&amp;gt; bash进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.">
 
 
 
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title> 修复Airplane Mode Hid设备异常 | zzzZZZ </title>
+  <title> nodejs的require载入自定义类型文件 | zzzZZZ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -205,7 +205,7 @@
             
             
               
-                修复Airplane Mode Hid设备异常
+                nodejs的require载入自定义类型文件
               
             
           </h1>
@@ -214,8 +214,8 @@
         <div class="post-meta">
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2015-12-05T05:23:10+09:00" content="2015-12-05">
-              2015-12-05
+            <time itemprop="dateCreated" datetime="2019-09-27T17:27:13+09:00" content="2019-09-27">
+              2019-09-27
             </time>
           </span>
 
@@ -225,8 +225,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/12/05/fix-insyde-airplane/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/12/05/fix-insyde-airplane/" itemprop="commentsCount"></span>
+              <a href="/2019/09/27/nodejs-custom-require/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/27/nodejs-custom-require/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -245,13 +245,18 @@
       
 
       
-        <span itemprop="articleBody"><p>设备管理器中Insyde Airplane Mode HID Mini-Driver有感叹号，硬件id为ACPI\VEN_PNP&amp;DEV_C000</p>
-<p>在<a href="http://answers.microsoft.com/ru-ru/windows/forum/windows8_1-hardware/%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8/7812d6a2-1cc6-4912-8344-8635b5356983?auth=1" target="_blank" rel="noopener">这里</a>找到解决问题的方案。</p>
-<p>导入注册表<br>    <figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line">;fix <span class="built_in">error</span> code <span class="number">10</span> (insyde airplane mode hid mini-driver) </span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AirplaneModeHid\Parameters]</span><br><span class="line"><span class="string">"ECRAMBASE"</span>=<span class="name">dword</span>:ff700100</span><br></pre></td></tr></table></figure></p>
-<p>仔细看了看应该是这个驱动的安装程序的锅…</p>
-<p>此文章基于以下驱动版本完成:1.4.0.3</p>
-<p>最新更新的1.4.0.4(签名日期2017-01-19)并未解决这个bug</p>
-<p><em>2018-03-31更新</em><br>1.4.0.8(签名日期2017-06-28)已解决此问题 😏</p>
+        <span itemprop="articleBody"><p>tl;dr</p>
+<blockquote>
+<p>require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程</p>
+</blockquote>
+<p>简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西.</p>
+<p>该程序是用docker一键搭建的,使用<code>docker exec -it &lt;id&gt; bash</code>进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.</p>
+<a id="more"></a>
+<p>稍微跟了下,发现启动点是<code>node node_modules/ep_etherpad-Iite/node/server.js online</code>,使用debug单步启动后,活用<code>debugger</code>,使用二分法,发现了在载入了某个文件后,<code>windows</code>全局变量中存在可用的目标函数.</p>
+<p>继续跟踪,  踩了很多坑后, 发现在载入<code>log4js</code>模块后即可载入特殊后缀的文件,发现有:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> teakkl = <span class="built_in">require</span>(<span class="string">'teakkl_express'</span>);</span><br><span class="line"><span class="keyword">var</span> ext = [<span class="string">'.t'</span>, <span class="string">'e'</span>, <span class="string">'a'</span>, <span class="string">'k'</span>, <span class="string">'kl'</span>].join(<span class="string">''</span>);</span><br><span class="line"><span class="keyword">var</span> kky = [<span class="string">'ex'</span>, <span class="string">'ten'</span>, <span class="string">'si'</span>, <span class="string">'ons'</span>].join(<span class="string">''</span>);</span><br><span class="line"><span class="keyword">var</span> kky2 = [<span class="string">'_'</span>, <span class="string">'co'</span>, <span class="string">'mp'</span>, <span class="string">'ile'</span>].join(<span class="string">''</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line">  ha() &#123;</span><br><span class="line">      <span class="keyword">var</span> me = <span class="keyword">this</span>;</span><br><span class="line">      <span class="built_in">require</span>[kky][ext] = <span class="function"><span class="keyword">function</span> (<span class="params">m, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> content = teakkl.de(fs.readFileSync(filename, <span class="string">'utf-8'</span>));</span><br><span class="line">        m[kky2](content, filename);</span><br><span class="line">      &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">a.ha();</span><br></pre></td></tr></table></figure></p>
+<p>搜了搜,发现这里是关键. 参考<a href="http://nodejs.cn/api/modules/require_extensions.html" target="_blank" rel="noopener">这里</a>, 发现这里动态对require的某一个特殊后缀的文件载入函数进行了重写. 很好用(但是从<code>nodejs v0.10.6</code>起被弃用)</p>
+<p>参考流程与解密函数,发现key为一看上去像是正常js的文件(…),编写脚本对所有特殊后缀的文件使用aes-256-cbc算法进行解密.此时发现可找到相关函数.至此结束.</p>
+<p>另外大概看了看,发现该程序有两个与外部通信的通道:一个是/proBuy:看名字应该是联网校验cdkey,一个是/proMonitor:看名字应该是合法上报服务器信息吧.</p>
 </span>
       
     </div>
@@ -260,9 +265,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/windows/" rel="tag">#windows</a>
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
           
-            <a href="/tags/fix/" rel="tag">#fix</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
         </div>
       
@@ -271,17 +276,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/11/18/hexo-blog/" rel="next" title="搭了个博客">
-                <i class="fa fa-chevron-left"></i> 搭了个博客
+              <a href="/2019/08/31/python3-unicode-escape/" rel="next" title="python3中unicode编码解码">
+                <i class="fa fa-chevron-left"></i> python3中unicode编码解码
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/13/win10-update-tools/" rel="prev" title="win10更新工具">
-                win10更新工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,9 +494,9 @@ Mod by xz
 
     <script type="text/javascript">
       var disqus_shortname = 'tencentadmin';
-      var disqus_identifier = '2015/12/05/fix-insyde-airplane/';
-      var disqus_title = '修复Airplane Mode Hid设备异常';
-      var disqus_url = 'https://blog.qwerdf.com/2015/12/05/fix-insyde-airplane/';
+      var disqus_identifier = '2019/09/27/nodejs-custom-require/';
+      var disqus_title = 'nodejs的require载入自定义类型文件';
+      var disqus_url = 'https://blog.qwerdf.com/2019/09/27/nodejs-custom-require/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');

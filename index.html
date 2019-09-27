@@ -221,6 +221,99 @@
             
               
                 
+                <a class="post-title-link" href="/2019/09/27/nodejs-custom-require/" itemprop="url">
+                  nodejs的require载入自定义类型文件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-09-27T17:27:13+09:00" content="2019-09-27">
+              2019-09-27
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2019/09/27/nodejs-custom-require/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/27/nodejs-custom-require/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>tl;dr</p>
+<blockquote>
+<p>require.extensions[‘ext’]参考require的内部流程,可以自定义require的流程</p>
+</blockquote>
+<p>简单来说,就是因为有个程序有bug,懒得反馈官方,我朋友让我大概在半年前看了个nodejs写的东西.</p>
+<p>该程序是用docker一键搭建的,使用<code>docker exec -it &lt;id&gt; bash</code>进入容器查看相关信息.大部分源码可见,但是一些关键功能的源码却不可见.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/09/27/nodejs-custom-require/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2019/08/31/python3-unicode-escape/" itemprop="url">
                   python3中unicode编码解码
                 </a>
@@ -264,15 +357,18 @@
 
       
         
-          <span itemprop="articleBody">
-            
-              <p>举个例子:<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-title: <span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93</span><br></pre></td></tr></table></figure></p>
-<p>此处的<code>\xE7\x99\xBE\xE5\xBA\xA6\xE4\xB8\x80\xE4\xB8\x8B\xEF\xBC\x8C\xE4\xBD\xA0\xE5\xB0\xB1\xE7\x9F\xA5\xE9\x81\x93</code>既是字符串的UTF-8编码,那么<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [1]: b"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".decode("utf-8")</span><br><span class="line">Out[1]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
-<p>然而对于格式不是byte的字符串来说,python3的默认的编码是utf-8,导致encode出的是utf-8编码,此时只需要手动指定latin1方式解码为byte即可<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [2]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode()</span><br><span class="line">Out[2]: b'<span class="symbol">\x</span>c3<span class="symbol">\x</span>a7<span class="symbol">\x</span>c2<span class="symbol">\x</span>99<span class="symbol">\x</span>c2<span class="symbol">\x</span>be<span class="symbol">\x</span>c3<span class="symbol">\x</span>a5<span class="symbol">\x</span>c2<span class="symbol">\x</span>ba<span class="symbol">\x</span>c2<span class="symbol">\x</span>a6<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>b8<span class="symbol">\x</span>c2<span class="symbol">\x</span>80<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>b8<span class="symbol">\x</span>c2<span class="symbol">\x</span>8b<span class="symbol">\x</span>c3<span class="symbol">\x</span>af<span class="symbol">\x</span>c2<span class="symbol">\x</span>bc<span class="symbol">\x</span>c2<span class="symbol">\x</span>8c<span class="symbol">\x</span>c3<span class="symbol">\x</span>a4<span class="symbol">\x</span>c2<span class="symbol">\x</span>bd<span class="symbol">\x</span>c2<span class="symbol">\x</span>a0<span class="symbol">\x</span>c3<span class="symbol">\x</span>a5<span class="symbol">\x</span>c2<span class="symbol">\x</span>b0<span class="symbol">\x</span>c2<span class="symbol">\x</span>b1<span class="symbol">\x</span>c3<span class="symbol">\x</span>a7<span class="symbol">\x</span>c2<span class="symbol">\x</span>9f<span class="symbol">\x</span>c2<span class="symbol">\x</span>a5<span class="symbol">\x</span>c3<span class="symbol">\x</span>a9<span class="symbol">\x</span>c2<span class="symbol">\x</span>81<span class="symbol">\x</span>c2<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [3]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("latin1")</span><br><span class="line">Out[3]: b'<span class="symbol">\x</span>e7<span class="symbol">\x</span>99<span class="symbol">\x</span>be<span class="symbol">\x</span>e5<span class="symbol">\x</span>ba<span class="symbol">\x</span>a6<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>80<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>8b<span class="symbol">\x</span>ef<span class="symbol">\x</span>bc<span class="symbol">\x</span>8c<span class="symbol">\x</span>e4<span class="symbol">\x</span>bd<span class="symbol">\x</span>a0<span class="symbol">\x</span>e5<span class="symbol">\x</span>b0<span class="symbol">\x</span>b1<span class="symbol">\x</span>e7<span class="symbol">\x</span>9f<span class="symbol">\x</span>a5<span class="symbol">\x</span>e9<span class="symbol">\x</span>81<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [4]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("latin1").decode("utf-8")</span><br><span class="line">Out[4]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
-<p>对于使用默认方式从文本中读出的字符串来说,<code>\</code>为了防止转义会变成<code>\\</code>,此时需要使用<code>unicode_escape</code>相互转换处理即可.(这里让我搞了许久,之前的解决方法是上正则匹配<code>\x</code>与<code>\u</code>开头的字符串)<br><figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">In [11]: x=""</span><br><span class="line">    ...: with open(r"d:<span class="symbol">\u</span>.txt") as f:</span><br><span class="line">    ...:     x=f.read()</span><br><span class="line">    ...:     print(x)</span><br><span class="line">    ...:</span><br><span class="line"><span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93</span><br><span class="line"></span><br><span class="line">In [12]: x</span><br><span class="line">Out[12]: '<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xBE<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xBA<span class="symbol">\\</span>xA6<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x8B<span class="symbol">\\</span>xEF<span class="symbol">\\</span>xBC<span class="symbol">\\</span>x8C<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xBD<span class="symbol">\\</span>xA0<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xB0<span class="symbol">\\</span>xB1<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x9F<span class="symbol">\\</span>xA5<span class="symbol">\\</span>xE9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [13]: x.encode()</span><br><span class="line">Out[13]: b'<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xBE<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xBA<span class="symbol">\\</span>xA6<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xB8<span class="symbol">\\</span>x8B<span class="symbol">\\</span>xEF<span class="symbol">\\</span>xBC<span class="symbol">\\</span>x8C<span class="symbol">\\</span>xE4<span class="symbol">\\</span>xBD<span class="symbol">\\</span>xA0<span class="symbol">\\</span>xE5<span class="symbol">\\</span>xB0<span class="symbol">\\</span>xB1<span class="symbol">\\</span>xE7<span class="symbol">\\</span>x9F<span class="symbol">\\</span>xA5<span class="symbol">\\</span>xE9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [19]: u"<span class="symbol">\x</span>E7<span class="symbol">\x</span>99<span class="symbol">\x</span>BE<span class="symbol">\x</span>E5<span class="symbol">\x</span>BA<span class="symbol">\x</span>A6<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>80<span class="symbol">\x</span>E4<span class="symbol">\x</span>B8<span class="symbol">\x</span>8B<span class="symbol">\x</span>EF<span class="symbol">\x</span>BC<span class="symbol">\x</span>8C<span class="symbol">\x</span>E4<span class="symbol">\x</span>BD<span class="symbol">\x</span>A0<span class="symbol">\x</span>E5<span class="symbol">\x</span>B0<span class="symbol">\x</span>B1<span class="symbol">\x</span>E7<span class="symbol">\x</span>9F<span class="symbol">\x</span>A5<span class="symbol">\x</span>E9<span class="symbol">\x</span>81<span class="symbol">\x</span>93".encode("unicode_escape")</span><br><span class="line">Out[19]: b'<span class="symbol">\\</span>xe7<span class="symbol">\\</span>x99<span class="symbol">\\</span>xbe<span class="symbol">\\</span>xe5<span class="symbol">\\</span>xba<span class="symbol">\\</span>xa6<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xb8<span class="symbol">\\</span>x80<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xb8<span class="symbol">\\</span>x8b<span class="symbol">\\</span>xef<span class="symbol">\\</span>xbc<span class="symbol">\\</span>x8c<span class="symbol">\\</span>xe4<span class="symbol">\\</span>xbd<span class="symbol">\\</span>xa0<span class="symbol">\\</span>xe5<span class="symbol">\\</span>xb0<span class="symbol">\\</span>xb1<span class="symbol">\\</span>xe7<span class="symbol">\\</span>x9f<span class="symbol">\\</span>xa5<span class="symbol">\\</span>xe9<span class="symbol">\\</span>x81<span class="symbol">\\</span>x93'</span><br><span class="line"></span><br><span class="line">In [14]: x.encode().decode("unicode_escape").encode("latin1")</span><br><span class="line">Out[14]: b'<span class="symbol">\x</span>e7<span class="symbol">\x</span>99<span class="symbol">\x</span>be<span class="symbol">\x</span>e5<span class="symbol">\x</span>ba<span class="symbol">\x</span>a6<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>80<span class="symbol">\x</span>e4<span class="symbol">\x</span>b8<span class="symbol">\x</span>8b<span class="symbol">\x</span>ef<span class="symbol">\x</span>bc<span class="symbol">\x</span>8c<span class="symbol">\x</span>e4<span class="symbol">\x</span>bd<span class="symbol">\x</span>a0<span class="symbol">\x</span>e5<span class="symbol">\x</span>b0<span class="symbol">\x</span>b1<span class="symbol">\x</span>e7<span class="symbol">\x</span>9f<span class="symbol">\x</span>a5<span class="symbol">\x</span>e9<span class="symbol">\x</span>81<span class="symbol">\x</span>93'</span><br><span class="line"></span><br><span class="line">In [15]: x.encode().decode("unicode_escape").encode("latin1").decode("utf-8")</span><br><span class="line">Out[15]: '百度一下，你就知道'</span><br></pre></td></tr></table></figure></p>
-
-            
-          </span>
+          <p>tl;dr</p>
+<blockquote>
+<p>之前的解决方法是使用字节去读取目标字符串,然后使用函数或正则手动解析unicode编码.现在找到了更好更简单的方法:使用<code>unicode_escape</code>相互转换处理即可</p>
+</blockquote>
+<p>举个例子:<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-title: \xE7\x99\xBE\xE5\xBA\xA6</span><br></pre></td></tr></table></figure></p>
+<p>此处的<code>\xE7\x99\xBE\xE5\xBA\xA6</code>既是字符串的UTF-8编码,那么<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">1</span>]: <span class="string">b"\xE7\x99\xBE\xE5\xBA\xA6"</span>.decode(<span class="string">"utf-8"</span>)</span><br><span class="line">Out[<span class="number">1</span>]: <span class="string">'百度'</span></span><br></pre></td></tr></table></figure></p>
+<p>然而对于格式不是byte的字符串来说,python3的默认的编码是utf-8,导致encode出的是utf-8编码,此时只需要手动指定latin1方式解码为byte即可<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: <span class="string">u"\xE7\x99\xBE\xE5\xBA\xA6"</span>.encode()</span><br><span class="line">Out[<span class="number">2</span>]: <span class="string">b'\xc3\xa7\xc2\x99\xc2\xbe\xc3\xa5\xc2\xba\xc2\xa6'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: <span class="string">u"\xE7\x99\xBE\xE5\xBA\xA6"</span>.encode(<span class="string">"latin1"</span>)</span><br><span class="line">Out[<span class="number">3</span>]: <span class="string">b'\xe7\x99\xbe\xe5\xba\xa6'</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: <span class="string">u"\xE7\x99\xBE\xE5\xBA\xA6"</span>.encode(<span class="string">"latin1"</span>).decode(<span class="string">"utf-8"</span>)</span><br><span class="line">Out[<span class="number">4</span>]: <span class="string">'百度'</span></span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/08/31/python3-unicode-escape/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1017,97 +1113,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/03/25/wireshark-with-android/" itemprop="url">
-                  实时抓取Android上的网卡数据包
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            Posted on
-            <time itemprop="dateCreated" datetime="2019-03-25T17:08:03+09:00" content="2019-03-25">
-              2019-03-25
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2019/03/25/wireshark-with-android/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/25/wireshark-with-android/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h1 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h1><p>一个apk,上burp死活抓不到数据包,应用还正常.<br>想开wifi热点抓,结果我那破红米不支持5g,win10的热点老是开到5g上,行不通,只能想其他方法.</p>
-<h1 id="非实时"><a href="#非实时" class="headerlink" title="非实时"></a>非实时</h1><p>tcpdump直接抓<br>但是不够优雅,不能实时反应过来,而且也没wireshark易用</p>
-<h1 id="实时"><a href="#实时" class="headerlink" title="实时"></a>实时</h1><h2 id="wifi热点法"><a href="#wifi热点法" class="headerlink" title="wifi热点法"></a>wifi热点法</h2><p>垃圾红米手机和win10配不上.</p>
-<h2 id="管道法"><a href="#管道法" class="headerlink" title="管道法"></a>管道法</h2><p>老早之前记得看过有人用pipe来将抓包的数据实时重定向到wireshark.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2019/03/25/wireshark-with-android/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1154,7 +1159,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1168,7 +1173,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
